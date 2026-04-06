@@ -12,17 +12,22 @@ One of the goals of this course is to prove that AI-assisted DevOps doesn't requ
 
 ## Claude Code: $20/month (recommended for this course)
 
-The **Pro subscription** at $20/month is the recommended way to follow this course. It gives you full access to Claude Code across all platforms: CLI, VS Code, JetBrains, Desktop app, and web.
+The **Pro subscription** at $20/month is the recommended way to follow this course. It gives you access to Claude Code in the terminal, VS Code, JetBrains, Desktop app, and web.
 
-> **Note**: Higher-tier plans (Max at $100/mo, Team at $30/seat/mo) also include Claude Code with higher rate limits. Pro is sufficient for everything in this course.
+> **Important**: Pro usage is metered and shared across Claude chat and Claude Code — it is not unlimited. For this course, Pro limits are sufficient. If you find yourself hitting rate limits frequently, the Max plan ($100/mo) offers significantly higher usage. See [anthropic.com/pricing](https://anthropic.com/pricing) for current details.
+>
+> **Team plans**: Claude Code availability on Team plans depends on your seat type. Standard Team seats do not include Claude Code. Check with your admin or see [Anthropic's Team plan docs](https://support.anthropic.com/en/articles/9267289-how-is-my-team-plan-bill-calculated) for details.
 
-What you get:
-- Unlimited Claude Code sessions (subject to rate limits)
-- Access to Sonnet 4.6 (default) and Haiku 4.5
-- Opus 4.6 available (uses more of your rate limit)
+What you get with Pro:
+- Claude Code access (terminal, IDE extensions, desktop app, web)
+- Claude Sonnet as the default model in Claude Code
+- Claude Haiku available for lighter tasks (`--model haiku`)
 - All features: plans, skills, hooks, MCP, sub-agents, scheduled tasks
+- Usage is metered — check `/cost` in session to monitor
 
-> **Terminal vs. API**: Your Pro subscription covers all interactive Claude Code usage (terminal, IDE, desktop app). It does **not** cover API usage. Block 10 (GitHub Actions) requires a separate Anthropic API key with pay-per-token billing -- see the GitHub Actions section below.
+> **What about Opus?** Opus is available on Max plans. Pro users get Sonnet and Haiku in Claude Code. Sonnet is more than capable for everything in this course.
+
+> **Terminal vs. API**: Your Pro subscription covers interactive Claude Code usage. It does **not** cover API usage. Block 10 (GitHub Actions) requires a separate Anthropic API key with pay-per-token billing — see the GitHub Actions section below.
 
 ### Saving tokens
 
@@ -40,7 +45,7 @@ We use a single **s-2vcpu-4gb** droplet (2 vCPU, 4 GB RAM). This is the locked r
 |----------|------|------|
 | Droplet | **s-2vcpu-4gb** (2 vCPU, 4GB RAM) | $24/mo |
 | Domain (optional) | via DigitalOcean or external | $10-15/yr |
-| Load Balancer | Not needed (k3s Traefik handles it) | $0 |
+| Load Balancer | Not needed (NodePort exposes the app directly) | $0 |
 
 ### New account credit
 
@@ -76,11 +81,11 @@ The CI/CD block uses the Claude GitHub Action, which calls the Anthropic API dir
 
 | Model | Input | Output |
 |-------|-------|--------|
-| Haiku 4.5 | $0.80/MTok | $4/MTok |
-| Sonnet 4.6 | $3/MTok | $15/MTok |
-| Opus 4.6 | $15/MTok | $75/MTok |
+| Claude Haiku (cheapest) | $0.80/MTok | $4/MTok |
+| Claude Sonnet (default) | $3/MTok | $15/MTok |
+| Claude Opus (most capable) | $15/MTok | $75/MTok |
 
-*API pricing may change -- check [anthropic.com/pricing](https://anthropic.com/pricing) for current rates.*
+*API pricing shown is approximate as of April 2026 and may change. Always check [anthropic.com/pricing](https://anthropic.com/pricing) for current rates before relying on these numbers.*
 
 For the course exercises (a few PR reviews and one issue implementation), expect to spend **$1-5 total** on API tokens. Use `max_turns: 3` in your workflow to limit costs.
 

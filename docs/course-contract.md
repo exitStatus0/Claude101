@@ -53,7 +53,7 @@
 | CI/CD | GitHub Actions | Where the code lives |
 | Domain | Optional sidebar | Public IP works fine for the course |
 | TLS | Optional sidebar | Not needed for learning k3s |
-| Load Balancer | **NOT used** | Traefik handles it, saves $12/mo |
+| Load Balancer | **NOT used** | NodePort exposes the app directly, saves $12/mo |
 | Monitoring | kubectl logs + ArgoCD health + readiness/liveness probes + `/loop` | Minimal, sufficient |
 
 ---

@@ -198,8 +198,14 @@ pre code {
   transition: color 0.2s ease;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav a.is-active {
   color: var(--text-primary);
+}
+
+.site-nav a.is-active {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
 }
 
 .mobile-menu-toggle {

@@ -216,7 +216,7 @@ claude
 
 On first run, Claude Code will prompt you to authenticate. Follow the on-screen instructions — it will open a browser window where you sign into your Anthropic account and authorize Claude Code.
 
-**Requirements**: You need an active Anthropic Pro subscription ($20/month, recommended for this course). Claude Code is included with Pro — no separate purchase. Higher-tier plans (Max, Team) also work.
+**Requirements**: You need an active Anthropic Pro subscription ($20/month, recommended for this course). Claude Code is included with Pro and Max plans. Pro gives you Sonnet and Haiku in Claude Code — that's all you need for this course. See the [Cost Guide]({{ '/resources/cost-guide' | relative_url }}) for details.
 
 After authentication succeeds, you'll land in an interactive session. You should see a prompt that looks something like:
 

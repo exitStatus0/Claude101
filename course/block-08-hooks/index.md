@@ -91,11 +91,11 @@ The most common type. Run any shell command.
 ```json
 {
   "type": "command",
-  "command": "prettier --write $CLAUDE_FILE_PATH"
+  "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); [ -n \"$FILE\" ] && prettier --write \"$FILE\""
 }
 ```
 
-Use for: formatting, linting, notifications, logging, file operations.
+Hooks receive context as JSON on stdin — use `jq` to extract the file path. Use for: formatting, linting, notifications, logging, file operations.
 
 #### 2. Prompt Hooks (AI yes/no)
 
@@ -196,9 +196,11 @@ This is how you build safety rails:
 ```bash
 #!/bin/bash
 # pre-edit-check.sh — exits 2 if the file is protected
+# Hook receives tool context as JSON on stdin
+FILE=$(cat | jq -r '.tool_input.file_path // empty')
 PROTECTED_FILES=".env package-lock.json yarn.lock"
 for f in $PROTECTED_FILES; do
-  if [[ "$CLAUDE_FILE_PATH" == *"$f"* ]]; then
+  if [[ "$FILE" == *"$f"* ]]; then
     echo "BLOCKED: $f is a protected file"
     exit 2
   fi
@@ -226,7 +228,7 @@ Hooks are configured in `settings.json` — the same file you've used for permis
         "hooks": [
           {
             "type": "command",
-            "command": "prettier --write \"$CLAUDE_FILE_PATH\""
+            "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); [ -n \"$FILE\" ] && prettier --write \"$FILE\""
           }
         ]
       }
@@ -241,15 +243,35 @@ Hooks are configured in `settings.json` — the same file you've used for permis
 
 The resolution order: enterprise > project > user. Enterprise hooks always run. Project and user hooks stack.
 
-#### Environment Variables Available to Hooks
+#### How Hooks Receive Context
 
-When a hook fires, Claude Code sets environment variables you can use:
+When a hook fires, Claude Code passes context as **JSON on stdin**. Your hook script reads it with `jq` or similar tools. The JSON includes the tool name, file path, and other details depending on the event.
 
-| Variable | Description | Available In |
-|----------|-------------|-------------|
-| `$CLAUDE_FILE_PATH` | The file being read/written/edited | PreToolUse, PostToolUse |
-| `$CLAUDE_TOOL_NAME` | The tool being used (Write, Edit, Bash, etc.) | PreToolUse, PostToolUse |
-| `$CLAUDE_SESSION_ID` | Unique ID for the current session | All events |
+For PreToolUse and PostToolUse hooks, stdin looks like:
+
+```json
+{
+  "tool_name": "Write",
+  "tool_input": {
+    "file_path": "/path/to/file.ts",
+    "content": "..."
+  }
+}
+```
+
+Extract values with `jq`:
+
+```bash
+# Get the file path from stdin
+FILE_PATH=$(cat | jq -r '.tool_input.file_path // empty')
+```
+
+Additionally, these environment variables are always available:
+
+| Variable | Description |
+|----------|-------------|
+| `$CLAUDE_PROJECT_DIR` | The project root directory |
+| `$CLAUDE_ENV_FILE` | Path to the Claude env file |
 
 These let your hook scripts be smart about _what_ they do based on _what Claude is doing_.
 
@@ -321,8 +343,8 @@ Now let's create the hook. Open `.claude/settings.json` in the ai-coderrank proj
 Add a PostToolUse hook to .claude/settings.json that runs Prettier on any file 
 after Claude writes or edits it. The hook should:
 - Only fire on Write and Edit tool uses
+- Read the file path from stdin JSON using jq
 - Run prettier --write on the affected file
-- Use the $CLAUDE_FILE_PATH environment variable
 ```
 
 The result should look like this:
@@ -339,7 +361,7 @@ The result should look like this:
         "hooks": [
           {
             "type": "command",
-            "command": "npx prettier --write \"$CLAUDE_FILE_PATH\" 2>/dev/null || true"
+            "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); [ -n \"$FILE\" ] && npx prettier --write \"$FILE\" 2>/dev/null || true"
           }
         ]
       }
@@ -350,7 +372,7 @@ The result should look like this:
 
 A few things to notice:
 - **`"matcher": "Write|Edit"`** — the hook only fires when Claude uses the Write or Edit tool. Not on Read, not on Bash, not on Grep.
-- **`$CLAUDE_FILE_PATH`** — automatically set to the file Claude just modified.
+- **`cat | jq -r '.tool_input.file_path'`** — hooks receive context as JSON on stdin. We extract the file path with `jq`. This is how all Claude Code hooks access tool context.
 - **`2>/dev/null || true`** — suppresses Prettier errors for non-formattable files (like `.md` or `.yaml` if Prettier isn't configured for them). The `|| true` ensures the hook always exits 0, so it never accidentally blocks Claude.
 
 #### Test It
@@ -394,7 +416,7 @@ Claude will add a PreToolUse section to your settings:
         "hooks": [
           {
             "type": "command",
-            "command": "case \"$CLAUDE_FILE_PATH\" in *.env|*.env.*|*package-lock.json|*yarn.lock|*pnpm-lock.yaml) echo \"BLOCKED: $CLAUDE_FILE_PATH is a protected file. Edit it manually.\"; exit 2;; esac; exit 0"
+            "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); case \"$FILE\" in *.env|*.env.*|*package-lock.json|*yarn.lock|*pnpm-lock.yaml) echo \"BLOCKED: $FILE is a protected file. Edit it manually.\"; exit 2;; esac; exit 0"
           }
         ]
       }
@@ -405,7 +427,7 @@ Claude will add a PreToolUse section to your settings:
         "hooks": [
           {
             "type": "command",
-            "command": "npx prettier --write \"$CLAUDE_FILE_PATH\" 2>/dev/null || true"
+            "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); [ -n \"$FILE\" ] && npx prettier --write \"$FILE\" 2>/dev/null || true"
           }
         ]
       }
@@ -567,7 +589,7 @@ In verbose mode, you'll see output like:
 
 ```
 [hook] PreToolUse:Edit checking matcher "Write|Edit" → matched
-[hook] Running: case "$CLAUDE_FILE_PATH" in ...
+[hook] Running: FILE=$(cat | jq -r ...) ...
 [hook] Exit code: 0 (proceed)
 [tool] Edit src/app/layout.tsx
 [hook] PostToolUse:Edit checking matcher "Write|Edit" → matched
@@ -612,7 +634,7 @@ The hook script:
   "hooks": [
     {
       "type": "command",
-      "command": "DANGEROUS_PATTERNS='rm -rf|git reset --hard|git push --force|git push -f|kubectl delete namespace|DROP TABLE|docker system prune'; if echo \"$CLAUDE_BASH_COMMAND\" | grep -qE \"$DANGEROUS_PATTERNS\"; then echo \"\" && echo \"WARNING: Destructive command detected:\" && echo \"  $CLAUDE_BASH_COMMAND\" && echo \"\" && read -p 'Allow this command? (y/N): ' CONFIRM < /dev/tty; if [ \"$CONFIRM\" = 'y' ] || [ \"$CONFIRM\" = 'Y' ]; then exit 0; else echo 'Blocked by user.'; exit 2; fi; else exit 0; fi"
+      "command": "CMD=$(cat | jq -r '.tool_input.command // empty'); DANGEROUS_PATTERNS='rm -rf|git reset --hard|git push --force|git push -f|kubectl delete namespace|DROP TABLE|docker system prune'; if echo \"$CMD\" | grep -qE \"$DANGEROUS_PATTERNS\"; then echo \"\" && echo \"WARNING: Destructive command detected:\" && echo \"  $CMD\" && echo \"\" && read -p 'Allow this command? (y/N): ' CONFIRM < /dev/tty; if [ \"$CONFIRM\" = 'y' ] || [ \"$CONFIRM\" = 'Y' ]; then exit 0; else echo 'Blocked by user.'; exit 2; fi; else exit 0; fi"
     }
   ]
 }
@@ -656,7 +678,7 @@ After all hooks, your `.claude/settings.json` should look something like this:
         "hooks": [
           {
             "type": "command",
-            "command": "case \"$CLAUDE_FILE_PATH\" in *.env|*.env.*|*package-lock.json|*yarn.lock|*pnpm-lock.yaml) echo \"BLOCKED: $CLAUDE_FILE_PATH is a protected file. Edit it manually.\"; exit 2;; esac; exit 0"
+            "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); case \"$FILE\" in *.env|*.env.*|*package-lock.json|*yarn.lock|*pnpm-lock.yaml) echo \"BLOCKED: $FILE is a protected file. Edit it manually.\"; exit 2;; esac; exit 0"
           }
         ]
       },
@@ -665,7 +687,7 @@ After all hooks, your `.claude/settings.json` should look something like this:
         "hooks": [
           {
             "type": "command",
-            "command": "DANGEROUS_PATTERNS='rm -rf|git reset --hard|git push --force|git push -f|kubectl delete namespace|DROP TABLE|docker system prune'; if echo \"$CLAUDE_BASH_COMMAND\" | grep -qE \"$DANGEROUS_PATTERNS\"; then echo \"\" && echo \"WARNING: Destructive command detected:\" && echo \"  $CLAUDE_BASH_COMMAND\" && echo \"\" && read -p 'Allow this command? (y/N): ' CONFIRM < /dev/tty; if [ \"$CONFIRM\" = 'y' ] || [ \"$CONFIRM\" = 'Y' ]; then exit 0; else echo 'Blocked by user.'; exit 2; fi; else exit 0; fi"
+            "command": "CMD=$(cat | jq -r '.tool_input.command // empty'); DANGEROUS_PATTERNS='rm -rf|git reset --hard|git push --force|git push -f|kubectl delete namespace|DROP TABLE|docker system prune'; if echo \"$CMD\" | grep -qE \"$DANGEROUS_PATTERNS\"; then echo \"\" && echo \"WARNING: Destructive command detected:\" && echo \"  $CMD\" && echo \"\" && read -p 'Allow this command? (y/N): ' CONFIRM < /dev/tty; if [ \"$CONFIRM\" = 'y' ] || [ \"$CONFIRM\" = 'Y' ]; then exit 0; else echo 'Blocked by user.'; exit 2; fi; else exit 0; fi"
           }
         ]
       }
@@ -676,7 +698,7 @@ After all hooks, your `.claude/settings.json` should look something like this:
         "hooks": [
           {
             "type": "command",
-            "command": "npx prettier --write \"$CLAUDE_FILE_PATH\" 2>/dev/null || true"
+            "command": "FILE=$(cat | jq -r '.tool_input.file_path // empty'); [ -n \"$FILE\" ] && npx prettier --write \"$FILE\" 2>/dev/null || true"
           }
         ]
       }

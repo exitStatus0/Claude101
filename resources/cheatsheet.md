@@ -57,9 +57,9 @@ claude mcp remove <name>
 ## Key Flags
 
 ```bash
-claude --model opus           # Use Opus 4.6
-claude --model haiku          # Use Haiku 4.5 (fast/cheap)
-claude --effort max           # Maximum reasoning (Opus 4.6 only)
+claude --model opus           # Use Claude Opus (most capable)
+claude --model haiku          # Use Claude Haiku (fast/cheap)
+claude --effort max           # Maximum reasoning (Opus only)
 claude --permission-mode plan # Plan mode (read-only)
 claude -w my-feature          # Work in a git worktree
 claude --add-dir ../other     # Add extra directory
@@ -202,7 +202,7 @@ jobs:
 
 | Flag | What it does |
 |------|-------------|
-| `--effort min\|low\|medium\|high\|max` | Control reasoning depth (only works with Opus 4.6). Higher effort = more thinking tokens, slower but more thorough. |
+| `--effort min\|low\|medium\|high\|max` | Control reasoning depth (only works with Opus). Higher effort = more thinking tokens, slower but more thorough. |
 | `--permission-mode` | Set permission mode: `default`, `plan`, `acceptEdits`, `bypassPermissions` |
 
 ## Headless Mode (For Scripts)

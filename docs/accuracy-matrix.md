@@ -15,8 +15,8 @@ Last full review: 2026-04-06
 | # | Claim | Location | Source | Verified | Status |
 |---|-------|----------|--------|----------|--------|
 | 1 | Install via `npm install -g @anthropic-ai/claude-code` | block-00 index.md, cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-05 | correct |
-| 2 | Pro subscription $20/mo includes Claude Code | index.html, cost-guide | claude.ai/pricing | needs verification | needs verification |
-| 3 | Opus 4.6, Sonnet 4.6, Haiku 4.5 are current models | cheatsheet, block-00 index.md, cost-guide | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
+| 2 | Pro subscription $20/mo includes Claude Code (Sonnet + Haiku, metered) | index.html, cost-guide | anthropic.com/claude-code, support.anthropic.com | 2026-04-06 | correct |
+| 3 | Claude Opus, Sonnet, and Haiku are available models (specific versions may change) | cheatsheet, block-00 index.md, cost-guide | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
 | 4 | `/init` generates CLAUDE.md for the project | block-01 index.md, cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
 | 5 | Permission modes: default, plan, acceptEdits, bypassPermissions | cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
 | 6 | Hook events: PreToolUse, PostToolUse, SessionStart, SessionEnd, Stop, UserPromptSubmit, PostToolUseFailure, FileChanged, SubagentStart, SubagentStop | cheatsheet, block-08 index.md | docs.anthropic.com/en/docs/claude-code/hooks | 2026-04-06 | correct |
@@ -47,20 +47,20 @@ Last full review: 2026-04-06
 | 31 | `/compact` compresses conversation to save context | cheatsheet, cost-guide | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
 | 32 | `/cost` shows token usage for the session | block-00 index.md, cost-guide | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
 | 33 | Hook exit code 0 = proceed, 2 = block | cheatsheet, block-08 index.md | docs.anthropic.com/en/docs/claude-code/hooks | 2026-04-06 | correct |
-| 34 | `$CLAUDE_FILE_PATH` env var available in hooks | block-08 index.md | docs.anthropic.com/en/docs/claude-code/hooks | needs verification | needs verification |
+| 34 | Hooks receive tool context as JSON on stdin (file path via `tool_input.file_path`); env vars: `$CLAUDE_PROJECT_DIR`, `$CLAUDE_ENV_FILE` | block-08 index.md | docs.anthropic.com/en/docs/claude-code/hooks | 2026-04-06 | correct |
 | 35 | `/batch "instruction"` runs parallel changes across files | block-13 index.md, cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
 | 36 | `/install-github-app` sets up the GitHub integration | block-10 index.md, cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
 | 37 | Skills live in `.claude/skills/*/SKILL.md` | block-06 index.md, cheatsheet | docs.anthropic.com/en/docs/claude-code/skills | 2026-04-06 | correct |
 | 38 | Sub-agents live in `.claude/agents/*.md` | block-11 index.md, cheatsheet | docs.anthropic.com/en/docs/claude-code/sub-agents | 2026-04-06 | correct |
 | 39 | `/agents` lists configured sub-agents | cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
-| 40 | Sonnet 4.6 API pricing: $3/MTok input, $15/MTok output | cost-guide | anthropic.com/pricing | needs verification | needs verification |
-| 41 | Opus 4.6 API pricing: $15/MTok input, $75/MTok output | cost-guide | anthropic.com/pricing | needs verification | needs verification |
-| 42 | Haiku 4.5 API pricing: $0.80/MTok input, $4/MTok output | cost-guide | anthropic.com/pricing | needs verification | needs verification |
-| 43 | Max plan at $100/mo, Team at $30/seat/mo | cost-guide | claude.ai/pricing | needs verification | needs verification |
+| 40 | Claude Sonnet API pricing: ~$3/MTok input, ~$15/MTok output | cost-guide | anthropic.com/pricing | needs verification | needs verification |
+| 41 | Claude Opus API pricing: ~$15/MTok input, ~$75/MTok output | cost-guide | anthropic.com/pricing | needs verification | needs verification |
+| 42 | Claude Haiku API pricing: ~$0.80/MTok input, ~$4/MTok output | cost-guide | anthropic.com/pricing | needs verification | needs verification |
+| 43 | Max plan offers higher limits; Team CC access depends on seat type (deferred to anthropic.com/pricing) | cost-guide | claude.ai/pricing, support.anthropic.com | 2026-04-06 | correct |
 | 44 | DigitalOcean $200 free credit for new accounts (60 days) | cost-guide | digitalocean.com/pricing | needs verification | needs verification |
-| 45 | Pro plan gives unlimited Claude Code sessions (subject to rate limits) | cost-guide | claude.ai/pricing | needs verification | needs verification |
+| 45 | Pro plan gives metered Claude Code access (shared with Claude chat, not unlimited) | cost-guide | claude.ai/pricing, support.anthropic.com | 2026-04-06 | correct |
 | 46 | Block 10 GitHub Actions requires separate Anthropic API key (not Pro) | cost-guide, block-10 index.md | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
-| 47 | Sonnet 4.6 is the default model in Claude Code | cost-guide, cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
+| 47 | Claude Sonnet is the default model in Claude Code | cost-guide, cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
 | 48 | `Shift+Tab` cycles permission modes in-session | cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
 | 49 | `Ctrl+O` toggles verbose mode | cheatsheet | docs.anthropic.com/en/docs/claude-code | needs verification | needs verification |
 | 50 | GitHub MCP server package is `@modelcontextprotocol/server-github` | block-09 index.md | github.com/modelcontextprotocol/servers | needs verification | needs verification |
@@ -77,8 +77,9 @@ Last full review: 2026-04-06
 
 ## Verification Summary
 
-- **Verified correct**: 48 / 58 (83%)
-- **Needs verification** (external pricing/product pages): 10 rows (#2, #17, #34, #40-45, #49-50)
+- **Verified correct**: 51 / 58 (88%)
+- **Needs verification**: 7 rows (#17, #40-42, #44, #49-50)
+- Remaining unverified rows are: API token pricing (#40-42), DO droplet pricing (#17), DO free credit (#44), `Ctrl+O` shortcut (#49), and GitHub MCP server package name (#50). These require checking live pages or specific doc sections.
 - These remaining rows require checking live pricing pages and specific env var docs — they cannot be verified from code alone
 
 ## How to verify a row

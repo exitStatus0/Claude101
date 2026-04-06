@@ -26,7 +26,7 @@ Complete every item before publishing or deploying a new version of the course s
 - [ ] GitHub Actions workflow YAML is valid
 
 ## Infrastructure
-- [ ] Single default path: DO → k3s → Traefik → ArgoCD → GHCR
+- [ ] Single default path: DO → k3s → NodePort 30080 → ArgoCD → GHCR
 - [ ] Alternatives clearly marked as optional sidebars
 - [ ] No reference to load balancers in default path
 - [ ] Domain/TLS marked as optional

@@ -4,11 +4,25 @@ document.addEventListener('DOMContentLoaded', function () {
   var nav = document.querySelector('.site-nav');
 
   if (toggle && nav) {
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', 'site-nav');
+    nav.setAttribute('id', 'site-nav');
+
     toggle.addEventListener('click', function () {
-      nav.classList.toggle('is-open');
+      var isOpen = nav.classList.toggle('is-open');
       toggle.classList.toggle('is-active');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
+
+  // Active nav state
+  var currentPath = window.location.pathname;
+  document.querySelectorAll('.site-nav a').forEach(function (link) {
+    var href = link.getAttribute('href');
+    if (href && currentPath.indexOf(href) === 0 && href !== '/') {
+      link.classList.add('is-active');
+    }
+  });
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
