@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include header.html %}
+  <main class="site-main">
+    <article class="block-page">
+      <div class="container container--narrow">
+        <div class="block-header">
+          {% if page.block_number != nil %}
+          <span class="block-number">Block {{ page.block_number }}</span>
+          {% endif %}
+          {% if page.part_name %}
+          <span class="block-part-eyebrow">{{ page.part_name }}</span>
+          {% endif %}
+          <h1>{{ page.title }}</h1>
+          {% if page.description %}
+          <p class="block-description">{{ page.description }}</p>
+          {% endif %}
+          {% if page.time %}
+          <div class="block-meta">
+            <span class="block-time">{{ page.time }}</span>
+          </div>
+          {% endif %}
+          <nav class="block-parts-nav" aria-label="Block sections">
+            {% if page.overview_url %}
+            <a href="{{ page.overview_url | relative_url }}" class="block-part-link{% if page.part_name == 'Overview' or page.url == page.overview_url %} is-active{% endif %}">Overview</a>
+            {% endif %}
+            {% if page.presentation_url %}
+            <a href="{{ page.presentation_url | relative_url }}" class="block-part-link{% if page.part_name == 'Presentation' %} is-active{% endif %}">Presentation</a>
+            {% endif %}
+            {% if page.hands_on_url %}
+            <a href="{{ page.hands_on_url | relative_url }}" class="block-part-link{% if page.part_name == 'Hands-On' %} is-active{% endif %}">Hands-On</a>
+            {% endif %}
+          </nav>
+        </div>
+
+        <div class="block-content">
+          {{ content }}
+        </div>
+      </div>
+
+      {% include block-nav.html %}
+    </article>
+  </main>
+  {% include footer.html %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
