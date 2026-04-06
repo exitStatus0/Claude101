@@ -10,7 +10,7 @@ presentation_url: /course/block-11-subagents/presentation/
 hands_on_url: /course/block-11-subagents/hands-on/
 permalink: /course/block-11-subagents/hands-on/
 ---
-> **Attention point:** Every command or prompt block on this page is meant to be copied directly into your terminal or Claude session unless the text says otherwise.
+> **Direct speech:** "Everything on this hands-on page is built so you can follow me line by line. When you see a command or prompt block, you can copy it directly into your terminal or Claude session unless I explicitly tell you it is just reference material. As we go, compare your result with mine on screen so you can catch mistakes early instead of stacking them up."
 
 > **Duration**: ~25 minutes
 > **Outcome**: Two custom sub-agents (security reviewer and K8s validator), tested on real code, with model selection and worktree isolation explored, plus discovery of the built-in agents you have been using all along.
@@ -455,7 +455,7 @@ Chain two agents: first run the security-reviewer on `src/`, then pass its findi
 Build a read-only agent (`model: haiku`) that generates JSDoc comments for functions that lack them. Test it on a file with undocumented functions. This is a great example of a Haiku-appropriate task -- simple, repetitive, and pattern-based.
 
 **Challenge 4: Explore model differences**
-Run the same security review with `model: haiku`, `model: sonnet`, and `model: opus`. Compare the depth and quality of findings. This gives you a practical feel for when each model is worth the cost.
+Run the same security review with `model: haiku` and `model: sonnet`. If your plan includes Opus, repeat it with `model: opus` as an optional comparison. This gives you a practical feel for when each model is worth the cost without making Opus a course requirement.
 
 ---
 

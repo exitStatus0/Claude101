@@ -135,7 +135,48 @@ Think of `/schedule` as a team of junior SREs who work 24/7, never get bored, an
 
 ---
 
-### Slide 5: The Full Ecosystem
+### Slide 5: The Missing 20% — Operator Commands
+
+These are the commands that do not need their own 25-minute block, but absolutely deserve a place in your working memory:
+
+**`/status`** — quick operational snapshot
+- Current model
+- Version
+- Account / connectivity
+- Session state
+
+**`/doctor`** — installation and configuration diagnostics
+- Broken install?
+- Weird shell integration?
+- Settings confusion?
+- Start here before guessing
+
+**`/context`** — see when the session is getting heavy
+- Useful before long refactors
+- Great when Claude starts feeling slower or less focused
+
+**`/diff`** — inspect exactly what changed
+- Current git diff
+- Per-turn diffs
+- Faster review loop before commit
+
+**`/resume`** and `claude -r`
+- Recover named sessions
+- Pick up long-running work cleanly
+
+**`/remote-control`**
+- Turn the current local session into a phone/browser-accessible session at claude.ai
+- Perfect for monitoring rollouts away from your laptop
+
+**`/skills`, `/mcp`, `/hooks`, `/plugin`**
+- These are your "what is actually loaded here?" and "what can I extend?" commands
+- They matter once your setup gets more sophisticated
+
+> "If Blocks 0 through 12 taught you the main workflows, this slide gives you the operator panel. These are the commands that save time when something feels off, when you need to recover a session, or when you want to understand what Claude can do right now on this machine."
+
+---
+
+### Slide 6: The Full Ecosystem
 
 Claude Code isn't just a CLI. It's an ecosystem that's growing fast. Here's the landscape:
 
@@ -171,7 +212,7 @@ Claude Code isn't just a CLI. It's an ecosystem that's growing fast. Here's the 
 
 ---
 
-### Slide 6: Where to Go From Here
+### Slide 7: Where to Go From Here
 
 You've completed Claude Code 101. Here's your roadmap for what comes next:
 
@@ -199,7 +240,7 @@ You've completed Claude Code 101. Here's your roadmap for what comes next:
 
 ---
 
-### Slide 7: What You've Built
+### Slide 8: What You've Built
 
 Let's take a final look at the complete system you built in this course:
 

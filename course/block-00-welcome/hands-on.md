@@ -10,7 +10,7 @@ presentation_url: /course/block-00-welcome/presentation/
 hands_on_url: /course/block-00-welcome/hands-on/
 permalink: /course/block-00-welcome/hands-on/
 ---
-> **Attention point:** Every command or prompt block on this page is meant to be copied directly into your terminal or Claude session unless the text says otherwise.
+> **Direct speech:** "Everything on this hands-on page is built so you can follow me line by line. When you see a command or prompt block, you can copy it directly into your terminal or Claude session unless I explicitly tell you it is just reference material. As we go, compare your result with mine on screen so you can catch mistakes early instead of stacking them up."
 
 > **Duration**: ~15 minutes
 > **Outcome**: Claude Code installed, authenticated, and running inside the ai-coderrank project with a successful first conversation
@@ -20,13 +20,18 @@ permalink: /course/block-00-welcome/hands-on/
 
 ### Step 1: Install Claude Code
 
-Open your terminal and install Claude Code via npm:
+Open your terminal and install Claude Code using the current official native installer:
 
 ```bash
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-That's it. One line. You need Node.js 18+ installed first (check with `node --version`). The npm package handles everything.
+If you prefer a package manager:
+
+- macOS: `brew install --cask claude-code`
+- Windows: `winget install Anthropic.ClaudeCode`
+
+Node.js is still required for the course project later, but it is not required just to install Claude Code itself with the native installer.
 
 **Verify the installation:**
 
@@ -36,7 +41,7 @@ claude --version
 
 You should see a version number printed. If you see `command not found`, restart your terminal (or run `source ~/.zshrc` / `source ~/.bashrc`) so your PATH picks up the new binary.
 
-> **Attention point:** Show the full install process on screen. It usually takes about 10-15 seconds. The install is a standard `npm install -g` — no curl piping, no Homebrew tap, no downloading a .dmg.
+> **Direct speech:** "I want you to notice how boring this install is in the best possible way. One official install command, a few seconds of setup, and we are done. On macOS you can also use Homebrew, and on Windows WinGet is fine too. The result we want here is simple: `claude --version` works, and we are ready to move straight into the real workflow."
 
 ---
 
@@ -60,7 +65,7 @@ claude >
 
 Congratulations — you're in. But before we start chatting, let's learn the controls.
 
-> **Attention point:** Show the auth flow on screen. If you already authenticated before recording, you can mention that Claude Code remembers your session — you don't need to log in every time.
+> **Direct speech:** "Watch the auth flow carefully here. Once I sign in, Claude Code usually remembers the session, so this is a setup step, not an everyday ritual. The result you want is the interactive `claude >` prompt, because that is the moment your local terminal is actually connected and ready to work."
 
 ---
 
@@ -82,7 +87,7 @@ This shows you all available slash commands. Take a moment to scan through them.
 | `/compact` | Summarizes the conversation to save context window space |
 | `/cost` | Shows how many tokens you've used in this session |
 
-> **Attention point:** "Think of `/help` as your cheat sheet. When you forget a command — and you will, because there are a lot of them — just type `/help` and it's all right there."
+> **Direct speech:** "Think of `/help` as your control panel. You are not supposed to memorize every command on day one. The result I want here is simple: you know where to look when you forget something, so you keep moving instead of breaking flow to search documentation."
 
 **Try a quick conversation:**
 
@@ -129,7 +134,7 @@ ls
 
 You should see the Next.js project structure: `package.json`, `src/`, `public/`, `Dockerfile`, `k8s/`, `.github/`, and more.
 
-> **Attention point:** Show the fork process on GitHub. Then show the clone command and the file listing. Point out the key directories — src for application code, k8s for Kubernetes manifests, .github for CI workflows.
+> **Direct speech:** "I am showing the fork, clone, and file listing on purpose, because this is where the course becomes real. I want you to see the repository on disk and recognize the important directories right away: `src` for application code, `k8s` for manifests, and `.github` for automation. The expected result is that Claude is about to enter a real project, not a fake demo sandbox."
 
 ---
 
@@ -166,7 +171,7 @@ Are there any Docker or Kubernetes configs in this project?
 
 Notice how Claude cites specific files and paths in its answers. It's not hallucinating — it's reading your actual codebase. This is the fundamental difference between Claude Code and a generic chatbot.
 
-> **Attention point:** "See those file reads happening? Claude is literally opening files on your machine and reading them. It's not guessing. It's not pulling from some training data about generic Next.js projects. It's reading YOUR code, right now, in real time."
+> **Direct speech:** "See those file reads happening? Claude is literally opening files on my machine and using that live context to answer. That is the key mental model for this whole course. The result I want you to internalize is that Claude Code is not guessing about some generic Next.js app; it is reasoning over this exact repository in real time."
 
 ---
 
@@ -180,7 +185,7 @@ Before wrapping up, let's see what that conversation cost:
 
 This shows you the token count for the current session. In a typical first conversation, you'll use a relatively small number of tokens — the real usage comes when Claude starts reading many files and making edits (which we'll do starting in Block 1).
 
-> **Attention point:** Show the /cost output. Emphasize that the Pro plan includes generous usage, and for most development tasks you won't come close to hitting limits.
+> **Direct speech:** "I always check `/cost` early so you build the habit from day one. The result here is not just a number on screen; it is confidence that you can monitor usage and stay in control. For normal day-to-day development on Pro, this kind of onboarding session is comfortably within expected usage."
 
 ---
 
@@ -198,7 +203,7 @@ Clean exit:
 
 Let's recap what we accomplished:
 
-1. **Installed** Claude Code with `npm install -g`
+1. **Installed** Claude Code with the official installer
 2. **Authenticated** with our Anthropic Pro subscription
 3. **Explored** the `/help` system to see available commands
 4. **Forked and cloned** the ai-coderrank project — our course companion

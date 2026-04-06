@@ -23,7 +23,7 @@ permalink: /course/block-00-welcome/presentation/
 >
 > Great. Now forget all of that.
 >
-> Claude Code is not autocomplete. It's not a chat window next to your editor. It's a full AI agent that lives in your terminal — it reads your files, runs your commands, edits your code, and reasons about your entire project. It's the difference between having someone whisper suggestions in your ear... and having a senior engineer sit down at your desk and pair-program with you."
+> Claude Code is not autocomplete. It's not just a chat window next to your editor. It's a full AI agent that can read your files, run your commands, edit your code, and reason about your entire project. In this course we're using the terminal-first workflow because it gives you the clearest mental model, but the same product now also shows up in IDEs, desktop, and the web. It's the difference between having someone whisper suggestions in your ear... and having a senior engineer sit down at your desk and pair-program with you."
 
 **Key point**: Set the expectation early — this is agent-based coding, not autocomplete.
 
@@ -33,8 +33,8 @@ permalink: /course/block-00-welcome/presentation/
 
 **Talking points:**
 
-- Claude Code is a CLI tool from Anthropic — the company behind Claude
-- It runs in your terminal, not in a browser, not in an IDE plugin
+- Claude Code started as a terminal-first tool from Anthropic — the company behind Claude
+- Today it is available across the terminal, IDEs, desktop, and the web; this course focuses on the terminal because it exposes the core workflow most clearly
 - Under the hood, it has access to **tools**: it can Read files, Search (Grep), find files (Glob), Edit code, and run Bash commands
 - Think of it as an AI pair programmer with `sudo` access to your project (with safety rails)
 - It sees your whole repo — not just the file you have open
@@ -102,10 +102,11 @@ Walk through the high-level arc:
 Quick checklist — make sure everyone has:
 
 - A terminal they're comfortable in (macOS Terminal, iTerm2, Warp, any Linux terminal)
-- Node.js 18 or newer (`node --version`)
+- Node.js 18 or newer (`node --version`) for the project work we'll do after installation
 - Git installed and configured (`git --version`)
 - A GitHub account (we'll fork the project)
 - An Anthropic account with a Pro subscription — go to [claude.ai](https://claude.ai) to sign up
+- Use the current official install path for Claude Code: native installer on macOS/Linux/WSL, Homebrew on macOS if you prefer, or WinGet on Windows
 
 > "If you don't have the Pro sub yet, now's a great time to sign up. You'll need it in about three minutes when we hit the practical section."
 

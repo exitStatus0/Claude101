@@ -10,7 +10,7 @@ presentation_url: /course/block-12-gitops/presentation/
 hands_on_url: /course/block-12-gitops/hands-on/
 permalink: /course/block-12-gitops/hands-on/
 ---
-> **Attention point:** Every command or prompt block on this page is meant to be copied directly into your terminal or Claude session unless the text says otherwise.
+> **Direct speech:** "Everything on this hands-on page is built so you can follow me line by line. When you see a command or prompt block, you can copy it directly into your terminal or Claude session unless I explicitly tell you it is just reference material. As we go, compare your result with mine on screen so you can catch mistakes early instead of stacking them up."
 
 > **Duration**: ~30 minutes
 > **Outcome**: ArgoCD installed, connected to your repo, app exposed publicly, dark theme deployed via GitOps, and monitoring set up with `/loop` and `/schedule`. The grand finale.
@@ -510,15 +510,15 @@ And check the output of the last run:
 
 ### Step 10: Remote Control — Monitor From Your Phone (~2 min)
 
-One last feature for the finale. Claude Code supports remote sessions — you can start a session on one machine and connect to it from another.
+One last feature for the finale. Claude Code supports remote control for the exact session you're already in — perfect for keeping the same deployment context on your phone.
 
-Start a long-running monitoring session:
+From your current Claude Code session, expose this session for remote access:
 
-```bash
-claude --remote
+```text
+/remote-control ai-coderrank-rollout
 ```
 
-This gives you a URL. Open that URL on your phone's browser. You now have access to the same Claude Code session from your phone.
+This gives you a URL and QR code. Open that URL on your phone's browser or in the Claude app. You now have access to the same Claude Code session, with the same history and current rollout context, from your phone.
 
 Try it:
 1. From your phone, ask Claude to check the pod status

@@ -9,12 +9,23 @@ permalink: /resources/cheatsheet/
 ## Start Fast
 
 ```bash
-npm install -g @anthropic-ai/claude-code
+# macOS / Linux / WSL (official native installer)
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-Run `claude` once to authenticate, then you are ready to go.
+```bash
+# macOS alternative
+brew install --cask claude-code
+
+# Windows
+winget install Anthropic.ClaudeCode
+```
+
+Authenticate and verify the setup:
 
 ```bash
+claude auth login
+claude auth status --text
 claude                   # interactive session
 claude "explain this repo"  # start with a prompt
 claude -c                # continue last conversation
@@ -23,6 +34,8 @@ claude --resume          # pick a session to resume
 
 Type `/help` inside any session to see all available commands.
 
+This course is terminal-first, but Claude Code also runs in VS Code, JetBrains, Desktop, and Web.
+
 ## Daily Commands
 
 | Command | Description |
@@ -30,10 +43,25 @@ Type `/help` inside any session to see all available commands.
 | `claude` | Start an interactive session |
 | `claude -p "prompt"` | One-shot print mode (non-interactive) |
 | `claude -c` | Continue the last conversation |
+| `/resume` | Re-open a saved conversation |
 | `/clear` | Reset the conversation |
 | `/compact` | Compress context to free up tokens |
 | `/cost` | Check token usage and spend |
+| `/status` | See version, model, account, and connectivity |
+| `/diff` | Review current and per-turn diffs |
 | `/permissions` | Manage tool access for the session |
+
+## CLI Commands
+
+| Command | Description |
+|---------|-------------|
+| `claude auth login` | Sign in |
+| `claude auth status --text` | Check authentication state |
+| `claude update` | Update Claude Code |
+| `claude agents` | List configured sub-agents |
+| `claude mcp` | Manage MCP servers from the CLI |
+| `claude plugin` | Manage plugins |
+| `claude remote-control --name "my session"` | Start a Remote Control server session |
 
 ## Slash Commands
 
@@ -42,12 +70,13 @@ Type `/help` inside any session to see all available commands.
 | Command | Description |
 |---------|-------------|
 | `/help` | Show all commands |
+| `/resume` | Resume a session |
+| `/rename "name"` | Rename this session |
 | `/clear` | Start fresh |
 | `/compact` | Compress context |
 | `/cost` | Check usage |
-| `/memory` | View/edit loaded instructions |
+| `/status` | Show version, model, account, and connectivity |
 | `/permissions` | Manage tool access |
-| `/rename "name"` | Rename this session |
 
 ### Advanced
 
@@ -55,10 +84,21 @@ Type `/help` inside any session to see all available commands.
 |---------|-------------|
 | `/plan` | Enter plan mode (read-only) |
 | `/init` | Generate CLAUDE.md for this project |
-| `/simplify` | Review and improve recent code |
+| `/memory` | View/edit loaded instructions and auto-memory |
+| `/model` | Inspect or switch models |
+| `/effort` | Adjust reasoning depth |
+| `/context` | Visualize context usage |
+| `/diff` | Open interactive diff viewer |
+| `/doctor` | Diagnose install and settings issues |
+| `/hooks` | Inspect active hook configuration |
+| `/mcp` | Manage MCP connections and auth |
+| `/skills` | List available skills |
+| `/plugin` | Manage plugins |
 | `/agents` | List configured sub-agents |
 | `/add-dir` | Add directory access |
 | `/config` | Configure settings |
+| `/remote-control` | Continue this session remotely |
+| `/security-review` | Review current diff for security issues |
 
 ### Automation
 
@@ -67,6 +107,11 @@ Type `/help` inside any session to see all available commands.
 | `/loop 5m "prompt"` | Repeat a prompt on an interval |
 | `/schedule` | Create cloud scheduled tasks |
 | `/batch "instruction"` | Parallel changes across files |
+| `/install-github-app` | Set up the GitHub Actions integration |
+
+<div class="callout-advanced" markdown="1">
+Claude Code shows built-in commands and bundled skills together in the slash menu. High-value bundled skills include <code>/simplify</code>, <code>/batch</code>, <code>/debug</code>, and <code>/loop</code>.
+</div>
 
 ### Experimental
 
@@ -79,22 +124,26 @@ Agent teams -- coordinate multiple sub-agents on a single task. Enable with `CLA
 | Flag | Description |
 |------|-------------|
 | `--model opus\|sonnet\|haiku` | Choose a model |
-| `--effort min\|low\|medium\|high\|max` | Reasoning depth (Opus only) |
+| `--effort low\|medium\|high\|max` | Reasoning depth |
 | `-p` | Print mode (non-interactive) |
 | `-c` | Continue last conversation |
-| `-w <branch>` | Work in a git worktree |
+| `-r "<session>"` | Resume a named or ID-based session |
+| `-w [name]` | Work in a git worktree |
 | `-n "name"` | Name the session |
+| `--remote-control` | Start an interactive session with Remote Control enabled |
 
 **Advanced flags**
 
 | Flag | Description |
 |------|-------------|
-| `--output-format json` | JSON output for scripts |
+| `--output-format text\|json\|stream-json` | Choose scripting output format |
 | `--max-turns N` | Limit agentic iterations |
 | `--max-budget-usd N` | Cap spend in USD |
-| `--permission-mode` | `default`, `plan`, `acceptEdits`, `bypassPermissions` |
+| `--permission-mode` | `default`, `acceptEdits`, `plan`, `auto`, `dontAsk`, `bypassPermissions` |
 | `--add-dir ../path` | Add extra directory to context |
 | `--mcp-config file.json` | Load custom MCP config |
+| `--tools "Bash,Edit,Read"` | Restrict built-in tools for a session |
+| `--bare` | Minimal scripted mode with less auto-discovery |
 
 ## Files & Locations
 
@@ -172,6 +221,12 @@ jobs:
 claude -p "list TODO comments" --output-format json
 ```
 
+**Remote control** -- continue the same local session from phone or browser:
+
+```bash
+claude --remote-control "my rollout"
+```
+
 **Agent teams** -- experimental multi-agent coordination:
 
 ```bash
@@ -192,7 +247,9 @@ claude "Review security, performance, and quality"
 |-----|--------|
 | `Shift+Tab` | Cycle permission modes |
 | `Ctrl+C` | Interrupt current turn |
+| `Ctrl+L` | Clear the terminal screen |
 | `Ctrl+O` | Toggle verbose mode |
+| `Esc` `Esc` | Edit the previous message |
 | `Ctrl+T` | Toggle task list (agent teams) |
 | `Shift+Down` | Cycle teammates |
 | `/` | Open slash command autocomplete |

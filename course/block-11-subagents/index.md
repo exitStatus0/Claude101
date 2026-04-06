@@ -28,7 +28,7 @@ In Block 6, you built skills -- reusable commands that tell Claude _what to do_.
 
 Think about how a real engineering team works. You do not ask the same person to do everything. The security engineer reviews for vulnerabilities. The SRE validates the Kubernetes manifests. The tech lead plans the architecture. Each person has their own expertise, their own tools, and their own scope of responsibility.
 
-Sub-agents bring this model to Claude Code. Instead of one Claude session doing everything, you can have specialized workers -- each with its own system prompt, tool access, context window, and even model selection. The security reviewer only gets read access. The K8s validator can run `kubectl` but cannot edit source code. The fast-draft agent uses Haiku for speed, while the architecture planner uses Opus for depth.
+Sub-agents bring this model to Claude Code. Instead of one Claude session doing everything, you can have specialized workers -- each with its own system prompt, tool access, context window, and even model selection. The security reviewer only gets read access. The K8s validator can run `kubectl` but cannot edit source code. The fast-draft agent uses Haiku for speed, while a deeper architecture planner can use Opus if your plan includes it.
 
 ## What We'll Cover
 
@@ -36,7 +36,7 @@ Sub-agents bring this model to Claude Code. Instead of one Claude session doing 
 2. **Built-in agents** -- Explore (read-only research) and Plan (architecture design)
 3. **Custom agents** -- `.claude/agents/` directory and agent frontmatter
 4. **Tool restrictions** -- controlling what each agent can and cannot do
-5. **Model selection** -- Haiku for fast/cheap, Opus for complex reasoning
+5. **Model selection** -- Haiku for fast/cheap, Sonnet for the default balance, and Opus for complex reasoning when available on your plan
 6. **Worktree isolation** -- agents working on separate git branches safely
 7. **The `/agents` command** -- listing and managing your agent roster
 
@@ -46,7 +46,7 @@ There is a scaling problem with a single AI session. The more context you pile i
 
 There is also a trust problem. You might trust Claude to read your code and suggest changes, but do you trust it to run arbitrary bash commands while reviewing for security issues? Probably not. Sub-agents let you give each worker exactly the permissions it needs and nothing more. Principle of least privilege, applied to AI.
 
-And there is a cost problem. Not every task needs the most powerful model. A quick code search does not need Opus. A complex architecture decision does not work well with Haiku. Sub-agents let you match the model to the task, keeping costs predictable.
+And there is a cost problem. Not every task needs the most powerful model. A quick code search does not need Opus. A complex architecture decision does not work well with Haiku. Sub-agents let you match the model to the task, keeping costs predictable, even if your day-to-day baseline is just Sonnet on Pro.
 
 ## Prerequisites
 

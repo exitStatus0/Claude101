@@ -10,7 +10,7 @@ presentation_url: /course/block-03-planning-adrs/presentation/
 hands_on_url: /course/block-03-planning-adrs/hands-on/
 permalink: /course/block-03-planning-adrs/hands-on/
 ---
-> **Attention point:** Every command or prompt block on this page is meant to be copied directly into your terminal or Claude session unless the text says otherwise.
+> **Direct speech:** "Everything on this hands-on page is built so you can follow me line by line. When you see a command or prompt block, you can copy it directly into your terminal or Claude session unless I explicitly tell you it is just reference material. As we go, compare your result with mine on screen so you can catch mistakes early instead of stacking them up."
 
 > **Duration**: ~25 minutes
 > **Outcome**: An ADR, three Mermaid diagrams, and a solid implementation plan for the dark theme

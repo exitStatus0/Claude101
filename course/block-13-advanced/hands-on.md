@@ -10,7 +10,7 @@ presentation_url: /course/block-13-advanced/presentation/
 hands_on_url: /course/block-13-advanced/hands-on/
 permalink: /course/block-13-advanced/hands-on/
 ---
-> **Attention point:** Every command or prompt block on this page is meant to be copied directly into your terminal or Claude session unless the text says otherwise.
+> **Direct speech:** "Everything on this hands-on page is built so you can follow me line by line. When you see a command or prompt block, you can copy it directly into your terminal or Claude session unless I explicitly tell you it is just reference material. As we go, compare your result with mine on screen so you can catch mistakes early instead of stacking them up."
 
 > **Duration**: ~15 minutes
 > **Outcome**: Hands-on experience with agent teams, `/batch` across K8s manifests, headless mode for scripting, and a scheduled vulnerability check -- plus a full retrospective of the course.
@@ -213,7 +213,49 @@ Review the output. This is the kind of report that most teams only generate when
 
 ---
 
-### Step 5: A Quick Tour of the Ecosystem (~1 min)
+### Step 5: Quick Command Sweep — The Missing 20% (~2 min)
+
+These are high-value commands that do not need their own full block, but absolutely belong in your day-to-day toolkit.
+
+Inside your current Claude Code session, run:
+
+```text
+/status
+/context
+/diff
+/skills
+/mcp
+/hooks
+/model
+```
+
+What to notice:
+
+- `/status` shows the current model, version, account, and connectivity state
+- `/context` helps you see when the session is getting heavy
+- `/diff` is the fast way to inspect what changed before you commit
+- `/skills`, `/mcp`, and `/hooks` tell you what extension layers are active
+- `/model` lets you inspect or change the current model without restarting the session
+
+Now, in a regular shell, try the CLI-side management commands:
+
+```bash
+claude auth status --text
+claude agents
+claude update
+```
+
+And if you want to hand this exact session to your phone or browser, use:
+
+```text
+/remote-control ai-coderrank-ops
+```
+
+You do not need to keep every one of these in muscle memory today. The point is to know they exist, know what category of problem they solve, and know where to reach when you need them.
+
+---
+
+### Step 6: A Quick Tour of the Ecosystem (~1 min)
 
 You don't need to try all of these today — just know they exist:
 
@@ -230,7 +272,7 @@ You don't need to try all of these today — just know they exist:
 
 ---
 
-### Step 6: Course Wrap-Up (~1 min)
+### Step 7: Course Wrap-Up (~1 min)
 
 Let's look at what you've accomplished. In the ai-coderrank project, run:
 

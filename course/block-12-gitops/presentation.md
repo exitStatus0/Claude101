@@ -161,7 +161,7 @@ Claude will check every 30 seconds and report back. Perfect for watching deploym
 ```
 This runs a Claude agent in the cloud — on a schedule, without you being at your desk. Morning health checks, nightly security scans, weekly dependency audits. Set it and forget it.
 
-**Remote control** — Claude Code sessions can be accessed remotely. Start a session on your laptop, then check in from your phone's browser. You can monitor a deployment from the couch, approve a sync from a taxi, or check pod logs from bed. (We won't judge.)
+**Remote control** — Claude Code sessions can be accessed remotely. Use `/remote-control` inside an active session or start Claude with `--remote-control`, then check in from your phone's browser or the Claude app. You can monitor a deployment from the couch, approve a sync from a taxi, or check pod logs from bed. (We won't judge.)
 
 ---
 

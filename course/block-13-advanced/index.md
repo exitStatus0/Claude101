@@ -9,6 +9,7 @@ features:
   - /batch for parallel changes
   - Headless mode (claude -p)
   - /schedule for cloud automation
+  - High-value built-ins (/status, /doctor, /context, /diff, /remote-control)
   - Desktop app and IDE extensions
   - Plugins for distributing skills
 objectives:
@@ -16,6 +17,7 @@ objectives:
   - Use /batch to make parallel changes across multiple files
   - Run Claude Code in headless mode for scripting and automation
   - Set up a scheduled cloud task for recurring operations
+  - Know the remaining high-value built-in commands for diagnostics, session recovery, remote control, and extensibility
   - Know the full Claude Code ecosystem — Desktop app, IDE extensions, web interface
   - Have a clear roadmap for continued learning after the course
 overview_url: /course/block-13-advanced/
@@ -36,14 +38,15 @@ Some of these features are stable and production-ready. Some are experimental an
 2. **`/batch`** — making the same change across many files in parallel
 3. **Headless mode** — `claude -p` for scripting and CI pipelines
 4. **Scheduled cloud tasks** — deeper dive into `/schedule`
-5. **The ecosystem** — Desktop app, IDE extensions, web-based Claude Code, plugins
-6. **Course wrap-up** — what you've built, where to go next
+5. **High-value built-ins** — the commands that don't need their own block but matter in real work
+6. **The ecosystem** — Desktop app, IDE extensions, web-based Claude Code, plugins
+7. **Course wrap-up** — what you've built, where to go next
 
 ## Why This Block Matters
 
 Every tool has a "90% use case" and a "10% power-user case." Blocks 0-12 covered the 90%. This block covers the 10% that makes the difference between using Claude Code and mastering it.
 
-Agent teams turn single-threaded work into parallel work. `/batch` turns repetitive changes into one-shot operations. Headless mode turns interactive conversations into automated scripts. These aren't nice-to-haves — they're the features that, once you use them, you wonder how you ever worked without them.
+Agent teams turn single-threaded work into parallel work. `/batch` turns repetitive changes into one-shot operations. Headless mode turns interactive conversations into automated scripts. And the operator commands like `/status`, `/doctor`, `/context`, `/diff`, and `/remote-control` are what keep you effective when sessions get long, installations get weird, or you need to hand work off across devices. These aren't nice-to-haves — they're the features that, once you use them, you wonder how you ever worked without them.
 
 ## Cost Notice
 

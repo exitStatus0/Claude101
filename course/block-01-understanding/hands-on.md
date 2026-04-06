@@ -10,7 +10,7 @@ presentation_url: /course/block-01-understanding/presentation/
 hands_on_url: /course/block-01-understanding/hands-on/
 permalink: /course/block-01-understanding/hands-on/
 ---
-> **Attention point:** Every command or prompt block on this page is meant to be copied directly into your terminal or Claude session unless the text says otherwise.
+> **Direct speech:** "Everything on this hands-on page is built so you can follow me line by line. When you see a command or prompt block, you can copy it directly into your terminal or Claude session unless I explicitly tell you it is just reference material. As we go, compare your result with mine on screen so you can catch mistakes early instead of stacking them up."
 
 > **Duration**: ~20 minutes
 > **Outcome**: A generated CLAUDE.md file and a thorough understanding of the ai-coderrank architecture gained through conversational exploration
@@ -48,7 +48,7 @@ Watch what happens. Claude will:
 
 This takes 15-30 seconds depending on project size. For ai-coderrank, it should be quick.
 
-> **Attention point:** "Watch the tool calls scrolling by. Claude is reading package.json to understand dependencies, looking at tsconfig for TypeScript config, checking the Dockerfile, scanning the K8s manifests. It's doing in 20 seconds what would take you 10 minutes of clicking around."
+> **Direct speech:** "Watch the tool calls scrolling by. This is the moment where people usually realize Claude Code is not just a nicer chat box. It is reading `package.json`, `tsconfig`, the Dockerfile, and the manifests to assemble a working model of the repo. The result you should expect is a faster architectural overview than you would get from ten minutes of manual clicking."
 
 ---
 
@@ -74,7 +74,7 @@ cat CLAUDE.md
 - Does it list useful commands (dev, build, test, lint)?
 - Does it mention Docker and Kubernetes configs?
 
-> **Attention point:** "The auto-generated CLAUDE.md is a solid starting point. It's maybe 80% of the way there. Over time, you'll add your own notes — team conventions, deployment quirks, things Claude should always remember. We'll cover that in Block 5 when we talk about memory."
+> **Direct speech:** "This auto-generated `CLAUDE.md` is a strong draft, not a sacred artifact. I want you to treat it as living project memory that gets sharper over time. The result today is a solid base document; later we will enrich it with team conventions, recurring gotchas, and deployment context."
 
 ---
 
@@ -96,7 +96,7 @@ What API routes does this project have and what does each one do?
 
 Watch Claude use Glob to find the route files, then Read to examine each one. It should identify the API endpoints and explain the data they serve.
 
-> **Attention point:** Pause here and point out the tool calls in the terminal output. Show viewers how Claude chains Glob -> Read to answer the question. This is a great teaching moment about how the agent works under the hood.
+> **Direct speech:** "Pause here and look at the tool chain, because this is the hidden engine of the agent. Claude is chaining Glob and Read to answer a real question about your codebase. The result I want is that you stop thinking in terms of magic and start seeing the workflow: find, inspect, reason, answer."
 
 ---
 
@@ -133,7 +133,7 @@ Claude will typically:
 3. Trace the state management or context provider
 4. Show how CSS variables or Tailwind classes change based on theme
 
-> **Attention point:** "This is where Claude Code really shines. You asked one question and it traced a feature across multiple files — the toggle component, the context provider, the CSS variables. To do this manually, you'd be cmd-clicking through imports for five minutes."
+> **Direct speech:** "This is where Claude Code starts paying rent. One question, multiple files, and a coherent explanation across the toggle component, the provider, and the CSS variables. The expected result is that you can trace a feature end to end without manually hopping through imports for five minutes."
 
 ---
 
@@ -171,7 +171,7 @@ If I wanted to add a new AI model to the comparison dashboard, which files would
 
 This forces Claude to synthesize everything it knows about the data model, API routes, and frontend components into a practical answer. It should give you a clear, ordered list of files to touch and changes to make.
 
-> **Attention point:** "This is the kind of question that separates Claude Code from a simple file reader. It's not just finding files — it's reasoning about how pieces fit together and giving you a practical action plan."
+> **Direct speech:** "This kind of reasoning question is where the tool separates itself from simple search. Claude is not just locating files; it is building an implementation path from what it reads. The result I want you to notice is practical guidance, not just codebase trivia."
 
 ---
 

@@ -10,7 +10,7 @@ presentation_url: /course/block-02-running-testing/presentation/
 hands_on_url: /course/block-02-running-testing/hands-on/
 permalink: /course/block-02-running-testing/hands-on/
 ---
-> **Attention point:** Every command or prompt block on this page is meant to be copied directly into your terminal or Claude session unless the text says otherwise.
+> **Direct speech:** "Everything on this hands-on page is built so you can follow me line by line. When you see a command or prompt block, you can copy it directly into your terminal or Claude session unless I explicitly tell you it is just reference material. As we go, compare your result with mine on screen so you can catch mistakes early instead of stacking them up."
 
 > **Duration**: ~25 minutes
 > **Outcome**: Project fully set up locally with dependencies installed, tests passing, Docker image built, and first-hand experience with Claude's error-handling loop
@@ -56,7 +56,7 @@ Type `y` to approve. This is the permission model in action — Claude never run
 
 Watch the npm install output scroll by. Claude reads the output too, and if there are any warnings or errors, it will flag them.
 
-> **Attention point:** "See that permission prompt? Every single time Claude wants to run a command, you see exactly what it's about to do. You're always in the driver's seat. The AI proposes, you approve."
+> **Direct speech:** "See that permission prompt? That is one of the healthiest parts of the whole experience. Claude proposes the action, and you stay in control of what actually runs. The result you should expect is visibility and approval at the command layer, not blind automation."
 
 ---
 
@@ -77,7 +77,7 @@ You should see the familiar Next.js dev server output — something like:
   - Local:        http://localhost:3000
 ```
 
-> **Attention point:** Open `http://localhost:3000` in a browser to show the running dashboard. Point out the model comparison charts, the pricing table, the theme toggle. This is the app we'll be working with throughout the course.
+> **Direct speech:** "I always open the app in the browser at this point so you can connect the terminal work to a real interface. I want you to see the dashboard, the charts, the pricing table, and the theme toggle before we start changing anything. The expected result is a clear visual baseline for every later edit."
 
 **Important**: The dev server is now running in Claude's terminal. To continue working with Claude, you'll need to stop the server. Ask Claude:
 
@@ -109,7 +109,7 @@ What test framework is this project using and how are the tests organized?
 
 This combines Claude's Bash tool (it just ran the tests) with its Read tool (it will look at test files to explain the organization). It's a natural back-and-forth.
 
-> **Attention point:** "Notice how Claude seamlessly switches between running commands and reading files. It ran the tests, saw the output, and now it's reading the test files to explain the organization. That's the agent model — it uses whatever tool is appropriate for the question."
+> **Direct speech:** "Notice how Claude moves between commands and files without drama. It ran the tests, read the output, and then opened the test files to explain what it found. The result I want you to see is tool selection based on context, not one fixed interaction pattern."
 
 ---
 
@@ -159,7 +159,7 @@ Explain what just happened during the Docker build. What did each stage do?
 
 Claude will reference both the Dockerfile it read in Block 1 and the build output it just observed to give you a clear explanation of the multi-stage build process.
 
-> **Attention point:** "We just went from source code to a Docker image in one command. And Claude can explain every layer of that build because it's read the Dockerfile AND seen the build output. That's contextual understanding you don't get from just reading docs."
+> **Direct speech:** "This is a big milestone: we just went from source code to a Docker image in one step. Because Claude has read the Dockerfile and watched the build output, it can explain both the intention and the result. The expected outcome is not only a successful build, but a much clearer mental model of how the app gets packaged."
 
 ---
 
@@ -219,7 +219,7 @@ Run the type check again to make sure it's fixed
 
 It should pass now.
 
-> **Attention point:** "This is my favorite demo in the entire course. We broke something on purpose, and Claude: read the error, found the file, understood the problem, proposed the fix, and applied it — all in about 10 seconds. This is the error handling loop I was talking about in the presentation. This loop alone will save you hours every week."
+> **Direct speech:** "This is one of the most valuable loops in the entire course. We broke something on purpose, Claude read the error, found the file, reasoned about the fix, and applied it fast. The result I want you to remember is that debugging stops being a dead end and becomes a tight feedback loop you can repeat every day."
 
 ---
 
@@ -241,7 +241,7 @@ What did we accomplish in this session so far?
 
 Claude should give you a summary of everything you've done, even though the detailed back-and-forth has been compressed.
 
-> **Attention point:** "Compacting is like writing meeting notes. You keep the decisions and action items, but drop the lengthy discussion. Claude's context window stays fresh, and you can keep working without starting over."
+> **Direct speech:** "I want you to think about `/compact` like writing sharp meeting notes. You keep the decisions and discard the rambling. The result is a cleaner context window, a fresher session, and less need to restart just because the conversation got long."
 
 ---
 
