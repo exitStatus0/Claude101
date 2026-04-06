@@ -1,16 +1,21 @@
+{% assign current_locale = page.locale | default: "en" %}
+{% assign loc = site.data.locales[current_locale] %}
+{% assign t = site.data.i18n[current_locale] %}
+{% assign prefix = loc.prefix %}
 <header class="site-header">
   <div class="container">
-    <a href="{{ '/' | relative_url }}" class="site-logo">
+    <a href="{{ prefix | append: '/' | relative_url }}" class="site-logo">
       <span class="logo-icon">&#9670;</span>
       <span class="logo-text">Claude Code 101</span>
     </a>
-    <nav class="site-nav" id="site-nav" role="navigation" aria-label="Main navigation">
-      <a href="{{ '/course/' | relative_url }}">Course</a>
-      <a href="{{ '/resources/' | relative_url }}">Resources</a>
-      <a href="{{ '/mentoring/' | relative_url }}">Mentoring</a>
-      <a href="https://github.com/exitStatus0/Claude101" target="_blank" rel="noopener">GitHub</a>
+    <nav class="site-nav" id="site-nav" role="navigation" aria-label="{{ t.aria.main_nav }}">
+      <a href="{{ prefix | append: '/course/' | relative_url }}">{{ t.nav.course }}</a>
+      <a href="{{ prefix | append: '/resources/' | relative_url }}">{{ t.nav.resources }}</a>
+      <a href="{{ prefix | append: '/mentoring/' | relative_url }}">{{ t.nav.mentoring }}</a>
+      <a href="https://github.com/exitStatus0/Claude101" target="_blank" rel="noopener">{{ t.nav.github }}</a>
+      {% include language-switcher.html %}
     </nav>
-    <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="site-nav">
+    <button class="mobile-menu-toggle" aria-label="{{ t.aria.toggle_menu }}" aria-expanded="false" aria-controls="site-nav">
       <span></span><span></span><span></span>
     </button>
   </div>

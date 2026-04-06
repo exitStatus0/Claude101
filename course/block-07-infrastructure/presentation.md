@@ -8,6 +8,8 @@ overview_url: /course/block-07-infrastructure/
 presentation_url: /course/block-07-infrastructure/presentation/
 hands_on_url: /course/block-07-infrastructure/hands-on/
 permalink: /course/block-07-infrastructure/presentation/
+locale: en
+translation_key: block-07-presentation
 ---
 > **Duration**: ~10 minutes
 > **Goal**: Students understand why k3s is the right choice for lightweight Kubernetes, what DigitalOcean offers, and what the target architecture looks like.

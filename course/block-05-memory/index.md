@@ -23,6 +23,8 @@ objectives:
 overview_url: /course/block-05-memory/
 presentation_url: /course/block-05-memory/presentation/
 hands_on_url: /course/block-05-memory/hands-on/
+locale: en
+translation_key: block-05
 ---
 ## The "New Hire" Problem
 

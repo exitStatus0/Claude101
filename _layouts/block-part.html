@@ -1,5 +1,8 @@
+{% assign current_locale = page.locale | default: "en" %}
+{% assign loc = site.data.locales[current_locale] %}
+{% assign t = site.data.i18n[current_locale] %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ loc.html_lang }}">
 <head>
   {% include head.html %}
 </head>
@@ -10,9 +13,13 @@
       <div class="container container--narrow">
         <div class="block-header">
           {% if page.block_number != nil %}
-          <span class="block-number">Block {{ page.block_number }}</span>
+          <span class="block-number">{{ t.block.block }} {{ page.block_number }}</span>
           {% endif %}
-          {% if page.part_name %}
+          {% if page.part_name == "Presentation" %}
+          <span class="block-part-eyebrow">{{ t.block.presentation }}</span>
+          {% elsif page.part_name == "Hands-On" %}
+          <span class="block-part-eyebrow">{{ t.block.hands_on }}</span>
+          {% elsif page.part_name %}
           <span class="block-part-eyebrow">{{ page.part_name }}</span>
           {% endif %}
           <h1>{{ page.title }}</h1>
@@ -24,15 +31,15 @@
             <span class="block-time">{{ page.time }}</span>
           </div>
           {% endif %}
-          <nav class="block-parts-nav" aria-label="Block sections">
+          <nav class="block-parts-nav" aria-label="{{ t.aria.block_sections }}">
             {% if page.overview_url %}
-            <a href="{{ page.overview_url | relative_url }}" class="block-part-link{% if page.part_name == 'Overview' or page.url == page.overview_url %} is-active{% endif %}">Overview</a>
+            <a href="{{ page.overview_url | relative_url }}" class="block-part-link{% if page.part_name == 'Overview' or page.url == page.overview_url %} is-active{% endif %}">{{ t.block.overview }}</a>
             {% endif %}
             {% if page.presentation_url %}
-            <a href="{{ page.presentation_url | relative_url }}" class="block-part-link{% if page.part_name == 'Presentation' %} is-active{% endif %}">Presentation</a>
+            <a href="{{ page.presentation_url | relative_url }}" class="block-part-link{% if page.part_name == 'Presentation' %} is-active{% endif %}">{{ t.block.presentation }}</a>
             {% endif %}
             {% if page.hands_on_url %}
-            <a href="{{ page.hands_on_url | relative_url }}" class="block-part-link{% if page.part_name == 'Hands-On' %} is-active{% endif %}">Hands-On</a>
+            <a href="{{ page.hands_on_url | relative_url }}" class="block-part-link{% if page.part_name == 'Hands-On' %} is-active{% endif %}">{{ t.block.hands_on }}</a>
             {% endif %}
           </nav>
         </div>

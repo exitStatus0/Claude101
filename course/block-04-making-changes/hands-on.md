@@ -9,6 +9,8 @@ overview_url: /course/block-04-making-changes/
 presentation_url: /course/block-04-making-changes/presentation/
 hands_on_url: /course/block-04-making-changes/hands-on/
 permalink: /course/block-04-making-changes/hands-on/
+locale: en
+translation_key: block-04-hands-on
 ---
 > **Direct speech:** "Everything on this hands-on page is built so you can follow me line by line. When you see a command or prompt block, you can copy it directly into your terminal or Claude session unless I explicitly tell you it is just reference material. As we go, compare your result with mine on screen so you can catch mistakes early instead of stacking them up."
 

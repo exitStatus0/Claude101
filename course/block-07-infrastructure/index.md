@@ -19,6 +19,8 @@ objectives:
 overview_url: /course/block-07-infrastructure/
 presentation_url: /course/block-07-infrastructure/presentation/
 hands_on_url: /course/block-07-infrastructure/hands-on/
+locale: en
+translation_key: block-07
 ---
 ## From Localhost to the Real World
 

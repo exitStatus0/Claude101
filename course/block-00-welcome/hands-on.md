@@ -9,6 +9,8 @@ overview_url: /course/block-00-welcome/
 presentation_url: /course/block-00-welcome/presentation/
 hands_on_url: /course/block-00-welcome/hands-on/
 permalink: /course/block-00-welcome/hands-on/
+locale: en
+translation_key: block-00-hands-on
 ---
 > **Direct speech:** "Everything on this hands-on page is built so you can follow me line by line. When you see a command or prompt block, you can copy it directly into your terminal or Claude session unless I explicitly tell you it is just reference material. As we go, compare your result with mine on screen so you can catch mistakes early instead of stacking them up."
 

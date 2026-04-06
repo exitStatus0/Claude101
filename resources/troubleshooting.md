@@ -4,6 +4,8 @@ title: "Troubleshooting"
 purpose: "Find your failure mode and fix it — fast."
 verified: "2026-04-06"
 permalink: /resources/troubleshooting/
+locale: en
+translation_key: troubleshooting
 ---
 
 ## Quick Triage

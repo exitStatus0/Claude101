@@ -1,5 +1,8 @@
+{% assign current_locale = page.locale | default: "en" %}
+{% assign loc = site.data.locales[current_locale] %}
+{% assign t = site.data.i18n[current_locale] %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ loc.html_lang }}">
 <head>
   {% include head.html %}
 </head>

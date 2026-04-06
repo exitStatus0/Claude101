@@ -1,6 +1,19 @@
+{% assign current_locale = page.locale | default: "en" %}
+{% assign t = site.data.i18n[current_locale] %}
+{% assign loc = site.data.locales[current_locale] %}
+{% assign prefix = loc.prefix %}
+
 {% assign blocks = site.pages | where_exp: "p", "p.path contains 'course/block-'" | where_exp: "p", "p.name == 'index.md'" | sort: "path" %}
-{% assign current_index = nil %}
+{% assign locale_blocks = "" | split: "" %}
 {% for b in blocks %}
+  {% assign b_locale = b.locale | default: "en" %}
+  {% if b_locale == current_locale %}
+    {% assign locale_blocks = locale_blocks | push: b %}
+  {% endif %}
+{% endfor %}
+
+{% assign current_index = nil %}
+{% for b in locale_blocks %}
   {% if b.url == page.url %}
     {% assign current_index = forloop.index0 %}
   {% endif %}
@@ -9,25 +22,25 @@
   {% assign current_index = page.block_number | plus: 0 %}
 {% endif %}
 
-<nav class="block-nav" aria-label="Course navigation">
+<nav class="block-nav" aria-label="{{ t.aria.course_nav }}">
   {% if current_index and current_index > 0 %}
     {% assign prev_index = current_index | minus: 1 %}
-    <a href="{{ blocks[prev_index].url | relative_url }}" class="block-nav-link block-nav-prev">
+    <a href="{{ locale_blocks[prev_index].url | relative_url }}" class="block-nav-link block-nav-prev">
       <span class="block-nav-arrow">&larr;</span>
-      <span class="block-nav-label">Previous</span>
-      <span class="block-nav-title">{{ blocks[prev_index].title }}</span>
+      <span class="block-nav-label">{{ t.block.previous }}</span>
+      <span class="block-nav-title">{{ locale_blocks[prev_index].title }}</span>
     </a>
   {% else %}
     <div class="block-nav-link block-nav-placeholder"></div>
   {% endif %}
 
-  <a href="{{ '/course/' | relative_url }}" class="block-nav-toc">All Blocks</a>
+  <a href="{{ prefix | append: '/course/' | relative_url }}" class="block-nav-toc">{{ t.block.all_blocks }}</a>
 
   {% assign next_index = current_index | plus: 1 %}
-  {% if current_index and next_index < blocks.size %}
-    <a href="{{ blocks[next_index].url | relative_url }}" class="block-nav-link block-nav-next">
-      <span class="block-nav-label">Next</span>
-      <span class="block-nav-title">{{ blocks[next_index].title }}</span>
+  {% if current_index and next_index < locale_blocks.size %}
+    <a href="{{ locale_blocks[next_index].url | relative_url }}" class="block-nav-link block-nav-next">
+      <span class="block-nav-label">{{ t.block.next }}</span>
+      <span class="block-nav-title">{{ locale_blocks[next_index].title }}</span>
       <span class="block-nav-arrow">&rarr;</span>
     </a>
   {% else %}

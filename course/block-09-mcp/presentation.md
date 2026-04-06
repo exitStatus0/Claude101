@@ -8,6 +8,8 @@ overview_url: /course/block-09-mcp/
 presentation_url: /course/block-09-mcp/presentation/
 hands_on_url: /course/block-09-mcp/hands-on/
 permalink: /course/block-09-mcp/presentation/
+locale: en
+translation_key: block-09-presentation
 ---
 > **Duration**: ~10 minutes
 > **Goal**: Students understand what MCP is, how servers work, and how to configure Claude Code to use external tools.

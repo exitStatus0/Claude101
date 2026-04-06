@@ -18,6 +18,8 @@ objectives:
 overview_url: /course/block-04-making-changes/
 presentation_url: /course/block-04-making-changes/presentation/
 hands_on_url: /course/block-04-making-changes/hands-on/
+locale: en
+translation_key: block-04
 ---
 ## Time to Build
 

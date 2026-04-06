@@ -1,6 +1,8 @@
 ---
 layout: default
 title: "Course — All Blocks"
+locale: en
+translation_key: course-index
 ---
 
 <section class="section">

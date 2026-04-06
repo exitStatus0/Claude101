@@ -2,6 +2,8 @@
 layout: default
 title: "Resources"
 permalink: /resources/
+locale: en
+translation_key: resources-index
 ---
 
 <section class="section">

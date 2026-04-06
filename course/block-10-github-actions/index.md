@@ -21,6 +21,8 @@ objectives:
 overview_url: /course/block-10-github-actions/
 presentation_url: /course/block-10-github-actions/presentation/
 hands_on_url: /course/block-10-github-actions/hands-on/
+locale: en
+translation_key: block-10
 ---
 ## From Your Terminal to Every Pull Request
 

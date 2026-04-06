@@ -208,6 +208,36 @@ pre code {
   padding-bottom: 2px;
 }
 
+/* --- Language Switcher --- */
+.lang-switcher {
+  display: flex;
+  gap: 2px;
+  margin-left: var(--space-lg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lang-option {
+  display: block;
+  padding: 0.25em 0.6em;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.lang-option:hover {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.lang-option.is-active {
+  background: var(--bg-dark);
+  color: var(--text-inverse);
+}
+
 .mobile-menu-toggle {
   display: none;
   flex-direction: column;

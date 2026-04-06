@@ -14,6 +14,8 @@ summary_cards:
   - label: "With Block 10"
     value: "~$45-50"
     note: "Adds API key"
+locale: en
+translation_key: cost-guide
 ---
 
 ## At A Glance

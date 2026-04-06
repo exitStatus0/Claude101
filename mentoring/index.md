@@ -5,6 +5,8 @@ subtitle: "Apply what you learned to your real stack — with a senior engineer 
 cta_text: "Get in Touch"
 cta_url: "https://t.me/exitStatus0"
 permalink: /mentoring/
+locale: en
+translation_key: mentoring
 ---
 
 ## Who This Is For

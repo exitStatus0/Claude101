@@ -1,0 +1,47 @@
+nav:
+  course: Course
+  resources: Resources
+  mentoring: Mentoring
+  github: GitHub
+
+footer:
+  course: Course
+  resources: Resources
+  links: Links
+  all_blocks: All Blocks
+  last_verified: "Last verified 2026-04-06"
+  tagline: "From zero to deployed — with AI as your co-pilot."
+  cheatsheet: Cheatsheet
+  cost_guide: Cost Guide
+  troubleshooting: Troubleshooting
+  claude_docs: Claude Code Docs
+  app_repo: ai-coderrank App
+  course_source: Course Source
+
+block:
+  block: Block
+  previous: Previous
+  next: Next
+  all_blocks: All Blocks
+  overview: Overview
+  presentation: Presentation
+  hands_on: Hands-On
+  objectives: "What you'll accomplish"
+  choose_format: "Choose Your Format"
+  presentation_desc: "Speaker notes, slide flow, and talking points for the voice-over part of this block."
+  hands_on_desc: "Copy-pasteable terminal steps and prompts for the screen-sharing implementation part."
+
+resource:
+  on_this_page: On this page
+  last_verified: "Last verified"
+
+aria:
+  main_nav: "Main navigation"
+  toggle_menu: "Toggle menu"
+  block_sections: "Block sections"
+  course_nav: "Course navigation"
+  toc: "Table of contents"
+
+switcher:
+  english: English
+  other: Other

@@ -9,6 +9,8 @@ overview_url: /course/block-00-welcome/
 presentation_url: /course/block-00-welcome/presentation/
 hands_on_url: /course/block-00-welcome/hands-on/
 permalink: /course/block-00-welcome/presentation/
+locale: en
+translation_key: block-00-presentation
 ---
 **Target duration**: ~10 minutes
 **Tone**: High-energy opener. This is the hook. Make them excited to be here.

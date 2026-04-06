@@ -8,6 +8,8 @@ overview_url: /course/block-06-skills/
 presentation_url: /course/block-06-skills/presentation/
 hands_on_url: /course/block-06-skills/hands-on/
 permalink: /course/block-06-skills/presentation/
+locale: en
+translation_key: block-06-presentation
 ---
 > **Duration**: ~8 minutes
 > **Goal**: Students understand what skills are, how they're structured, and why they're a game-changer for team consistency.

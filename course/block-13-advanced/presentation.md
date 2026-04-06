@@ -8,6 +8,8 @@ overview_url: /course/block-13-advanced/
 presentation_url: /course/block-13-advanced/presentation/
 hands_on_url: /course/block-13-advanced/hands-on/
 permalink: /course/block-13-advanced/presentation/
+locale: en
+translation_key: block-13-presentation
 ---
 > **Duration**: ~10 minutes
 > **Goal**: Show students the broader Claude Code ecosystem, introduce advanced patterns they'll grow into, and send them off with a roadmap. This is the closing chapter -- make it feel complete.

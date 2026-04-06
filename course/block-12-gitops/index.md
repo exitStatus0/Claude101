@@ -23,6 +23,8 @@ objectives:
 overview_url: /course/block-12-gitops/
 presentation_url: /course/block-12-gitops/presentation/
 hands_on_url: /course/block-12-gitops/hands-on/
+locale: en
+translation_key: block-12
 ---
 ## This Is the Moment
 

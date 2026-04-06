@@ -8,6 +8,8 @@ overview_url: /course/block-10-github-actions/
 presentation_url: /course/block-10-github-actions/presentation/
 hands_on_url: /course/block-10-github-actions/hands-on/
 permalink: /course/block-10-github-actions/presentation/
+locale: en
+translation_key: block-10-presentation
 ---
 > **Duration**: ~10 minutes
 > **Goal**: Students understand how Claude Code works inside GitHub Actions, what the official action does, and why CI-integrated AI review is a game-changer for team workflows.
@@ -179,7 +181,9 @@ Only review PRs targeting main, not every feature-to-feature branch merge.
 
 ```yaml
 concurrency:
+{% raw %}
   group: claude-${{ github.event.pull_request.number || github.event.issue.number }}
+{% endraw %}
   cancel-in-progress: true
 ```
 

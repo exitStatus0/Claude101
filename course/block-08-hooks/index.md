@@ -20,6 +20,8 @@ objectives:
 overview_url: /course/block-08-hooks/
 presentation_url: /course/block-08-hooks/presentation/
 hands_on_url: /course/block-08-hooks/hands-on/
+locale: en
+translation_key: block-08
 ---
 ## Teaching Claude Reflexes
 

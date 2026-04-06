@@ -1,0 +1,9 @@
+en:
+  label: English
+  prefix: ""
+  html_lang: en
+
+ru:
+  label: Other
+  prefix: "/other"
+  html_lang: ru

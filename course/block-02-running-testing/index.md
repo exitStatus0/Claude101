@@ -20,6 +20,8 @@ objectives:
 overview_url: /course/block-02-running-testing/
 presentation_url: /course/block-02-running-testing/presentation/
 hands_on_url: /course/block-02-running-testing/hands-on/
+locale: en
+translation_key: block-02
 ---
 ## From Reading to Doing
 

@@ -9,6 +9,8 @@ overview_url: /course/block-01-understanding/
 presentation_url: /course/block-01-understanding/presentation/
 hands_on_url: /course/block-01-understanding/hands-on/
 permalink: /course/block-01-understanding/presentation/
+locale: en
+translation_key: block-01-presentation
 ---
 **Target duration**: ~8 minutes
 **Tone**: "Let me show you something that changed how I onboard to new projects."

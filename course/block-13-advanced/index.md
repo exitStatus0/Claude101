@@ -23,6 +23,8 @@ objectives:
 overview_url: /course/block-13-advanced/
 presentation_url: /course/block-13-advanced/presentation/
 hands_on_url: /course/block-13-advanced/hands-on/
+locale: en
+translation_key: block-13
 ---
 ## The View From the Summit
 

@@ -20,6 +20,8 @@ objectives:
 overview_url: /course/block-09-mcp/
 presentation_url: /course/block-09-mcp/presentation/
 hands_on_url: /course/block-09-mcp/hands-on/
+locale: en
+translation_key: block-09
 ---
 ## Claude's Plugin System
 

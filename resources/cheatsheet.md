@@ -4,6 +4,8 @@ title: "Claude Code Cheatsheet"
 purpose: "Find the right command, file, or shortcut — fast."
 verified: "2026-04-06"
 permalink: /resources/cheatsheet/
+locale: en
+translation_key: cheatsheet
 ---
 
 ## Start Fast

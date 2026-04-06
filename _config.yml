@@ -11,14 +11,29 @@ kramdown:
 permalink: pretty
 
 defaults:
+  # English course blocks
   - scope:
       path: "course/block-*"
     values:
       layout: block
+      locale: en
+  # Russian course blocks
+  - scope:
+      path: "other/course/block-*"
+    values:
+      layout: block
+      locale: ru
+  # Russian pages
+  - scope:
+      path: "other"
+    values:
+      locale: ru
+  # English default
   - scope:
       path: ""
     values:
       layout: default
+      locale: en
 
 plugins:
   - jekyll-optional-front-matter

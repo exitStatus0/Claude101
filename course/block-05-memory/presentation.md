@@ -8,6 +8,8 @@ overview_url: /course/block-05-memory/
 presentation_url: /course/block-05-memory/presentation/
 hands_on_url: /course/block-05-memory/hands-on/
 permalink: /course/block-05-memory/presentation/
+locale: en
+translation_key: block-05-presentation
 ---
 > **Duration**: ~8 minutes
 > **Goal**: Students understand the memory hierarchy, know when to use each layer, and grasp how auto memory works.

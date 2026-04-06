@@ -8,6 +8,8 @@ overview_url: /course/block-12-gitops/
 presentation_url: /course/block-12-gitops/presentation/
 hands_on_url: /course/block-12-gitops/hands-on/
 permalink: /course/block-12-gitops/presentation/
+locale: en
+translation_key: block-12-presentation
 ---
 > **Duration**: ~10 minutes
 > **Goal**: Students understand GitOps as a philosophy, how ArgoCD implements it, and why this changes everything about how they think about deployments. Build the excitement -- this is the climax.

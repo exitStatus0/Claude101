@@ -18,6 +18,8 @@ objectives:
 overview_url: /course/block-00-welcome/
 presentation_url: /course/block-00-welcome/presentation/
 hands_on_url: /course/block-00-welcome/hands-on/
+locale: en
+translation_key: block-00
 ---
 ## The Starting Line
 

@@ -8,6 +8,8 @@ overview_url: /course/block-04-making-changes/
 presentation_url: /course/block-04-making-changes/presentation/
 hands_on_url: /course/block-04-making-changes/hands-on/
 permalink: /course/block-04-making-changes/presentation/
+locale: en
+translation_key: block-04-presentation
 ---
 **Duration**: ~8 minutes
 **Goal**: Explain how Claude edits files (Edit vs Write tools), how git integration works, and how iterative refinement lets you fine-tune changes conversationally.

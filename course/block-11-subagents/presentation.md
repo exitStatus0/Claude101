@@ -8,6 +8,8 @@ overview_url: /course/block-11-subagents/
 presentation_url: /course/block-11-subagents/presentation/
 hands_on_url: /course/block-11-subagents/hands-on/
 permalink: /course/block-11-subagents/presentation/
+locale: en
+translation_key: block-11-presentation
 ---
 > **Duration**: ~10 minutes
 > **Goal**: Students understand sub-agents as delegated AI workers with their own prompts, tools, and models -- and why decomposition beats a single overloaded session.

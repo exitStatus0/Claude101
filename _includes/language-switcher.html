@@ -1,0 +1,27 @@
+{% assign current_locale = page.locale | default: "en" %}
+{% assign locale_data = site.data.locales %}
+<div class="lang-switcher">
+  {% for loc in locale_data %}
+    {% assign loc_code = loc[0] %}
+    {% assign loc_info = loc[1] %}
+    {% if loc_code == current_locale %}
+      <span class="lang-option is-active">{{ loc_info.label }}</span>
+    {% else %}
+      {% assign target_page = nil %}
+      {% if page.translation_key %}
+        {% for p in site.pages %}
+          {% if p.translation_key == page.translation_key and p.locale == loc_code %}
+            {% assign target_page = p %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if target_page %}
+        <a href="{{ target_page.url | relative_url }}" class="lang-option">{{ loc_info.label }}</a>
+      {% elsif loc_code == "en" %}
+        <a href="{{ '/' | relative_url }}" class="lang-option">{{ loc_info.label }}</a>
+      {% else %}
+        <a href="{{ '/other/' | relative_url }}" class="lang-option">{{ loc_info.label }}</a>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>

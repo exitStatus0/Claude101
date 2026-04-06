@@ -9,6 +9,8 @@ overview_url: /course/block-10-github-actions/
 presentation_url: /course/block-10-github-actions/presentation/
 hands_on_url: /course/block-10-github-actions/hands-on/
 permalink: /course/block-10-github-actions/hands-on/
+locale: en
+translation_key: block-10-hands-on
 ---
 > **Direct speech:** "Everything on this hands-on page is built so you can follow me line by line. When you see a command or prompt block, you can copy it directly into your terminal or Claude session unless I explicitly tell you it is just reference material. As we go, compare your result with mine on screen so you can catch mistakes early instead of stacking them up."
 
@@ -90,7 +92,9 @@ jobs:
 
     # Prevent parallel runs on the same PR/issue
     concurrency:
+{% raw %}
       group: claude-${{ github.event.issue.number || github.event.pull_request.number }}
+{% endraw %}
       cancel-in-progress: true
 
     steps:

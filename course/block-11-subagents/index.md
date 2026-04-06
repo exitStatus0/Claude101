@@ -21,6 +21,8 @@ objectives:
 overview_url: /course/block-11-subagents/
 presentation_url: /course/block-11-subagents/presentation/
 hands_on_url: /course/block-11-subagents/hands-on/
+locale: en
+translation_key: block-11
 ---
 ## From One Brain to a Team
 

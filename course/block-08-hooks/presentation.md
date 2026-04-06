@@ -8,6 +8,8 @@ overview_url: /course/block-08-hooks/
 presentation_url: /course/block-08-hooks/presentation/
 hands_on_url: /course/block-08-hooks/hands-on/
 permalink: /course/block-08-hooks/presentation/
+locale: en
+translation_key: block-08-presentation
 ---
 > **Duration**: ~10 minutes
 > **Goal**: Students understand what hooks are, the four types, how event matching works, and how exit codes control the flow.

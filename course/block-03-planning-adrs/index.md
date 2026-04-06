@@ -18,6 +18,8 @@ objectives:
 overview_url: /course/block-03-planning-adrs/
 presentation_url: /course/block-03-planning-adrs/presentation/
 hands_on_url: /course/block-03-planning-adrs/hands-on/
+locale: en
+translation_key: block-03
 ---
 ## Measure Twice, Cut Once
 

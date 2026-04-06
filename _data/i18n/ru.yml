@@ -1,0 +1,47 @@
+nav:
+  course: "Курс"
+  resources: "Ресурсы"
+  mentoring: "Менторинг"
+  github: GitHub
+
+footer:
+  course: "Курс"
+  resources: "Ресурсы"
+  links: "Ссылки"
+  all_blocks: "Все блоки"
+  last_verified: "Проверено 2026-04-06"
+  tagline: "От нуля до деплоя — с ИИ в роли второго пилота."
+  cheatsheet: "Шпаргалка"
+  cost_guide: "Гид по стоимости"
+  troubleshooting: "Решение проблем"
+  claude_docs: "Документация Claude Code"
+  app_repo: "Приложение ai-coderrank"
+  course_source: "Исходники курса"
+
+block:
+  block: "Блок"
+  previous: "Назад"
+  next: "Далее"
+  all_blocks: "Все блоки"
+  overview: "Обзор"
+  presentation: "Презентация"
+  hands_on: "Практика"
+  objectives: "Что вы освоите"
+  choose_format: "Выберите формат"
+  presentation_desc: "Заметки спикера, структура слайдов и ключевые тезисы для голосовой части блока."
+  hands_on_desc: "Пошаговые команды и промпты для практической части с демонстрацией экрана."
+
+resource:
+  on_this_page: "На этой странице"
+  last_verified: "Проверено"
+
+aria:
+  main_nav: "Основная навигация"
+  toggle_menu: "Переключить меню"
+  block_sections: "Разделы блока"
+  course_nav: "Навигация по курсу"
+  toc: "Содержание"
+
+switcher:
+  english: English
+  other: Other

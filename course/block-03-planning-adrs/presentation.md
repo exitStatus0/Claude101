@@ -8,6 +8,8 @@ overview_url: /course/block-03-planning-adrs/
 presentation_url: /course/block-03-planning-adrs/presentation/
 hands_on_url: /course/block-03-planning-adrs/hands-on/
 permalink: /course/block-03-planning-adrs/presentation/
+locale: en
+translation_key: block-03-presentation
 ---
 **Duration**: ~10 minutes
 **Goal**: Convince students that planning with AI is a superpower, not a bottleneck. Introduce Plan mode, ADRs, and Mermaid diagrams.
