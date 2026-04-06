@@ -33,6 +33,67 @@ translation_key: mentoring
   </div>
 </div>
 
+## Formats & Pricing
+
+Pick the level of support that matches the problem you are trying to solve.
+
+<div class="pricing-intro">
+  <p><strong>All formats include</strong> short preparation before the session, a live 1:1 call, and written next steps after the call.</p>
+</div>
+
+<div class="pricing-grid">
+  <div class="pricing-card">
+    <span class="pricing-duration">30 min</span>
+    <h3>Quick Fix Session</h3>
+    <div class="pricing-price">€59</div>
+    <p>For one focused problem or a short technical or career discussion.</p>
+    <ul class="pricing-points">
+      <li>One blocker or decision</li>
+      <li>Quick CV / LinkedIn feedback</li>
+      <li>Fast architecture or workflow sanity check</li>
+    </ul>
+  </div>
+
+  <div class="pricing-card pricing-card--featured">
+    <span class="pricing-badge">Best starting point</span>
+    <span class="pricing-duration">60 min</span>
+    <h3>Main DevOps Session</h3>
+    <div class="pricing-price">€109</div>
+    <p>For a full technical or career-focused consultation with room to go deep on the real issue.</p>
+    <ul class="pricing-points">
+      <li>Technical troubleshooting or debugging</li>
+      <li>Career direction and next-step planning</li>
+      <li>Claude Code, CI/CD, Kubernetes, or GitOps review</li>
+    </ul>
+  </div>
+
+  <div class="pricing-card">
+    <span class="pricing-duration">90 min</span>
+    <h3>Deep Dive / Interview / Career Strategy</h3>
+    <div class="pricing-price">€159</div>
+    <p>For mock interviews, roadmap planning, growth strategy, or more complex technical discussions.</p>
+    <ul class="pricing-points">
+      <li>Mock interview and feedback loop</li>
+      <li>Career roadmap discussion</li>
+      <li>Deeper technical deep dive with context</li>
+    </ul>
+  </div>
+
+  <div class="pricing-card">
+    <span class="pricing-duration">Custom</span>
+    <h3>Personal DevOps Growth Plan</h3>
+    <div class="pricing-price">from €249</div>
+    <p>A structured deep dive with a personalized growth roadmap and written recommendations.</p>
+    <ul class="pricing-points">
+      <li>Personalized growth roadmap</li>
+      <li>Structured recommendations by topic and priority</li>
+      <li>Best fit when you want a longer-term plan, not one call</li>
+    </ul>
+  </div>
+</div>
+
+<p class="pricing-note"><strong>Not sure which one to choose?</strong> Start with the 60-minute session. It is the best default if you want enough time to diagnose the real problem and leave with a concrete plan.</p>
+
 ## What You Get
 
 <div class="benefit-grid">
@@ -122,6 +183,12 @@ Claude Pro subscription, a terminal, and a GitHub account. For infrastructure tr
 <summary>How do I book?</summary>
 
 Reach out via Telegram or LinkedIn. We'll have a short intro call to figure out if it's a good fit and what track makes sense for you.
+</details>
+
+<details>
+<summary>Which format should I choose?</summary>
+
+Pick the 30-minute option for one narrow blocker, the 60-minute option for a standard technical or career session, the 90-minute option for deeper interview or strategy work, and the growth-plan option if you want a more structured roadmap.
 </details>
 
 <div class="cta-block">
