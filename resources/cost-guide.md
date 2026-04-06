@@ -45,8 +45,19 @@ DigitalOcean gives new accounts **$200 in free credit** (60 days) -- enough to c
 
 ## Optional Costs
 
-- <span class="badge-optional">Optional</span> **Block 10 API key** (~$1-5 total) -- pay-per-token for the Claude GitHub Action. Skip Block 10 entirely if you want to avoid this cost.
-- <span class="badge-optional">Optional</span> **Domain** (~$10/yr) -- not needed for the course.
+<div class="card-grid card-grid--compact">
+  <div class="quick-card">
+    <span class="badge badge-optional">Optional</span>
+    <h3>Block 10 API key</h3>
+    <p>~$1-5 total. Pay-per-token for the Claude GitHub Action. Skip Block 10 entirely if you want to avoid this cost.</p>
+  </div>
+
+  <div class="quick-card">
+    <span class="badge badge-optional">Optional</span>
+    <h3>Domain</h3>
+    <p>~$10/yr. Not needed for the course.</p>
+  </div>
+</div>
 
 ## Which Plan Do I Need?
 
@@ -56,7 +67,7 @@ DigitalOcean gives new accounts **$200 in free credit** (60 days) -- enough to c
 | **Max** | $100/mo | Opus access, higher limits -- for heavy usage |
 | **Team** | varies | Depends on seat type -- see caveat below |
 
-<div class="callout-important">
+<div class="callout-important" markdown="1">
 
 **Team plans**: Standard Team seats do **not** include Claude Code. Check with your admin or see [Anthropic's Team plan docs](https://support.anthropic.com/en/articles/9267289-how-is-my-team-plan-bill-calculated) before purchasing.
 
@@ -64,7 +75,7 @@ DigitalOcean gives new accounts **$200 in free credit** (60 days) -- enough to c
 
 ## API Pricing
 
-<div class="callout-optional">
+<div class="callout-optional" markdown="1">
 
 Approximate rates as of April 2026 -- **these are volatile and may change**.
 

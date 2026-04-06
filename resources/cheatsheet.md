@@ -122,7 +122,7 @@ claude mcp list
 claude mcp remove <name>
 ```
 
-<div class="callout-daily">
+<div class="callout-daily" markdown="1">
 Project scope stores config in <code>.mcp.json</code>. User scope stores config in <code>~/.claude.json</code>.
 </div>
 
@@ -143,7 +143,7 @@ Hooks live in `.claude/settings.json` under the `hooks` key.
 
 **Exit codes:** `0` = proceed, `2` = block the action.
 
-<div class="callout-advanced">
+<div class="callout-advanced" markdown="1">
 Hooks receive JSON on stdin. Use <code>jq</code> to extract fields in shell hooks.
 </div>
 

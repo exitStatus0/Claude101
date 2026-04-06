@@ -24,7 +24,7 @@ Pick your problem area:
 
 ## Start Here
 
-<div class="callout-daily">
+<div class="callout-daily" markdown="1">
 
 Before diving into specific issues, try these five universal checks:
 
@@ -46,7 +46,7 @@ Before diving into specific issues, try these five universal checks:
 
 ## Claude Code Issues {#claude-code-issues}
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Session hangs / no response</h3>
 <p><strong>Check:</strong> Is the spinner moving? Press <code>Ctrl+C</code> to interrupt.</p>
@@ -63,7 +63,7 @@ If still stuck, close the terminal entirely and run `claude` in a new window.
 <p><strong>Success signal:</strong> Claude responds to your next prompt within a few seconds.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Permission denied on every command</h3>
 <p><strong>Check:</strong> Which permission mode are you running in?</p>
@@ -79,7 +79,7 @@ You can also press `a` during a prompt to allow a tool for the rest of the sessi
 <p><strong>Success signal:</strong> Commands run without repeated confirmation prompts.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>CLAUDE.md not loading</h3>
 <p><strong>Check:</strong> Run <code>/memory</code> inside a session to see what files are loaded.</p>
@@ -88,7 +88,7 @@ You can also press `a` during a prompt to allow a tool for the rest of the sessi
 <p><strong>Success signal:</strong> <code>/memory</code> shows your CLAUDE.md content.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Skills not showing up</h3>
 <p><strong>Check:</strong> Verify the skill file exists at the expected path.</p>
@@ -105,7 +105,7 @@ After fixing, start a new session — skills load at startup.
 <p><strong>Success signal:</strong> The skill appears when Claude lists available capabilities.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Auto memory not working</h3>
 <p><strong>Check:</strong> Confirm your version and settings.</p>
@@ -126,7 +126,7 @@ Then verify `~/.claude/settings.json` contains:
 <p><strong>Success signal:</strong> Claude proactively saves facts between sessions.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Context getting too long</h3>
 <p><strong>Check:</strong> Is Claude forgetting earlier instructions or repeating itself?</p>
@@ -144,7 +144,7 @@ Then verify `~/.claude/settings.json` contains:
 
 ## MCP Issues {#mcp-issues}
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>MCP server not connecting</h3>
 <p><strong>Check:</strong> Is the config in the right file? Project-level: <code>.mcp.json</code>. User-level: <code>~/.claude.json</code>.</p>
@@ -153,7 +153,7 @@ Then verify `~/.claude/settings.json` contains:
 <p><strong>Success signal:</strong> Claude shows MCP tools in its capabilities on session start.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>MCP tools not appearing</h3>
 <p><strong>Check:</strong> Press <code>Ctrl+O</code> to enable verbose mode and look for MCP handshake messages.</p>
@@ -166,7 +166,7 @@ Then verify `~/.claude/settings.json` contains:
 
 ## Hook Issues {#hook-issues}
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Hooks not firing</h3>
 <p><strong>Check:</strong> Enable verbose mode with <code>Ctrl+O</code> to see hook execution.</p>
@@ -181,14 +181,14 @@ claude -p "validate the JSON in .claude/settings.json"
 chmod +x .claude/hooks/your-hook.sh
 ```
 
-<div class="callout-important">
+<div class="callout-important" markdown="1">
 Event names are PascalCase: <code>PreToolUse</code>, not <code>preToolUse</code>. Exit codes matter: 0 = allow, 2 = block.
 </div>
 
 <p><strong>Success signal:</strong> Verbose mode shows the hook executing on the expected event.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Hook blocking unexpectedly</h3>
 <p><strong>Check:</strong> Which tool call is being blocked? Verbose mode (<code>Ctrl+O</code>) shows the hook name and exit code.</p>
@@ -201,7 +201,7 @@ Event names are PascalCase: <code>PreToolUse</code>, not <code>preToolUse</code>
 
 ## Infrastructure Issues {#infra-issues}
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Can't SSH into droplet</h3>
 <p><strong>Check:</strong> Run SSH with verbose output to see where it fails.</p>
@@ -217,7 +217,7 @@ Verify the IP in the DigitalOcean console. If the key is missing, add it via the
 <p><strong>Success signal:</strong> You get a root shell on the droplet.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>k3s not starting</h3>
 <p><strong>Check:</strong> Look at the service status and logs.</p>
@@ -232,7 +232,7 @@ sudo journalctl -u k3s -f
 <p><strong>Success signal:</strong> <code>systemctl status k3s</code> shows <code>active (running)</code>.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>kubectl connection refused</h3>
 <p><strong>Check:</strong> Are you using the correct kubeconfig?</p>
@@ -249,7 +249,7 @@ For local access, copy the kubeconfig and replace `127.0.0.1` with your droplet'
 <p><strong>Success signal:</strong> <code>kubectl get nodes</code> returns your node in <code>Ready</code> state.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Pods stuck in ImagePullBackOff</h3>
 <p><strong>Check:</strong> Describe the pod to see the pull error.</p>
@@ -265,7 +265,7 @@ Verify the image name and tag. For rate-limit issues, switch to `ghcr.io`.
 <p><strong>Success signal:</strong> Pod transitions to <code>Running</code>.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Pods stuck in CrashLoopBackOff</h3>
 <p><strong>Check:</strong> Read the logs from the previous crashed container.</p>
@@ -283,7 +283,7 @@ kubectl logs <pod-name> -n ai-coderrank --previous
 
 ## Public Access Issues {#public-access-issues}
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>App not accessible on public IP (NodePort 30080)</h3>
 <p><strong>Check:</strong> Confirm the service type and that the port is reachable.</p>
@@ -300,7 +300,7 @@ curl http://localhost:30080
 
 If local curl works but external doesn't, open port 30080 in the DigitalOcean firewall: **DO Console > Networking > Firewalls**.
 
-<div class="callout-important">
+<div class="callout-important" markdown="1">
 This course uses NodePort 30080 for public access, not Ingress. Make sure your Service spec sets <code>type: NodePort</code> and <code>nodePort: 30080</code>.
 </div>
 
@@ -311,7 +311,7 @@ This course uses NodePort 30080 for public access, not Ingress. Make sure your S
 
 ## ArgoCD Issues {#argocd-issues}
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>ArgoCD UI not accessible</h3>
 <p><strong>Check:</strong> Is the port-forward running?</p>
@@ -332,7 +332,7 @@ kubectl -n argocd get secret argocd-initial-admin-secret \
 <p><strong>Success signal:</strong> Browser loads the ArgoCD dashboard at <code>https://localhost:8080</code>.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>ArgoCD not syncing</h3>
 <p><strong>Check:</strong> Look at the application status.</p>
@@ -353,7 +353,7 @@ kubectl patch app ai-coderrank -n argocd \
 <p><strong>Success signal:</strong> App status shows <code>Synced</code> and <code>Healthy</code>.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>ArgoCD showing Degraded health</h3>
 <p><strong>Check:</strong> Identify which resource is unhealthy.</p>
@@ -374,7 +374,7 @@ Fix the underlying pod issue (see [Infrastructure Issues](#infra-issues)) and Ar
 
 ## GitHub Actions Issues {#github-actions-issues}
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Claude Action not triggering</h3>
 <p><strong>Check:</strong> Is the workflow file present and the trigger correct?</p>
@@ -390,7 +390,7 @@ Fix the underlying pod issue (see [Infrastructure Issues](#infra-issues)) and Ar
 <p><strong>Success signal:</strong> The Actions tab shows a new run after you post a matching comment.</p>
 </div>
 
-<div class="symptom-block">
+<div class="symptom-block" markdown="1">
 <span class="symptom-label">Symptom</span>
 <h3>Action runs but no output</h3>
 <p><strong>Check:</strong> Open the run log in the GitHub Actions tab.</p>

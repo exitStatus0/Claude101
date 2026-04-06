@@ -901,6 +901,35 @@ pre code {
   min-width: 0;
 }
 
+.resource-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-lg) 0 var(--space-xl);
+  background: rgba(240, 238, 230, 0.35);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.resource-content th,
+.resource-content td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.resource-content thead th,
+.resource-content th {
+  font-weight: 600;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+  background: rgba(240, 238, 230, 0.75);
+}
+
+.resource-content tbody tr + tr td {
+  border-top: 1px solid var(--border-light);
+}
+
 /* --- Callout Components --- */
 .callout-important,
 .callout-daily,
@@ -1002,6 +1031,11 @@ pre code {
   font-size: 1rem;
   margin-top: 0;
   margin-bottom: var(--space-xs);
+}
+
+.quick-card .badge {
+  margin-left: 0;
+  margin-bottom: var(--space-sm);
 }
 
 .quick-card p {
