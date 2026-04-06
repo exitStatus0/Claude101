@@ -141,6 +141,15 @@ translation_key: course-index
       </div>
     </a>
   </li>
+  <li class="toc-item">
+    <a href="{{ '/course/final-quiz/' | relative_url }}" style="border-left: 3px solid var(--accent);">
+      <span class="toc-number" style="color: var(--accent);">&#9733;</span>
+      <div>
+        <span class="toc-title">Final Quiz</span>
+        <span class="toc-desc">Cumulative assessment covering all 14 blocks. 24 questions, multiple types.</span>
+      </div>
+    </a>
+  </li>
 </ul>
 
 </div>

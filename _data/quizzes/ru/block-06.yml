@@ -1,0 +1,77 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "Где должен быть размещён файл пользовательского навыка (skill), чтобы он работал как навык на уровне проекта?"
+    points: 1
+    options:
+      - ".claude/skills/skill-name/SKILL.md"
+      - ".claude/SKILL.md"
+      - "skills/skill-name.md"
+      - ".claude/commands/skill-name.md"
+    correct_answer: 0
+    explanation: "Навыки должны находиться по пути .claude/skills/<name>/SKILL.md для области проекта."
+
+  - id: "q2"
+    type: short_answer
+    prompt: "Какая переменная в файле навыка принимает аргументы, переданные пользователем?"
+    points: 1
+    accepted_answers: ["$ARGUMENTS", "ARGUMENTS", "$arguments"]
+    explanation: "$ARGUMENTS передаёт всё, что пользователь вводит после слэш-команды, в инструкции навыка."
+
+  - id: "q3"
+    type: true_false
+    prompt: "Навык с allowed-tools: [Read, Grep, Glob] также может запускать команды через Bash."
+    points: 1
+    options:
+      - "Верно"
+      - "Неверно"
+    correct_answer: 1
+    explanation: "allowed-tools ограничивает набор инструментов, доступных навыку. Если Bash не указан в списке, навык не может запускать команды оболочки."
+
+  - id: "q4"
+    type: single_choice
+    prompt: "Что делает встроенный навык /simplify?"
+    points: 1
+    options:
+      - "Упрощает файл CLAUDE.md"
+      - "Проверяет и улучшает недавний код на предмет качества"
+      - "Уменьшает размер контекста диалога"
+      - "Конвертирует сложный YAML в простой JSON"
+    correct_answer: 1
+    explanation: "/simplify проверяет недавно изменённый код на повторное использование, качество и эффективность."
+
+  - id: "q5"
+    type: scenario_best_action
+    prompt: "Вы хотите создать навык, который аудирует Dockerfile, но НЕ должен иметь возможности изменять файлы. Какое поле frontmatter использовать?"
+    points: 2
+    options:
+      - "readonly: true"
+      - "allowed-tools: [Read, Grep, Glob]"
+      - "permissions: read-only"
+      - "mode: plan"
+    correct_answer: 1
+    explanation: "allowed-tools ограничивает навык только перечисленными инструментами. Исключение Write/Edit/Bash делает его доступным только для чтения."
+
+  - id: "q6"
+    type: multi_select
+    prompt: "Какие из следующих полей frontmatter навыка являются допустимыми? (Выберите все подходящие)"
+    points: 2
+    options:
+      - "name"
+      - "description"
+      - "allowed-tools"
+      - "priority"
+    correct_answer: [0, 1, 2]
+    explanation: "name, description и allowed-tools — допустимые поля frontmatter. Поля priority не существует."
+
+  - id: "q7"
+    type: single_choice
+    prompt: "Где хранятся персональные навыки (не разделяемые с командой)?"
+    points: 1
+    options:
+      - "~/.claude/skills/*/SKILL.md"
+      - "./personal-skills/"
+      - "./.claude/skills.local/"
+      - "~/skills/"
+    correct_answer: 0
+    explanation: "Навыки на уровне пользователя в ~/.claude/skills/ применяются ко всем вашим проектам, но не распространяются через контроль версий."

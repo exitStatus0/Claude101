@@ -8,6 +8,7 @@ translation_key: block-06-presentation
 overview_url: /other/course/block-06-skills/
 presentation_url: /other/course/block-06-skills/presentation/
 hands_on_url: /other/course/block-06-skills/hands-on/
+quiz_url: /other/course/block-06-skills/quiz/
 permalink: /other/course/block-06-skills/presentation/
 ---
 > **Продолжительность**: ~8 минут

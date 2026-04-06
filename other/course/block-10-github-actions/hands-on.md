@@ -8,6 +8,7 @@ translation_key: block-10-hands-on
 overview_url: /other/course/block-10-github-actions/
 presentation_url: /other/course/block-10-github-actions/presentation/
 hands_on_url: /other/course/block-10-github-actions/hands-on/
+quiz_url: /other/course/block-10-github-actions/quiz/
 permalink: /other/course/block-10-github-actions/hands-on/
 ---
 > **Прямая речь:** "Всё на этой странице практики построено так, чтобы вы могли повторять за мной строка за строкой. Когда видите блок с командой или промптом, можете копировать его прямо в терминал или сессию Claude, если я явно не укажу, что это справочный материал. По ходу работы сравнивайте свой результат с моим на экране, чтобы ловить ошибки сразу, а не копить их."
@@ -396,3 +397,10 @@ jobs:
 ---
 
 > **Далее**: В Блоке 11 мы выходим за рамки одной сессии Claude и переходим к суб-агентам -- специализированным ИИ-работникам, которым Claude может делегировать задачи. Представьте, что вы строите команду ИИ-специалистов, каждый со своей экспертизой, инструментами и ограничениями.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-10-github-actions/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>

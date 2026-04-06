@@ -8,6 +8,7 @@ translation_key: block-03-presentation
 overview_url: /other/course/block-03-planning-adrs/
 presentation_url: /other/course/block-03-planning-adrs/presentation/
 hands_on_url: /other/course/block-03-planning-adrs/hands-on/
+quiz_url: /other/course/block-03-planning-adrs/quiz/
 permalink: /other/course/block-03-planning-adrs/presentation/
 ---
 **Продолжительность**: ~10 минут

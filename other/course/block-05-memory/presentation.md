@@ -8,6 +8,7 @@ translation_key: block-05-presentation
 overview_url: /other/course/block-05-memory/
 presentation_url: /other/course/block-05-memory/presentation/
 hands_on_url: /other/course/block-05-memory/hands-on/
+quiz_url: /other/course/block-05-memory/quiz/
 permalink: /other/course/block-05-memory/presentation/
 ---
 > **Продолжительность**: ~8 минут

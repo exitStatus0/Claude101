@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-02-running-testing/
 presentation_url: /course/block-02-running-testing/presentation/
 hands_on_url: /course/block-02-running-testing/hands-on/
+quiz_url: /course/block-02-running-testing/quiz/
 permalink: /course/block-02-running-testing/hands-on/
 locale: en
 translation_key: block-02-hands-on
@@ -289,3 +290,10 @@ If port 3000 is occupied, you'll see an EADDRINUSE error. Either stop whatever's
 
 **Claude seems slow or confused after a long session**
 Use `/compact` to compress the conversation, or `/clear` for a full reset. Long conversations with many tool calls can fill the context window.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-02-running-testing/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

@@ -8,6 +8,7 @@ translation_key: block-02-presentation
 overview_url: /other/course/block-02-running-testing/
 presentation_url: /other/course/block-02-running-testing/presentation/
 hands_on_url: /other/course/block-02-running-testing/hands-on/
+quiz_url: /other/course/block-02-running-testing/quiz/
 permalink: /other/course/block-02-running-testing/presentation/
 ---
 **Целевая продолжительность**: ~8 минут

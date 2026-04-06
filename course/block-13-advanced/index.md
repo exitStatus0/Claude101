@@ -23,6 +23,7 @@ objectives:
 overview_url: /course/block-13-advanced/
 presentation_url: /course/block-13-advanced/presentation/
 hands_on_url: /course/block-13-advanced/hands-on/
+quiz_url: /course/block-13-advanced/quiz/
 locale: en
 translation_key: block-13
 ---
@@ -73,5 +74,10 @@ Pick the format that matches how you are using the block:
   <a href="{{ '/course/block-13-advanced/hands-on/' | relative_url }}" class="quick-card">
     <h3>Hands-On</h3>
     <p>Copy-pasteable terminal steps and prompts for the screen-sharing implementation part.</p>
+  </a>
+
+  <a href="{{ '/course/block-13-advanced/quiz/' | relative_url }}" class="quick-card">
+    <h3>Quiz</h3>
+    <p>Test your knowledge from this block with 6-8 questions.</p>
   </a>
 </div>

@@ -1,0 +1,89 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "What does the `/init` command generate in Claude Code?"
+    points: 1
+    options:
+      - "A Dockerfile for the project"
+      - "A CLAUDE.md file that captures the project's structure, tech stack, and conventions"
+      - "A .gitignore file based on the detected language"
+      - "A CI/CD pipeline configuration"
+    correct_answer: 1
+    explanation: "`/init` analyzes your entire codebase and generates a CLAUDE.md file — a machine-readable project guide that Claude loads at the start of every session. Think of it as an onboarding document for Claude."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "What is the relationship between README.md and CLAUDE.md?"
+    points: 1
+    options:
+      - "They are the same file with different names"
+      - "README.md is for humans joining the team; CLAUDE.md is for Claude joining the team"
+      - "CLAUDE.md replaces README.md in AI-first projects"
+      - "README.md is loaded by Claude; CLAUDE.md is for human reference"
+    correct_answer: 1
+    explanation: "README.md is written for human developers. CLAUDE.md is written for Claude Code — it captures conventions, gotchas, and tribal knowledge in a format Claude reads automatically at session start."
+    review_link: ""
+
+  - id: "q3"
+    type: multi_select
+    prompt: "Which tools does Claude Code use behind the scenes to explore a codebase? (Select all that apply)"
+    points: 2
+    options:
+      - "Read — opens and reads a specific file"
+      - "Grep — searches for patterns across files"
+      - "Glob — finds files matching a name pattern"
+      - "Compile — builds the project to check for errors"
+    correct_answer: [0, 1, 2]
+    explanation: "Claude uses three exploration tools: Read (like `cat`), Grep (like `rg`), and Glob (like `find`). There is no Compile tool — Claude uses the Bash tool to run build commands when needed."
+    review_link: ""
+
+  - id: "q4"
+    type: single_choice
+    prompt: "When you ask Claude 'how does the theme switching work?', what does Claude do internally?"
+    points: 1
+    options:
+      - "Searches its training data for theme-switching patterns"
+      - "Uses Grep to find theme-related code, Read to examine files, and Glob to find config files"
+      - "Asks you to point it to the relevant file"
+      - "Runs the application and inspects the UI"
+    correct_answer: 1
+    explanation: "Claude grounds its answers in your actual code. It uses Grep to find theme-related references, Read to examine those files, and Glob to discover related configuration. It does not rely on training data alone."
+    review_link: ""
+
+  - id: "q5"
+    type: true_false
+    prompt: "After running `/init`, you should never edit the generated CLAUDE.md — Claude keeps it up to date automatically."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 1
+    explanation: "False. The auto-generated CLAUDE.md is a good starting point, but you should edit it over time to add team conventions, gotchas, and project-specific patterns that `/init` might not catch."
+    review_link: ""
+
+  - id: "q6"
+    type: scenario_best_action
+    prompt: "You just joined a new team and cloned a repo with 80+ files and no documentation. You want to understand the architecture quickly. What is the best approach with Claude Code?"
+    points: 2
+    options:
+      - "Read every file one by one using the Read tool"
+      - "Run `/init` to generate CLAUDE.md, then have a conversation asking Claude to explain the architecture, data flow, and key patterns"
+      - "Ask Claude to rewrite the project in a language you know better"
+      - "Skip exploration and start making changes — you'll learn as you go"
+    correct_answer: 1
+    explanation: "Running `/init` gives Claude (and you) a project overview. Then conversational exploration — asking about architecture, data flow, and design decisions — lets Claude read the code and give you grounded answers. This is far faster than reading files one by one."
+    review_link: ""
+
+  - id: "q7"
+    type: single_choice
+    prompt: "Which Claude Code tool is most analogous to running `rg 'pattern'` in the terminal?"
+    points: 1
+    options:
+      - "Read"
+      - "Glob"
+      - "Grep"
+      - "Bash"
+    correct_answer: 2
+    explanation: "The Grep tool searches for patterns across files, just like `rg` (ripgrep). Read is analogous to `cat`, and Glob is analogous to `find`."
+    review_link: ""

@@ -8,6 +8,7 @@ translation_key: block-07-hands-on
 overview_url: /other/course/block-07-infrastructure/
 presentation_url: /other/course/block-07-infrastructure/presentation/
 hands_on_url: /other/course/block-07-infrastructure/hands-on/
+quiz_url: /other/course/block-07-infrastructure/quiz/
 permalink: /other/course/block-07-infrastructure/hands-on/
 ---
 > **Прямая речь:** "Всё на этой странице практики построено так, чтобы вы могли повторять за мной строка за строкой. Когда видите блок с командой или промптом, можете копировать его прямо в терминал или сессию Claude, если я явно не укажу, что это справочный материал. По ходу работы сравнивайте свой результат с моим на экране, чтобы ловить ошибки сразу, а не копить их."
@@ -392,3 +393,10 @@ Include safety prompts before destructive actions.
 ---
 
 > **Далее**: В Блоке 8 мы научим Claude Code рефлексам -- хуки, которые автоматически форматируют код, блокируют опасные правки и уведомляют вас, когда долгие задачи завершаются. Автоматизация, которая срабатывает даже без вашего участия.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-07-infrastructure/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>

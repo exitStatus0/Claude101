@@ -41,6 +41,9 @@
             {% if page.hands_on_url %}
             <a href="{{ page.hands_on_url | relative_url }}" class="block-part-link{% if page.part_name == 'Hands-On' %} is-active{% endif %}">{{ t.block.hands_on }}</a>
             {% endif %}
+            {% if page.quiz_url %}
+            <a href="{{ page.quiz_url | relative_url }}" class="block-part-link{% if page.part_name == 'Quiz' %} is-active{% endif %}">{{ t.quiz.quiz }}</a>
+            {% endif %}
           </nav>
         </div>
 

@@ -8,6 +8,7 @@ translation_key: block-09-presentation
 overview_url: /other/course/block-09-mcp/
 presentation_url: /other/course/block-09-mcp/presentation/
 hands_on_url: /other/course/block-09-mcp/hands-on/
+quiz_url: /other/course/block-09-mcp/quiz/
 permalink: /other/course/block-09-mcp/presentation/
 ---
 > **Продолжительность**: ~10 минут

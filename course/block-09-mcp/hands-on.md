@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-09-mcp/
 presentation_url: /course/block-09-mcp/presentation/
 hands_on_url: /course/block-09-mcp/hands-on/
+quiz_url: /course/block-09-mcp/quiz/
 permalink: /course/block-09-mcp/hands-on/
 locale: en
 translation_key: block-09-hands-on
@@ -383,3 +384,10 @@ If ai-coderrank uses a database, configure the PostgreSQL MCP server and ask Cla
 ---
 
 > **Next up**: In Block 10, we take Claude beyond your terminal and into your CI/CD pipeline. GitHub Actions with Claude Code — automated PR reviews, issue implementation, and AI-powered workflows that run on every push.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-09-mcp/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

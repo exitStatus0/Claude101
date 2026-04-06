@@ -7,6 +7,7 @@ part_name: "Presentation"
 overview_url: /course/block-12-gitops/
 presentation_url: /course/block-12-gitops/presentation/
 hands_on_url: /course/block-12-gitops/hands-on/
+quiz_url: /course/block-12-gitops/quiz/
 permalink: /course/block-12-gitops/presentation/
 locale: en
 translation_key: block-12-presentation

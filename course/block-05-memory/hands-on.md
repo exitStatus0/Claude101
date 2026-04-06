@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-05-memory/
 presentation_url: /course/block-05-memory/presentation/
 hands_on_url: /course/block-05-memory/hands-on/
+quiz_url: /course/block-05-memory/quiz/
 permalink: /course/block-05-memory/hands-on/
 locale: en
 translation_key: block-05-hands-on
@@ -378,3 +379,10 @@ Then ask Claude to review your existing Dockerfile against these new rules. See 
 ---
 
 > **Next up**: In Block 6, we'll take this concept even further. If memory is what Claude _knows_, skills are what Claude can _do_. You'll create custom slash commands that turn complex workflows into one-liners.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-05-memory/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-04-making-changes/
 presentation_url: /course/block-04-making-changes/presentation/
 hands_on_url: /course/block-04-making-changes/hands-on/
+quiz_url: /course/block-04-making-changes/quiz/
 permalink: /course/block-04-making-changes/hands-on/
 locale: en
 translation_key: block-04-hands-on
@@ -279,3 +280,10 @@ Before moving on, verify:
 ### What's Next
 
 In Block 5, we'll teach Claude to *remember* your preferences. Like the fact that you prefer dark mode. Or that your team uses conventional commits. Or that your Kubernetes manifests should always include resource limits. This is where Claude stops being a tool you use and starts being a collaborator that knows your codebase.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-04-making-changes/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

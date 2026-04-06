@@ -1,0 +1,63 @@
+{% assign current_locale = page.locale | default: "en" %}
+{% assign loc = site.data.locales[current_locale] %}
+{% assign t = site.data.i18n[current_locale] %}
+{% assign quiz_key = page.quiz_data | default: page.translation_key %}
+{% assign quiz = site.data.quizzes[current_locale][quiz_key] %}
+<!DOCTYPE html>
+<html lang="{{ loc.html_lang }}">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include header.html %}
+  <main class="site-main">
+    <article class="block-page">
+      <div class="container container--narrow">
+        <div class="block-header">
+          {% if page.block_number != nil %}
+          <span class="block-number">{{ t.block.block }} {{ page.block_number }}</span>
+          {% endif %}
+          <span class="block-part-eyebrow">{{ t.quiz.quiz }}</span>
+          <h1>{{ page.title }}</h1>
+          {% if page.description %}
+          <p class="block-description">{{ page.description }}</p>
+          {% endif %}
+          <nav class="block-parts-nav" aria-label="{{ t.aria.block_sections }}">
+            {% if page.overview_url %}
+            <a href="{{ page.overview_url | relative_url }}" class="block-part-link">{{ t.block.overview }}</a>
+            {% endif %}
+            {% if page.presentation_url %}
+            <a href="{{ page.presentation_url | relative_url }}" class="block-part-link">{{ t.block.presentation }}</a>
+            {% endif %}
+            {% if page.hands_on_url %}
+            <a href="{{ page.hands_on_url | relative_url }}" class="block-part-link">{{ t.block.hands_on }}</a>
+            {% endif %}
+            {% if page.quiz_url %}
+            <a href="{{ page.quiz_url | relative_url }}" class="block-part-link is-active">{{ t.quiz.quiz }}</a>
+            {% endif %}
+          </nav>
+        </div>
+
+        <div class="block-content">
+          {{ content }}
+
+          {% if quiz %}
+          <div id="quiz-container"
+               data-locale="{{ current_locale }}"
+               data-quiz='{{ quiz | jsonify | escape }}'
+               data-strings='{{ t.quiz | jsonify | escape }}'>
+          </div>
+          {% else %}
+          <p><em>{{ t.quiz.no_questions }}</em></p>
+          {% endif %}
+        </div>
+      </div>
+
+      {% include block-nav.html %}
+    </article>
+  </main>
+  {% include footer.html %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/quiz.js' | relative_url }}"></script>
+</body>
+</html>

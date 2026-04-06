@@ -8,6 +8,7 @@ translation_key: block-00-presentation
 overview_url: /other/course/block-00-welcome/
 presentation_url: /other/course/block-00-welcome/presentation/
 hands_on_url: /other/course/block-00-welcome/hands-on/
+quiz_url: /other/course/block-00-welcome/quiz/
 permalink: /other/course/block-00-welcome/presentation/
 ---
 **Целевая продолжительность**: ~10 минут

@@ -8,6 +8,7 @@ translation_key: block-09-hands-on
 overview_url: /other/course/block-09-mcp/
 presentation_url: /other/course/block-09-mcp/presentation/
 hands_on_url: /other/course/block-09-mcp/hands-on/
+quiz_url: /other/course/block-09-mcp/quiz/
 permalink: /other/course/block-09-mcp/hands-on/
 ---
 > **Прямая речь:** "Всё на этой странице практики построено так, чтобы вы могли повторять за мной строка за строкой. Когда видите блок с командой или промптом, можете копировать его прямо в терминал или сессию Claude, если я явно не укажу, что это справочный материал. По ходу работы сравнивайте свой результат с моим на экране, чтобы ловить ошибки сразу, а не копить их."
@@ -379,3 +380,10 @@ closes the issue. Do the whole workflow.
 ---
 
 > **Далее**: В Блоке 10 мы выводим Claude за пределы вашего терминала и помещаем в CI/CD-пайплайн. GitHub Actions с Claude Code -- автоматизированные ревью PR, реализация из issues и ИИ-воркфлоу, которые запускаются при каждом push.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-09-mcp/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>

@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-11-subagents/
 presentation_url: /course/block-11-subagents/presentation/
 hands_on_url: /course/block-11-subagents/hands-on/
+quiz_url: /course/block-11-subagents/quiz/
 permalink: /course/block-11-subagents/hands-on/
 locale: en
 translation_key: block-11-hands-on
@@ -462,3 +463,10 @@ Run the same security review with `model: haiku` and `model: sonnet`. If your pl
 ---
 
 > **Next up**: In Block 12, we bring everything together with GitOps -- ArgoCD, automated deployments, and the full loop from code change to production. Your CI reviews PRs with Claude, your agents validate the manifests, and ArgoCD syncs the result to your cluster.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-11-subagents/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

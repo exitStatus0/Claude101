@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-08-hooks/
 presentation_url: /course/block-08-hooks/presentation/
 hands_on_url: /course/block-08-hooks/hands-on/
+quiz_url: /course/block-08-hooks/quiz/
 permalink: /course/block-08-hooks/hands-on/
 locale: en
 translation_key: block-08-hands-on
@@ -456,3 +457,10 @@ Create a PreToolUse hook for Bash that blocks `git push` commands when you're on
 ---
 
 > **Next up**: In Block 9, we break out of the local terminal entirely. MCP servers connect Claude to GitHub, databases, Slack, and dozens of other tools — turning it from a coding assistant into a full development workflow engine.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-08-hooks/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

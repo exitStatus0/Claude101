@@ -20,6 +20,7 @@ objectives:
 overview_url: /other/course/block-02-running-testing/
 presentation_url: /other/course/block-02-running-testing/presentation/
 hands_on_url: /other/course/block-02-running-testing/hands-on/
+quiz_url: /other/course/block-02-running-testing/quiz/
 locale: ru
 translation_key: block-02
 ---
@@ -76,5 +77,10 @@ Allow? (y/n)
   <a href="{{ '/other/course/block-02-running-testing/hands-on/' | relative_url }}" class="quick-card">
     <h3>Практика</h3>
     <p>Готовые команды для терминала и промпты для части с демонстрацией экрана.</p>
+  </a>
+
+  <a href="{{ '/other/course/block-02-running-testing/quiz/' | relative_url }}" class="quick-card">
+    <h3>Квиз</h3>
+    <p>Проверьте свои знания по этому блоку — 6-8 вопросов.</p>
   </a>
 </div>

@@ -8,6 +8,7 @@ part_name: "Presentation"
 overview_url: /course/block-01-understanding/
 presentation_url: /course/block-01-understanding/presentation/
 hands_on_url: /course/block-01-understanding/hands-on/
+quiz_url: /course/block-01-understanding/quiz/
 permalink: /course/block-01-understanding/presentation/
 locale: en
 translation_key: block-01-presentation

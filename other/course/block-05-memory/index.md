@@ -23,6 +23,7 @@ objectives:
 overview_url: /other/course/block-05-memory/
 presentation_url: /other/course/block-05-memory/presentation/
 hands_on_url: /other/course/block-05-memory/hands-on/
+quiz_url: /other/course/block-05-memory/quiz/
 locale: ru
 translation_key: block-05
 ---
@@ -71,5 +72,10 @@ translation_key: block-05
   <a href="{{ '/other/course/block-05-memory/hands-on/' | relative_url }}" class="quick-card">
     <h3>Практика</h3>
     <p>Готовые команды для терминала и промпты для части с демонстрацией экрана.</p>
+  </a>
+
+  <a href="{{ '/other/course/block-05-memory/quiz/' | relative_url }}" class="quick-card">
+    <h3>Квиз</h3>
+    <p>Проверьте свои знания по этому блоку — 6-8 вопросов.</p>
   </a>
 </div>

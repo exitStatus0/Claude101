@@ -8,6 +8,7 @@ translation_key: block-13-hands-on
 overview_url: /other/course/block-13-advanced/
 presentation_url: /other/course/block-13-advanced/presentation/
 hands_on_url: /other/course/block-13-advanced/hands-on/
+quiz_url: /other/course/block-13-advanced/quiz/
 permalink: /other/course/block-13-advanced/hands-on/
 ---
 > **Прямая речь:** "Всё на этой странице практики построено так, чтобы вы могли повторять за мной строка за строкой. Когда видите блок с командой или промптом — можете скопировать его прямо в терминал или сессию Claude, если я явно не скажу, что это просто справочный материал. По ходу дела сверяйте свой результат с моим на экране, чтобы ловить ошибки сразу, а не копить их."
@@ -336,3 +337,15 @@ Then give me a one-paragraph summary of the complete system.
 В следующий раз, когда кто-то спросит "Что AI-инструменты реально могут сделать для DevOps?" — вам не нужно строить догадки. Вы можете показать. Откройте терминал, наберите `claude` и продемонстрируйте.
 
 Это лучший ответ, какой только может быть.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-13-advanced/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>
+
+<div class="cta-block" style="margin-top: var(--space-lg);">
+  <p>Прошли весь курс? Пройдите финальный квиз.</p>
+  <a href="{{ '/other/course/final-quiz/' | relative_url }}" class="hero-cta">Финальный квиз &rarr;</a>
+</div>

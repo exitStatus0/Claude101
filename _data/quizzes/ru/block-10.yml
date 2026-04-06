@@ -1,0 +1,89 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "Как называется официальный GitHub Action для запуска Claude Code в CI?"
+    points: 1
+    options:
+      - "anthropic/claude-action@v1"
+      - "claude-code-action@v1"
+      - "actions/claude-code@v1"
+      - "claude-ci@v1"
+    correct_answer: 1
+    explanation: "Официальный action — anthropic/claude-code-action@v1 (обычно упоминается как claude-code-action@v1)."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "Какое ключевое слово в комментарии к PR по умолчанию активирует Claude Code через GitHub Action?"
+    points: 1
+    options:
+      - "@anthropic"
+      - "@ai-review"
+      - "@claude"
+      - "#claude-help"
+    correct_answer: 2
+    explanation: "По умолчанию комментарий '@claude' в PR запускает GitHub Action Claude Code для ответа."
+    review_link: ""
+
+  - id: "q3"
+    type: true_false
+    prompt: "Вы можете использовать подписку Claude Pro напрямую для аутентификации claude-code-action в GitHub Actions."
+    points: 1
+    options:
+      - "Верно"
+      - "Неверно"
+    correct_answer: 1
+    explanation: "GitHub Actions требуют API-ключ (ANTHROPIC_API_KEY) для аутентификации. Подписка Claude Pro аутентифицируется интерактивно через OAuth и не может использоваться в CI. Вам нужен API-ключ Anthropic с достаточным балансом."
+    review_link: ""
+
+  - id: "q4"
+    type: multi_select
+    prompt: "Какие из следующих стратегий подходят для контроля затрат при запуске Claude Code в GitHub Actions? (Выберите все подходящие.)"
+    points: 1
+    options:
+      - "Установка лимита max_tokens на вызов API"
+      - "Установка ежемесячного лимита расходов на аккаунте Anthropic API"
+      - "Ограничение запуска action только для PR с определёнными лейблами"
+      - "Использование бесплатного уровня Claude с безлимитным CI-использованием"
+    correct_answer: [0, 1, 2]
+    explanation: "Вы можете контролировать затраты, ограничивая токены, устанавливая лимиты расходов API и ограничивая условия запуска action. Бесплатного уровня с безлимитным CI-использованием не существует."
+    review_link: ""
+
+  - id: "q5"
+    type: single_choice
+    prompt: "В YAML-файле GitHub Action какой секрет должен быть установлен для аутентификации Claude Code с Anthropic API?"
+    points: 1
+    options:
+      - "CLAUDE_TOKEN"
+      - "ANTHROPIC_API_KEY"
+      - "CLAUDE_API_SECRET"
+      - "AI_AUTH_KEY"
+    correct_answer: 1
+    explanation: "Секрет ANTHROPIC_API_KEY необходим GitHub Action Claude Code для выполнения API-вызовов к Anthropic."
+    review_link: ""
+
+  - id: "q6"
+    type: single_choice
+    prompt: "На какой тип события должен подписаться ваш GitHub Actions workflow, чтобы включить упоминания @claude в комментариях к PR?"
+    points: 1
+    options:
+      - "pull_request"
+      - "push"
+      - "issue_comment"
+      - "workflow_dispatch"
+    correct_answer: 2
+    explanation: "Комментарии к PR — это тип события issue_comment. Workflow должен быть подписан на 'issue_comment' (с фильтром по action created), чтобы обрабатывать триггеры @claude в комментариях к PR."
+    review_link: ""
+
+  - id: "q7"
+    type: scenario_best_action
+    prompt: "Ваш open-source проект использует claude-code-action, но вы беспокоитесь, что посторонние могут открывать PR и запускать дорогие API-вызовы через @claude. Какое лучшее решение?"
+    points: 2
+    options:
+      - "Полностью удалить action из репозитория"
+      - "Ограничить action так, чтобы он запускался только когда комментатор является коллаборатором репозитория или членом организации"
+      - "Установить ANTHROPIC_API_KEY как публичную переменную окружения, чтобы другие платили за своё использование"
+      - "Ограничить модель до самой дешёвой вне зависимости от качества"
+    correct_answer: 1
+    explanation: "Лучший подход — добавить проверку разрешений, чтобы только доверенные коллабораторы или члены организации могли запускать action. Это предотвращает злоупотребление, сохраняя функцию доступной для команды. Никогда не делайте API-ключи публичными."
+    review_link: ""

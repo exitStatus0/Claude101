@@ -8,6 +8,7 @@ translation_key: block-11-hands-on
 overview_url: /other/course/block-11-subagents/
 presentation_url: /other/course/block-11-subagents/presentation/
 hands_on_url: /other/course/block-11-subagents/hands-on/
+quiz_url: /other/course/block-11-subagents/quiz/
 permalink: /other/course/block-11-subagents/hands-on/
 ---
 > **Прямая речь:** "Всё на этой странице практики построено так, чтобы вы могли повторять за мной строка за строкой. Когда видите блок с командой или промптом, можете копировать его прямо в терминал или сессию Claude, если я явно не укажу, что это справочный материал. По ходу работы сравнивайте свой результат с моим на экране, чтобы ловить ошибки сразу, а не копить их."
@@ -460,3 +461,10 @@ Custom Agents (.claude/agents/):
 ---
 
 > **Далее**: В Блоке 12 мы собираем всё вместе с GitOps -- ArgoCD, автоматизированные деплои и полный цикл от изменения кода до продакшна. Ваш CI ревьюит PR с Claude, агенты валидируют манифесты, а ArgoCD синхронизирует результат с кластером.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-11-subagents/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>

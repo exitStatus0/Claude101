@@ -7,6 +7,7 @@ part_name: "Presentation"
 overview_url: /course/block-13-advanced/
 presentation_url: /course/block-13-advanced/presentation/
 hands_on_url: /course/block-13-advanced/hands-on/
+quiz_url: /course/block-13-advanced/quiz/
 permalink: /course/block-13-advanced/presentation/
 locale: en
 translation_key: block-13-presentation

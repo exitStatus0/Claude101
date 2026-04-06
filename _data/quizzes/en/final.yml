@@ -1,0 +1,273 @@
+questions:
+  # Block 0-1: Basics
+  - id: "f1"
+    type: short_answer
+    prompt: "What is the recommended install command for Claude Code?"
+    points: 1
+    accepted_answers: ["curl -fsSL https://claude.ai/install.sh | bash", "curl https://claude.ai/install.sh | bash", "brew install claude-code"]
+    explanation: "The recommended path is the native installer (curl) or Homebrew. npm is also supported but not the primary method."
+
+  - id: "f2"
+    type: single_choice
+    prompt: "What does /init do?"
+    points: 1
+    options:
+      - "Initializes a git repository"
+      - "Generates a CLAUDE.md file for the project"
+      - "Creates a .claude/ directory with default settings"
+      - "Runs npm init"
+    correct_answer: 1
+    explanation: "/init analyzes your codebase and generates a CLAUDE.md with project context."
+
+  # Block 2-3: Workflow
+  - id: "f3"
+    type: single_choice
+    prompt: "What is the difference between /clear and /compact?"
+    points: 1
+    options:
+      - "/clear compresses context, /compact resets it"
+      - "/clear resets the conversation, /compact compresses it to save tokens"
+      - "They do the same thing"
+      - "/clear exits the session, /compact pauses it"
+    correct_answer: 1
+    explanation: "/clear starts fresh. /compact compresses the conversation while preserving key context."
+
+  - id: "f4"
+    type: true_false
+    prompt: "Plan mode allows Claude to make file edits."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 1
+    explanation: "Plan mode is read-only. Claude analyzes and plans but does not modify files."
+
+  # Block 4-5: Editing & Memory
+  - id: "f5"
+    type: single_choice
+    prompt: "Which tool does Claude use for surgical text replacements in existing files?"
+    points: 1
+    options:
+      - "Write"
+      - "Edit"
+      - "Bash(sed)"
+      - "Replace"
+    correct_answer: 1
+    explanation: "Edit performs targeted string replacements. Write creates or fully rewrites files."
+
+  - id: "f6"
+    type: multi_select
+    prompt: "Which of these are part of Claude Code's memory system? (Select all)"
+    points: 2
+    options:
+      - "CLAUDE.md"
+      - ".claude/rules/*.md"
+      - "Auto memory"
+      - ".claude/history.log"
+    correct_answer: [0, 1, 2]
+    explanation: "CLAUDE.md, rules files, and auto memory form the memory hierarchy. There is no history.log."
+
+  # Block 6-7: Skills & Infra
+  - id: "f7"
+    type: short_answer
+    prompt: "What frontmatter field restricts which tools a skill can use?"
+    points: 1
+    accepted_answers: ["allowed-tools", "allowed_tools"]
+    explanation: "allowed-tools in SKILL.md frontmatter limits which Claude tools the skill can access."
+
+  - id: "f8"
+    type: single_choice
+    prompt: "What is k3s?"
+    points: 1
+    options:
+      - "A container runtime"
+      - "A lightweight certified Kubernetes distribution"
+      - "A CI/CD tool"
+      - "A DigitalOcean service"
+    correct_answer: 1
+    explanation: "k3s is a CNCF-certified Kubernetes distribution packaged as a single binary."
+
+  # Block 8: Hooks
+  - id: "f9"
+    type: single_choice
+    prompt: "How do Claude Code hooks receive context about the current tool call?"
+    points: 1
+    options:
+      - "Via environment variables like $CLAUDE_FILE_PATH"
+      - "Via JSON on stdin"
+      - "Via command-line arguments"
+      - "Via a temporary file"
+    correct_answer: 1
+    explanation: "Hooks receive JSON on stdin containing tool_name, tool_input, and other context."
+
+  - id: "f10"
+    type: single_choice
+    prompt: "What exit code should a hook return to block an operation?"
+    points: 1
+    options:
+      - "0"
+      - "1"
+      - "2"
+      - "255"
+    correct_answer: 2
+    explanation: "Exit code 0 = proceed, exit code 2 = block. Exit code 1 is treated as an error (proceeds)."
+
+  # Block 9: MCP
+  - id: "f11"
+    type: short_answer
+    prompt: "What command adds an MCP server to your project?"
+    points: 1
+    accepted_answers: ["claude mcp add", "claude mcp add --scope project"]
+    explanation: "claude mcp add with --scope project writes config to .mcp.json."
+
+  - id: "f12"
+    type: single_choice
+    prompt: "Where does project-scoped MCP configuration live?"
+    points: 1
+    options:
+      - ".claude/mcp.json"
+      - ".mcp.json"
+      - "~/.claude.json"
+      - "mcp.config.js"
+    correct_answer: 1
+    explanation: "Project-scoped MCP config lives in .mcp.json at the project root."
+
+  # Block 10: GitHub Actions
+  - id: "f13"
+    type: true_false
+    prompt: "The Claude GitHub Action uses your Pro subscription for API calls."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 1
+    explanation: "GitHub Actions requires a separate Anthropic API key with pay-per-token billing."
+
+  - id: "f14"
+    type: single_choice
+    prompt: "How do you trigger Claude to review a PR via GitHub Actions?"
+    points: 1
+    options:
+      - "Push to the branch"
+      - "Comment @claude on the PR"
+      - "Merge the PR"
+      - "Create a release"
+    correct_answer: 1
+    explanation: "The workflow triggers on issue/PR comments containing @claude."
+
+  # Block 11: Sub-agents
+  - id: "f15"
+    type: single_choice
+    prompt: "What is the key difference between sub-agents and inline Claude work?"
+    points: 1
+    options:
+      - "Sub-agents use a different model"
+      - "Sub-agents get isolated context windows and tool restrictions"
+      - "Sub-agents run on a remote server"
+      - "Sub-agents cost more"
+    correct_answer: 1
+    explanation: "Sub-agents have their own system prompts, context windows, and tool access limits."
+
+  - id: "f16"
+    type: short_answer
+    prompt: "What flag runs a sub-agent in an isolated git worktree?"
+    points: 1
+    accepted_answers: ["isolation: worktree", "worktree", "isolation: \"worktree\""]
+    explanation: "Setting isolation: worktree gives the sub-agent a separate copy of the repository."
+
+  # Block 12: GitOps
+  - id: "f17"
+    type: single_choice
+    prompt: "In GitOps, what is the single source of truth for cluster state?"
+    points: 1
+    options:
+      - "The Kubernetes API server"
+      - "The ArgoCD dashboard"
+      - "The Git repository"
+      - "The CI/CD pipeline"
+    correct_answer: 2
+    explanation: "GitOps makes Git the source of truth. ArgoCD reconciles the cluster to match Git."
+
+  - id: "f18"
+    type: single_choice
+    prompt: "In this course, what port exposes the app publicly?"
+    points: 1
+    options:
+      - "80"
+      - "443"
+      - "3000"
+      - "30080"
+    correct_answer: 3
+    explanation: "NodePort 30080 exposes the app on the droplet's public IP."
+
+  # Block 13: Advanced
+  - id: "f19"
+    type: single_choice
+    prompt: "What flag makes Claude run non-interactively for scripting?"
+    points: 1
+    options:
+      - "-c"
+      - "-p"
+      - "-w"
+      - "-n"
+    correct_answer: 1
+    explanation: "claude -p runs in print mode — one-shot, non-interactive, ideal for scripts."
+
+  - id: "f20"
+    type: true_false
+    prompt: "Agent teams are a stable, production-ready feature."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 1
+    explanation: "Agent teams are experimental and require CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1."
+
+  # Cross-block scenarios
+  - id: "f21"
+    type: scenario_best_action
+    prompt: "Your ArgoCD sync shows 'Degraded' health after pushing a change. What should you do first?"
+    points: 2
+    options:
+      - "Delete the ArgoCD application and recreate it"
+      - "Check pod logs with kubectl logs to find what's crashing"
+      - "Revert the git commit and force-push"
+      - "Restart k3s"
+    correct_answer: 1
+    explanation: "Degraded usually means a pod is failing. Check logs first to understand the actual error."
+
+  - id: "f22"
+    type: scenario_best_action
+    prompt: "You want Claude to auto-format files after every edit AND block changes to .env files. How do you set this up?"
+    points: 2
+    options:
+      - "Create two separate skills"
+      - "Add a PostToolUse hook for formatting and a PreToolUse hook for .env protection"
+      - "Put both rules in CLAUDE.md"
+      - "Use a single hook with both rules"
+    correct_answer: 1
+    explanation: "PostToolUse fires after edits (for formatting), PreToolUse fires before (for blocking). Different events, different hooks."
+
+  - id: "f23"
+    type: scenario_best_action
+    prompt: "Your team is onboarding to Claude Code. You want consistent K8s review standards across all team members. What's the best approach?"
+    points: 2
+    options:
+      - "Tell each person to configure their own CLAUDE.md"
+      - "Create a shared skill in .claude/skills/ and commit it to the repo"
+      - "Write a wiki page about it"
+      - "Set up a PostToolUse hook"
+    correct_answer: 1
+    explanation: "A shared skill in .claude/skills/ is version-controlled, consistent, and available to everyone who clones the repo."
+
+  - id: "f24"
+    type: scenario_best_action
+    prompt: "You need Claude to check GitHub issues and your local kubeconfig from the same session. What do you configure?"
+    points: 2
+    options:
+      - "Two separate Claude sessions"
+      - "GitHub and filesystem MCP servers in .mcp.json"
+      - "A custom sub-agent for each"
+      - "A hook that fetches GitHub data"
+    correct_answer: 1
+    explanation: "MCP servers extend Claude's capabilities. Configure both GitHub and filesystem servers so Claude can access both."

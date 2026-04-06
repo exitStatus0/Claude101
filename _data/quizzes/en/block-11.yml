@@ -1,0 +1,89 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "What are sub-agents in Claude Code?"
+    points: 1
+    options:
+      - "Separate Claude accounts that share a subscription"
+      - "Smaller LLM instances spawned by Claude Code to handle focused tasks independently"
+      - "Third-party plugins installed from a marketplace"
+      - "Background processes that monitor file changes"
+    correct_answer: 1
+    explanation: "Sub-agents are focused LLM instances that Claude Code spawns to handle specific subtasks. They operate with a narrower scope and can use a subset of tools."
+    review_link: ""
+
+  - id: "q2"
+    type: multi_select
+    prompt: "Which of the following are built-in sub-agent types in Claude Code? (Select all that apply.)"
+    points: 1
+    options:
+      - "Explore"
+      - "Plan"
+      - "Compile"
+      - "Agent (Task)"
+    correct_answer: [0, 1, 3]
+    explanation: "Explore (read-only research), Plan (architecture/design planning), and Agent/Task (delegated sub-task execution) are built-in sub-agent types. Compile is not a built-in sub-agent."
+    review_link: ""
+
+  - id: "q3"
+    type: single_choice
+    prompt: "What does the 'model:' field in a custom sub-agent definition control?"
+    points: 1
+    options:
+      - "The visual theme of the sub-agent's output"
+      - "Which LLM model the sub-agent uses for inference"
+      - "The maximum memory allocation for the sub-agent"
+      - "The programming language the sub-agent specializes in"
+    correct_answer: 1
+    explanation: "The 'model:' field specifies which LLM model the sub-agent should use. This allows you to choose a faster/cheaper model for simple tasks or a more capable model for complex ones."
+    review_link: ""
+
+  - id: "q4"
+    type: single_choice
+    prompt: "What does the 'tools:' field in a custom sub-agent definition do?"
+    points: 1
+    options:
+      - "Installs new CLI tools on the system"
+      - "Restricts which tools the sub-agent is allowed to use"
+      - "Lists npm packages the sub-agent depends on"
+      - "Defines keyboard shortcuts for the sub-agent"
+    correct_answer: 1
+    explanation: "The 'tools:' field constrains the set of tools available to the sub-agent. For example, you can limit a research sub-agent to read-only tools only."
+    review_link: ""
+
+  - id: "q5"
+    type: true_false
+    prompt: "Worktree isolation allows a sub-agent to work on a separate Git branch without interfering with your current working directory."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 0
+    explanation: "Git worktree isolation gives a sub-agent its own working directory on a separate branch, so its file changes do not conflict with the main agent's or your own work."
+    review_link: ""
+
+  - id: "q6"
+    type: single_choice
+    prompt: "Why might you assign a less expensive model to a sub-agent handling a simple task?"
+    points: 1
+    options:
+      - "Cheaper models are always faster and more accurate"
+      - "To reduce API costs without sacrificing quality on straightforward work"
+      - "Expensive models cannot be used as sub-agents"
+      - "Sub-agents are required to use a different model than the parent"
+    correct_answer: 1
+    explanation: "Using a less expensive model for simple sub-tasks (like file searches or formatting) saves API costs while the parent agent or other sub-agents handle the complex reasoning with a more capable model."
+    review_link: ""
+
+  - id: "q7"
+    type: scenario_best_action
+    prompt: "You need Claude Code to refactor a module while simultaneously writing tests for another module, without the two tasks causing merge conflicts. What is the best approach?"
+    points: 2
+    options:
+      - "Ask Claude to do the refactor first, then the tests sequentially"
+      - "Open two separate Claude Code sessions manually"
+      - "Use sub-agents with worktree isolation so each task runs on its own branch in parallel"
+      - "Copy the entire repo into a second directory and work on both"
+    correct_answer: 2
+    explanation: "Sub-agents with worktree isolation is the purpose-built solution. Each sub-agent gets its own Git worktree and branch, allowing parallel work without conflicts, and the results can be merged back."
+    review_link: ""

@@ -8,6 +8,7 @@ translation_key: block-07-presentation
 overview_url: /other/course/block-07-infrastructure/
 presentation_url: /other/course/block-07-infrastructure/presentation/
 hands_on_url: /other/course/block-07-infrastructure/hands-on/
+quiz_url: /other/course/block-07-infrastructure/quiz/
 permalink: /other/course/block-07-infrastructure/presentation/
 ---
 > **Продолжительность**: ~10 минут

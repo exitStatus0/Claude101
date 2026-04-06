@@ -8,6 +8,7 @@ translation_key: block-08-hands-on
 overview_url: /other/course/block-08-hooks/
 presentation_url: /other/course/block-08-hooks/presentation/
 hands_on_url: /other/course/block-08-hooks/hands-on/
+quiz_url: /other/course/block-08-hooks/quiz/
 permalink: /other/course/block-08-hooks/hands-on/
 ---
 > **Прямая речь:** "Всё на этой странице практики построено так, чтобы вы могли повторять за мной строка за строкой. Когда видите блок с командой или промптом, можете копировать его прямо в терминал или сессию Claude, если я явно не укажу, что это справочный материал. По ходу работы сравнивайте свой результат с моим на экране, чтобы ловить ошибки сразу, а не копить их."
@@ -454,3 +455,10 @@ Claude попытается выполнить `kubectl delete namespace ai-code
 ---
 
 > **Далее**: В Блоке 9 мы вырываемся за пределы локального терминала. MCP-серверы подключают Claude к GitHub, базам данных, Slack и десяткам других инструментов -- превращая его из помощника по коду в полноценный движок рабочего процесса разработки.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-08-hooks/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>

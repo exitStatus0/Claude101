@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-07-infrastructure/
 presentation_url: /course/block-07-infrastructure/presentation/
 hands_on_url: /course/block-07-infrastructure/hands-on/
+quiz_url: /course/block-07-infrastructure/quiz/
 permalink: /course/block-07-infrastructure/hands-on/
 locale: en
 translation_key: block-07-hands-on
@@ -394,3 +395,10 @@ Include safety prompts before destructive actions.
 ---
 
 > **Next up**: In Block 8, we teach Claude Code reflexes — hooks that auto-format your code, block dangerous edits, and notify you when long tasks finish. Automation that fires without you even thinking about it.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-07-infrastructure/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

@@ -7,6 +7,7 @@ part_name: "Presentation"
 overview_url: /course/block-06-skills/
 presentation_url: /course/block-06-skills/presentation/
 hands_on_url: /course/block-06-skills/hands-on/
+quiz_url: /course/block-06-skills/quiz/
 permalink: /course/block-06-skills/presentation/
 locale: en
 translation_key: block-06-presentation

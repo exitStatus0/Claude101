@@ -42,6 +42,27 @@ aria:
   course_nav: "Навигация по курсу"
   toc: "Содержание"
 
+quiz:
+  quiz: "Квиз"
+  quiz_desc: "Проверьте свои знания по этому блоку."
+  take_quiz: "Готовы проверить себя? Пройдите квиз."
+  questions_label: "вопросов"
+  points_label: "баллов"
+  question_prefix: "В"
+  pts: "б."
+  submit: "Отправить ответы"
+  reset: "Начать заново"
+  correct: "Верно!"
+  incorrect: "Неверно."
+  review: "Повторить тему"
+  correct_count: "правильно"
+  type_answer: "Введите ваш ответ..."
+  no_questions: "Вопросы для квиза готовятся."
+  level_expert: "Эксперт"
+  level_solid: "Уверенный"
+  level_developing: "В процессе"
+  level_review: "Нужно повторить"
+
 switcher:
   english: English
   other: Other

@@ -20,6 +20,7 @@ objectives:
 overview_url: /other/course/block-08-hooks/
 presentation_url: /other/course/block-08-hooks/presentation/
 hands_on_url: /other/course/block-08-hooks/hands-on/
+quiz_url: /other/course/block-08-hooks/quiz/
 locale: ru
 translation_key: block-08
 ---
@@ -70,5 +71,10 @@ translation_key: block-08
   <a href="{{ '/other/course/block-08-hooks/hands-on/' | relative_url }}" class="quick-card">
     <h3>Практика</h3>
     <p>Готовые команды для терминала и промпты для части с демонстрацией экрана.</p>
+  </a>
+
+  <a href="{{ '/other/course/block-08-hooks/quiz/' | relative_url }}" class="quick-card">
+    <h3>Квиз</h3>
+    <p>Проверьте свои знания по этому блоку — 6-8 вопросов.</p>
   </a>
 </div>

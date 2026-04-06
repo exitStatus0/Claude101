@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-13-advanced/
 presentation_url: /course/block-13-advanced/presentation/
 hands_on_url: /course/block-13-advanced/hands-on/
+quiz_url: /course/block-13-advanced/quiz/
 permalink: /course/block-13-advanced/hands-on/
 locale: en
 translation_key: block-13-hands-on
@@ -338,3 +339,15 @@ You did the work. Thirteen blocks. Dozens of commands. A live application on the
 The next time someone asks "What can AI tools actually do for DevOps?" — you don't need to speculate. You can show them. Open a terminal, type `claude`, and demonstrate.
 
 That's the best answer there is.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-13-advanced/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>
+
+<div class="cta-block" style="margin-top: var(--space-lg);">
+  <p>Completed the whole course? Take the final cumulative quiz.</p>
+  <a href="{{ '/course/final-quiz/' | relative_url }}" class="hero-cta">Final Quiz &rarr;</a>
+</div>

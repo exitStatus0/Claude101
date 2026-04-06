@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-06-skills/
 presentation_url: /course/block-06-skills/presentation/
 hands_on_url: /course/block-06-skills/hands-on/
+quiz_url: /course/block-06-skills/quiz/
 permalink: /course/block-06-skills/hands-on/
 locale: en
 translation_key: block-06-hands-on
@@ -404,3 +405,10 @@ Run `/review-k8s`, then use the findings to manually ask Claude to fix the criti
 ---
 
 > **Next up**: In Block 7, we take Claude Code beyond the codebase and into real infrastructure — Docker builds, Kubernetes clusters, and SSH into live servers. Claude doesn't just write code; it operates systems.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-06-skills/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

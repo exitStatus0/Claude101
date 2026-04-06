@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-10-github-actions/
 presentation_url: /course/block-10-github-actions/presentation/
 hands_on_url: /course/block-10-github-actions/hands-on/
+quiz_url: /course/block-10-github-actions/quiz/
 permalink: /course/block-10-github-actions/hands-on/
 locale: en
 translation_key: block-10-hands-on
@@ -398,3 +399,10 @@ After Claude reviews your test PR, comment `@claude your review missed that the 
 ---
 
 > **Next up**: In Block 11, we go beyond a single Claude session and into sub-agents -- specialized AI workers that Claude can delegate to. Think of it as building a team of AI specialists, each with their own expertise, tools, and constraints.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-10-github-actions/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

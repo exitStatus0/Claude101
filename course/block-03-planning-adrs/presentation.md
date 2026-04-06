@@ -7,6 +7,7 @@ part_name: "Presentation"
 overview_url: /course/block-03-planning-adrs/
 presentation_url: /course/block-03-planning-adrs/presentation/
 hands_on_url: /course/block-03-planning-adrs/hands-on/
+quiz_url: /course/block-03-planning-adrs/quiz/
 permalink: /course/block-03-planning-adrs/presentation/
 locale: en
 translation_key: block-03-presentation

@@ -1,0 +1,100 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "Что такое хук (hook) в Claude Code?"
+    points: 1
+    options:
+      - "Git pre-commit скрипт, который Claude пишет автоматически"
+      - "Пользовательская команда оболочки, запускаемая на определённых этапах жизненного цикла Claude Code"
+      - "Система плагинов для установки сторонних расширений Claude"
+      - "API-эндпоинт для получения webhook-обратных вызовов от Claude"
+    correct_answer: 1
+    explanation: "Хуки — это пользовательские команды оболочки, настроенные для запуска на определённых этапах жизненного цикла (например, до/после команды, при уведомлении) внутри Claude Code."
+    review_link: ""
+
+  - id: "q2"
+    type: multi_select
+    prompt: "Какие из перечисленных типов хуков Claude Code являются допустимыми? (Выберите все подходящие.)"
+    points: 1
+    options:
+      - "PreToolUse"
+      - "PostToolUse"
+      - "Notification"
+      - "PreCompile"
+      - "Stop"
+    correct_answer: [0, 1, 2, 4]
+    explanation: "PreToolUse, PostToolUse, Notification и Stop — допустимые типы хуков. PreCompile не является типом хука Claude Code."
+    review_link: ""
+
+  - id: "q3"
+    type: single_choice
+    prompt: "Команда хука получает свой контекст через:"
+    points: 1
+    options:
+      - "Аргументы командной строки"
+      - "Переменные окружения"
+      - "JSON-объект на stdin"
+      - "Путь к временному файлу, переданный первым аргументом"
+    correct_answer: 2
+    explanation: "Команды хуков получают JSON-объект на stdin, содержащий контекст о текущем событии (имя инструмента, входные данные и т.д.)."
+    review_link: ""
+
+  - id: "q4"
+    type: single_choice
+    prompt: "Что означает код выхода 2 от команды хука для Claude Code?"
+    points: 1
+    options:
+      - "Хук выполнен успешно, и вызов инструмента должен продолжиться"
+      - "Хук завершился ошибкой, и Claude Code должен повторить попытку"
+      - "Вызов инструмента должен быть заблокирован (отклонён)"
+      - "Claude Code должен завершить сессию"
+    correct_answer: 2
+    explanation: "Код выхода 2 указывает Claude Code заблокировать/отклонить вызов инструмента. Код выхода 0 означает нормальное продолжение, а любой другой ненулевой код трактуется как ошибка."
+    review_link: ""
+
+  - id: "q5"
+    type: true_false
+    prompt: "Хук, который выводит JSON с полем 'reason' в stdout, может предоставить обратную связь, которую Claude видит, когда хук блокирует вызов инструмента."
+    points: 1
+    options:
+      - "Верно"
+      - "Неверно"
+    correct_answer: 0
+    explanation: "Когда хук завершается с кодом 2 (блокировка), он может записать JSON в stdout с полем 'reason'. Claude Code передаёт эту причину модели, чтобы она могла скорректировать своё поведение."
+    review_link: ""
+
+  - id: "q6"
+    type: short_answer
+    prompt: "Какой инструмент командной строки обычно используется в скриптах хуков для парсинга JSON, который Claude Code отправляет на stdin?"
+    points: 1
+    accepted_answers:
+      - "jq"
+      - "jq."
+    explanation: "jq — стандартный CLI-инструмент для парсинга и запросов JSON. Это рекомендуемый способ извлечения полей из JSON на stdin внутри скриптов хуков."
+    review_link: ""
+
+  - id: "q7"
+    type: scenario_best_action
+    prompt: "Вы хотите запретить Claude Code когда-либо записывать файлы в продакшн-директорию 'deploy/'. Какой лучший подход?"
+    points: 2
+    options:
+      - "Сказать Claude в системном промпте никогда не трогать deploy/"
+      - "Создать хук PreToolUse, который проверяет путь файла и завершается с кодом 2, если он совпадает с deploy/"
+      - "Убрать права на запись у директории deploy/ на уровне ОС"
+      - "Добавить deploy/ в .gitignore, чтобы Claude не мог его видеть"
+    correct_answer: 1
+    explanation: "Хук PreToolUse может проверить JSON с входными данными инструмента, проверить целевой путь файла и завершиться с кодом 2 для блокировки записи. Это специальный механизм в Claude Code для защитных ограничений. Права ОС работают, но грубо; .gitignore не предотвращает запись; инструкции в системном промпте не принудительны."
+    review_link: ""
+
+  - id: "q8"
+    type: single_choice
+    prompt: "Где настраиваются хуки Claude Code?"
+    points: 1
+    options:
+      - "В директории .hooks/ в корне проекта"
+      - "В файле settings.json под ключом 'hooks'"
+      - "В отдельном файле hooks.yml"
+      - "Только в файле .claude/config.json"
+    correct_answer: 1
+    explanation: "Хуки настраиваются в settings.json (на уровне проекта .claude/settings.json или на уровне пользователя ~/.claude/settings.json) под ключом 'hooks'."
+    review_link: ""

@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-01-understanding/
 presentation_url: /course/block-01-understanding/presentation/
 hands_on_url: /course/block-01-understanding/hands-on/
+quiz_url: /course/block-01-understanding/quiz/
 permalink: /course/block-01-understanding/hands-on/
 locale: en
 translation_key: block-01-hands-on
@@ -219,3 +220,10 @@ If you want extra practice before Block 2, try these exploration exercises:
 - Ask it to explain the GitHub Actions workflow step by step
 - Ask it to find any potential security concerns in the codebase
 - Ask it to describe the testing setup and what kinds of tests exist
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-01-understanding/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

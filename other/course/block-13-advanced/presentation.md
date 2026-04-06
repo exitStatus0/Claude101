@@ -8,6 +8,7 @@ translation_key: block-13-presentation
 overview_url: /other/course/block-13-advanced/
 presentation_url: /other/course/block-13-advanced/presentation/
 hands_on_url: /other/course/block-13-advanced/hands-on/
+quiz_url: /other/course/block-13-advanced/quiz/
 permalink: /other/course/block-13-advanced/presentation/
 ---
 > **Длительность**: ~10 минут

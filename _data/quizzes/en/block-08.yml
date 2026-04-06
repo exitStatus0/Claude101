@@ -1,0 +1,100 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "What is a Claude Code hook?"
+    points: 1
+    options:
+      - "A Git pre-commit script that Claude writes automatically"
+      - "A user-defined shell command that runs at specific lifecycle events in Claude Code"
+      - "A plugin system for installing third-party Claude extensions"
+      - "An API endpoint for receiving webhook callbacks from Claude"
+    correct_answer: 1
+    explanation: "Hooks are user-defined shell commands configured to run at specific lifecycle events (e.g., before/after a command, on notification) within Claude Code."
+    review_link: ""
+
+  - id: "q2"
+    type: multi_select
+    prompt: "Which of the following are valid Claude Code hook types? (Select all that apply.)"
+    points: 1
+    options:
+      - "PreToolUse"
+      - "PostToolUse"
+      - "Notification"
+      - "PreCompile"
+      - "Stop"
+    correct_answer: [0, 1, 2, 4]
+    explanation: "PreToolUse, PostToolUse, Notification, and Stop are valid hook types. PreCompile is not a Claude Code hook type."
+    review_link: ""
+
+  - id: "q3"
+    type: single_choice
+    prompt: "A hook command receives its context via:"
+    points: 1
+    options:
+      - "Command-line arguments"
+      - "Environment variables"
+      - "A JSON object on stdin"
+      - "A temporary file path passed as the first argument"
+    correct_answer: 2
+    explanation: "Hook commands receive a JSON object on stdin containing context about the current event (tool name, input, etc.)."
+    review_link: ""
+
+  - id: "q4"
+    type: single_choice
+    prompt: "What does exit code 2 from a hook command signal to Claude Code?"
+    points: 1
+    options:
+      - "The hook succeeded and the tool call should proceed"
+      - "The hook failed and Claude Code should retry"
+      - "The tool call should be blocked (rejected)"
+      - "Claude Code should terminate the session"
+    correct_answer: 2
+    explanation: "Exit code 2 tells Claude Code to block/reject the tool call. Exit code 0 means proceed normally, and any other non-zero code is treated as an error."
+    review_link: ""
+
+  - id: "q5"
+    type: true_false
+    prompt: "A hook that outputs JSON with a 'reason' field on stdout can provide feedback that Claude sees when the hook blocks a tool call."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 0
+    explanation: "When a hook exits with code 2 (block), it can write JSON to stdout with a 'reason' field. Claude Code passes that reason back to the model so it can adjust its behavior."
+    review_link: ""
+
+  - id: "q6"
+    type: short_answer
+    prompt: "Which command-line tool is commonly used inside hook scripts to parse the JSON that Claude Code sends on stdin?"
+    points: 1
+    accepted_answers:
+      - "jq"
+      - "jq."
+    explanation: "jq is the standard CLI tool for parsing and querying JSON. It is the recommended way to extract fields from the stdin JSON inside hook scripts."
+    review_link: ""
+
+  - id: "q7"
+    type: scenario_best_action
+    prompt: "You want to prevent Claude Code from ever writing to files inside your production 'deploy/' directory. What is the best approach?"
+    points: 2
+    options:
+      - "Tell Claude in the system prompt to never touch deploy/"
+      - "Create a PreToolUse hook that checks the file path and exits with code 2 if it matches deploy/"
+      - "Remove write permissions on the deploy/ directory at the OS level"
+      - "Add deploy/ to .gitignore so Claude cannot see it"
+    correct_answer: 1
+    explanation: "A PreToolUse hook can inspect the tool input JSON, check the target file path, and exit with code 2 to block the write. This is the purpose-built mechanism in Claude Code for guardrails. OS permissions work but are blunt; .gitignore does not prevent writes; system prompt instructions are not enforced."
+    review_link: ""
+
+  - id: "q8"
+    type: single_choice
+    prompt: "Where are Claude Code hooks configured?"
+    points: 1
+    options:
+      - "In a .hooks/ directory at the project root"
+      - "In the settings.json file under a 'hooks' key"
+      - "In a dedicated hooks.yml file"
+      - "In the .claude/config.json file only"
+    correct_answer: 1
+    explanation: "Hooks are configured in settings.json (either project-level .claude/settings.json or user-level ~/.claude/settings.json) under the 'hooks' key."
+    review_link: ""

@@ -42,6 +42,27 @@ aria:
   course_nav: "Course navigation"
   toc: "Table of contents"
 
+quiz:
+  quiz: Quiz
+  quiz_desc: "Test your knowledge from this block."
+  take_quiz: "Ready to check retention? Take the quiz."
+  questions_label: questions
+  points_label: points
+  question_prefix: "Q"
+  pts: pts
+  submit: "Submit Answers"
+  reset: "Reset Quiz"
+  correct: "Correct!"
+  incorrect: "Incorrect."
+  review: "Review this topic"
+  correct_count: correct
+  type_answer: "Type your answer..."
+  no_questions: "Quiz questions are being prepared."
+  level_expert: Expert
+  level_solid: Solid
+  level_developing: Developing
+  level_review: "Needs Review"
+
 switcher:
   english: English
   other: Other

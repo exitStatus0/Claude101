@@ -7,6 +7,7 @@ part_name: "Presentation"
 overview_url: /course/block-10-github-actions/
 presentation_url: /course/block-10-github-actions/presentation/
 hands_on_url: /course/block-10-github-actions/hands-on/
+quiz_url: /course/block-10-github-actions/quiz/
 permalink: /course/block-10-github-actions/presentation/
 locale: en
 translation_key: block-10-presentation

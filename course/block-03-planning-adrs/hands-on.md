@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-03-planning-adrs/
 presentation_url: /course/block-03-planning-adrs/presentation/
 hands_on_url: /course/block-03-planning-adrs/hands-on/
+quiz_url: /course/block-03-planning-adrs/quiz/
 permalink: /course/block-03-planning-adrs/hands-on/
 locale: en
 translation_key: block-03-hands-on
@@ -296,3 +297,10 @@ Before moving to Block 4, verify:
 In Block 4, we'll take this plan and *execute* it. Claude will edit Tailwind config, CSS variables, and component styles to implement the dark theme. You'll see the Edit tool in action — surgical, precise file modifications — and you'll learn how to iterate on visual changes with Claude until the result looks exactly right.
 
 The plan is done. Time to build.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-03-planning-adrs/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

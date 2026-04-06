@@ -8,6 +8,7 @@ translation_key: block-10-presentation
 overview_url: /other/course/block-10-github-actions/
 presentation_url: /other/course/block-10-github-actions/presentation/
 hands_on_url: /other/course/block-10-github-actions/hands-on/
+quiz_url: /other/course/block-10-github-actions/quiz/
 permalink: /other/course/block-10-github-actions/presentation/
 ---
 > **Продолжительность**: ~10 минут

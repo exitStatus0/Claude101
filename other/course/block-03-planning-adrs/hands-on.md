@@ -8,6 +8,7 @@ translation_key: block-03-hands-on
 overview_url: /other/course/block-03-planning-adrs/
 presentation_url: /other/course/block-03-planning-adrs/presentation/
 hands_on_url: /other/course/block-03-planning-adrs/hands-on/
+quiz_url: /other/course/block-03-planning-adrs/quiz/
 permalink: /other/course/block-03-planning-adrs/hands-on/
 ---
 > **Прямая речь:** "Всё на этой практической странице построено так, чтобы вы могли повторять за мной строка за строкой. Когда вы видите блок с командой или промптом, можете копировать его прямо в терминал или сессию Claude, если я явно не скажу, что это справочный материал. По ходу дела сравнивайте свой результат с моим на экране, чтобы ловить ошибки рано, а не копить их."
@@ -294,3 +295,10 @@ will we change in Block 4 and in what order?
 В Блоке 4 мы возьмём этот план и *реализуем* его. Claude будет редактировать конфигурацию Tailwind, CSS-переменные и стили компонентов для внедрения тёмной темы. Вы увидите инструмент Edit в действии — хирургически точные модификации файлов — и научитесь итерировать визуальные изменения с Claude, пока результат не будет выглядеть именно так, как нужно.
 
 План готов. Время строить.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-03-planning-adrs/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>

@@ -8,6 +8,7 @@ part_name: "Presentation"
 overview_url: /course/block-02-running-testing/
 presentation_url: /course/block-02-running-testing/presentation/
 hands_on_url: /course/block-02-running-testing/hands-on/
+quiz_url: /course/block-02-running-testing/quiz/
 permalink: /course/block-02-running-testing/presentation/
 locale: en
 translation_key: block-02-presentation

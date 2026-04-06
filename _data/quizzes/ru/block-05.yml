@@ -1,0 +1,77 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "Где находится пользовательский CLAUDE.md?"
+    points: 1
+    options:
+      - "~/.claude/CLAUDE.md"
+      - "./CLAUDE.md"
+      - "~/.config/claude/CLAUDE.md"
+      - "/etc/claude/CLAUDE.md"
+    correct_answer: 0
+    explanation: "Пользовательские инструкции хранятся в ~/.claude/CLAUDE.md и применяются ко всем проектам."
+
+  - id: "q2"
+    type: true_false
+    prompt: "CLAUDE.local.md предназначен для коммита в git."
+    points: 1
+    options:
+      - "Верно"
+      - "Неверно"
+    correct_answer: 1
+    explanation: "CLAUDE.local.md по соглашению добавлен в gitignore. Он хранит персональные/локальные переопределения."
+
+  - id: "q3"
+    type: multi_select
+    prompt: "Какие из этих мест являются допустимыми для инструкций проекта? (Выберите все подходящие)"
+    points: 2
+    options:
+      - "./CLAUDE.md"
+      - "./.claude/CLAUDE.md"
+      - "./.claude/rules/*.md"
+      - "./claude-instructions.txt"
+    correct_answer: [0, 1, 2]
+    explanation: "Claude читает CLAUDE.md, .claude/CLAUDE.md и .claude/rules/*.md. Соглашения о claude-instructions.txt не существует."
+
+  - id: "q4"
+    type: short_answer
+    prompt: "Какая слэш-команда показывает всю загруженную память и инструкции?"
+    points: 1
+    accepted_answers: ["/memory", "memory"]
+    explanation: "/memory отображает всё, что Claude загрузил: файлы CLAUDE.md, правила и автоматическую память."
+
+  - id: "q5"
+    type: single_choice
+    prompt: "Чем файлы .claude/rules/ особенны по сравнению с CLAUDE.md?"
+    points: 1
+    options:
+      - "Они загружаются условно, на основе шаблонов путей файлов"
+      - "Они имеют более высокий приоритет, чем CLAUDE.md"
+      - "Они зашифрованы"
+      - "Они работают только в VS Code"
+    correct_answer: 0
+    explanation: "Файлы правил используют frontmatter с указанием путей и загружаются только при работе с подходящими файлами."
+
+  - id: "q6"
+    type: scenario_best_action
+    prompt: "У вашей команды есть соглашения по K8s, которые применимы только при редактировании манифестов. Куда их поместить?"
+    points: 2
+    options:
+      - "В проектный CLAUDE.md"
+      - "В .claude/rules/k8s.md с фильтром путей для k8s/**"
+      - "В ~/.claude/CLAUDE.md"
+      - "В CLAUDE.local.md"
+    correct_answer: 1
+    explanation: "Правила для конкретных путей в .claude/rules/ с фильтром путей загружаются только при необходимости, не загрязняя другие контексты."
+
+  - id: "q7"
+    type: single_choice
+    prompt: "В иерархии памяти что имеет наивысший приоритет?"
+    points: 1
+    options:
+      - "Пользовательский CLAUDE.md"
+      - "Проектный CLAUDE.md"
+      - "Managed Policy"
+      - "Автоматическая память"
+    correct_answer: 2
+    explanation: "Managed Policy (уровень организации) имеет наивысший приоритет и не может быть переопределена."

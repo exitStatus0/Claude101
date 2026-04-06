@@ -1,0 +1,101 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "How do you activate Plan mode in Claude Code?"
+    points: 1
+    options:
+      - "Type `/plan` or press Shift+Tab before sending your message"
+      - "Add the word 'plan' anywhere in your prompt"
+      - "Claude always plans automatically before making changes"
+      - "Run `claude --plan` when starting a session"
+    correct_answer: 0
+    explanation: "Plan mode is activated by typing `/plan` or pressing Shift+Tab. This switches Claude from 'doer' mode to 'thinker' mode — it will outline what it would do and get your approval before touching any files."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "What is an Architecture Decision Record (ADR)?"
+    points: 1
+    options:
+      - "A full design document covering all aspects of the system"
+      - "A short, opinionated document that captures a specific technical decision and its reasoning"
+      - "A changelog entry generated automatically by CI/CD"
+      - "A code comment explaining a complex function"
+    correct_answer: 1
+    explanation: "An ADR is a lightweight document that answers one key question: 'why did we make this choice?' Unlike design docs, ADRs are short, opinionated, and focused on a single decision — making them actually useful for future developers."
+    review_link: ""
+
+  - id: "q3"
+    type: true_false
+    prompt: "Mermaid diagrams are image files that must be re-exported every time you update them."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 1
+    explanation: "False. Mermaid diagrams are text-based and written in Markdown. GitHub renders them natively, they are version-controlled, and diff-friendly. You edit text, not images — no export step needed."
+    review_link: ""
+
+  - id: "q4"
+    type: scenario_best_action
+    prompt: "Your team lead asks you to implement a dark theme across the entire application. It will touch the Tailwind config, CSS variables, the ThemeProvider, and multiple components. What is the best approach with Claude Code?"
+    points: 2
+    options:
+      - "Start coding immediately — Claude is fast enough to fix mistakes as you go"
+      - "Use Plan mode to have Claude outline every file and change, create an ADR documenting the decision, then review the plan before implementing"
+      - "Ask Claude to generate the ADR only and implement the theme manually"
+      - "Create a new branch and let Claude change files randomly until it looks right"
+    correct_answer: 1
+    explanation: "For multi-file changes, planning first is critical. Plan mode lets Claude map out every file it will touch and every change it will make. An ADR documents the 'why' for future reference. Only after reviewing and approving the plan should you move to implementation (Block 4). This prevents the 'changed 47 files and can't remember why' antipattern."
+    review_link: ""
+
+  - id: "q5"
+    type: single_choice
+    prompt: "What happens when Claude is in Plan mode?"
+    points: 1
+    options:
+      - "It reads code but cannot write any files or run any commands"
+      - "It outlines what it would do, which files it would change, and waits for your approval before acting"
+      - "It automatically creates a pull request with the proposed changes"
+      - "It runs the changes in a sandbox environment for you to preview"
+    correct_answer: 1
+    explanation: "In Plan mode, Claude thinks through the problem and shows you a structured plan: which files to modify, what changes to make, and in what order. It does not execute anything until you review and approve the plan."
+    review_link: ""
+
+  - id: "q6"
+    type: multi_select
+    prompt: "Which of the following are valid reasons to use Mermaid diagrams in your project? (Select all that apply)"
+    points: 2
+    options:
+      - "They are version-controlled alongside your code"
+      - "GitHub renders them natively in Markdown files"
+      - "They produce higher quality images than dedicated diagramming tools"
+      - "They are diff-friendly — you can see what changed in a PR review"
+    correct_answer: [0, 1, 3]
+    explanation: "Mermaid diagrams are text-based, version-controlled, diff-friendly, and GitHub renders them natively. They may not produce the highest-fidelity images compared to tools like Figma, but their developer-workflow advantages are significant."
+    review_link: ""
+
+  - id: "q7"
+    type: single_choice
+    prompt: "In the course project, which four documentation files does Block 3 produce?"
+    points: 1
+    options:
+      - "README.md, CONTRIBUTING.md, CHANGELOG.md, LICENSE"
+      - "docs/adr/001-dark-theme.md, docs/diagrams/infrastructure.md, docs/diagrams/traffic-flow.md, docs/diagrams/deployment-pipeline.md"
+      - "CLAUDE.md, .claude/rules/theme.md, docs/theme-spec.md, tests/theme.test.md"
+      - "plan.md, review.md, approve.md, implement.md"
+    correct_answer: 1
+    explanation: "Block 3 produces an ADR for the dark theme decision and three Mermaid diagrams: infrastructure topology (DO + k3s), traffic flow (request routing), and the deployment pipeline (CI/CD). These are the artifacts a senior engineer would create before a major change."
+    review_link: ""
+
+  - id: "q8"
+    type: short_answer
+    prompt: "What keyboard shortcut toggles Plan mode in Claude Code?"
+    points: 1
+    accepted_answers:
+      - "Shift+Tab"
+      - "shift+tab"
+      - "Shift + Tab"
+      - "shift + tab"
+    explanation: "Pressing Shift+Tab toggles between Plan mode (thinking) and normal mode (doing). You can also use the `/plan` slash command."
+    review_link: ""

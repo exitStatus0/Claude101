@@ -7,6 +7,7 @@ part_name: "Presentation"
 overview_url: /course/block-11-subagents/
 presentation_url: /course/block-11-subagents/presentation/
 hands_on_url: /course/block-11-subagents/hands-on/
+quiz_url: /course/block-11-subagents/quiz/
 permalink: /course/block-11-subagents/presentation/
 locale: en
 translation_key: block-11-presentation

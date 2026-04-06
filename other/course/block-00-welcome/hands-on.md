@@ -8,6 +8,7 @@ translation_key: block-00-hands-on
 overview_url: /other/course/block-00-welcome/
 presentation_url: /other/course/block-00-welcome/presentation/
 hands_on_url: /other/course/block-00-welcome/hands-on/
+quiz_url: /other/course/block-00-welcome/quiz/
 permalink: /other/course/block-00-welcome/hands-on/
 ---
 > **Прямая речь:** "Всё на этой практической странице построено так, чтобы вы могли повторять за мной строка за строкой. Когда вы видите блок с командой или промптом, можете копировать его прямо в терминал или сессию Claude, если я явно не скажу, что это справочный материал. По ходу дела сравнивайте свой результат с моим на экране, чтобы ловить ошибки рано, а не копить их."
@@ -224,3 +225,10 @@ Are there any Docker or Kubernetes configs in this project?
 
 **"Permission denied" при установке**
 Если `npm install -g` выдаёт ошибки разрешений, либо исправьте глобальный префикс npm (`npm config set prefix ~/.npm-global` и добавьте `~/.npm-global/bin` в PATH), либо используйте менеджер версий Node, например `nvm`, который избавляет от этой проблемы.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-00-welcome/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>

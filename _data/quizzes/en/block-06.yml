@@ -1,0 +1,77 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "Where must a custom skill file be placed for it to work as a project-level skill?"
+    points: 1
+    options:
+      - ".claude/skills/skill-name/SKILL.md"
+      - ".claude/SKILL.md"
+      - "skills/skill-name.md"
+      - ".claude/commands/skill-name.md"
+    correct_answer: 0
+    explanation: "Skills must be at .claude/skills/<name>/SKILL.md for project scope."
+
+  - id: "q2"
+    type: short_answer
+    prompt: "What variable in a skill file captures user-provided arguments?"
+    points: 1
+    accepted_answers: ["$ARGUMENTS", "ARGUMENTS", "$arguments"]
+    explanation: "$ARGUMENTS passes whatever the user types after the slash command into the skill instructions."
+
+  - id: "q3"
+    type: true_false
+    prompt: "A skill with allowed-tools: [Read, Grep, Glob] can also run Bash commands."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 1
+    explanation: "allowed-tools restricts which tools the skill can use. If Bash is not listed, it cannot run shell commands."
+
+  - id: "q4"
+    type: single_choice
+    prompt: "What does the /simplify bundled skill do?"
+    points: 1
+    options:
+      - "Simplifies the CLAUDE.md file"
+      - "Reviews and improves recent code for quality"
+      - "Reduces the conversation context size"
+      - "Converts complex YAML to simple JSON"
+    correct_answer: 1
+    explanation: "/simplify reviews recently changed code for reuse, quality, and efficiency."
+
+  - id: "q5"
+    type: scenario_best_action
+    prompt: "You want to create a skill that audits Dockerfiles but should NOT be able to modify any files. What frontmatter field do you use?"
+    points: 2
+    options:
+      - "readonly: true"
+      - "allowed-tools: [Read, Grep, Glob]"
+      - "permissions: read-only"
+      - "mode: plan"
+    correct_answer: 1
+    explanation: "allowed-tools restricts the skill to only the listed tools. Omitting Write/Edit/Bash makes it read-only."
+
+  - id: "q6"
+    type: multi_select
+    prompt: "Which are valid skill frontmatter fields? (Select all that apply)"
+    points: 2
+    options:
+      - "name"
+      - "description"
+      - "allowed-tools"
+      - "priority"
+    correct_answer: [0, 1, 2]
+    explanation: "name, description, and allowed-tools are valid frontmatter. There is no priority field."
+
+  - id: "q7"
+    type: single_choice
+    prompt: "Where do personal skills (not shared with your team) live?"
+    points: 1
+    options:
+      - "~/.claude/skills/*/SKILL.md"
+      - "./personal-skills/"
+      - "./.claude/skills.local/"
+      - "~/skills/"
+    correct_answer: 0
+    explanation: "User-level skills at ~/.claude/skills/ apply to all your projects but aren't shared via version control."

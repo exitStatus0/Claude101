@@ -7,6 +7,7 @@ part_name: "Presentation"
 overview_url: /course/block-05-memory/
 presentation_url: /course/block-05-memory/presentation/
 hands_on_url: /course/block-05-memory/hands-on/
+quiz_url: /course/block-05-memory/quiz/
 permalink: /course/block-05-memory/presentation/
 locale: en
 translation_key: block-05-presentation

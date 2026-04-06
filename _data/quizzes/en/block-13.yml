@@ -1,0 +1,102 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "What does 'headless mode' mean when running Claude Code with 'claude -p'?"
+    points: 1
+    options:
+      - "Claude runs without a language model and only uses local tools"
+      - "Claude runs non-interactively, processing a single prompt and returning output without a TUI session"
+      - "Claude runs with a reduced UI that hides all tool calls"
+      - "Claude runs without internet access"
+    correct_answer: 1
+    explanation: "Headless mode (claude -p) runs Claude non-interactively. You pass a prompt, it processes it, outputs the result, and exits. No interactive TUI session is started."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "What does the --output-format json flag do when used with 'claude -p'?"
+    points: 1
+    options:
+      - "Forces Claude to only generate JSON code in its response"
+      - "Saves the conversation history to a JSON file"
+      - "Outputs the full result as structured JSON, making it easy to parse programmatically"
+      - "Converts the project's source files to JSON format"
+    correct_answer: 2
+    explanation: "The --output-format json flag makes Claude output its response as structured JSON, which is ideal for piping into other tools or scripts for programmatic processing."
+    review_link: ""
+
+  - id: "q3"
+    type: single_choice
+    prompt: "What is the purpose of the /batch command in Claude Code?"
+    points: 1
+    options:
+      - "To batch-rename files in the project"
+      - "To run the same prompt across multiple files or contexts in parallel"
+      - "To batch API requests to reduce costs"
+      - "To compress multiple Git commits into one"
+    correct_answer: 1
+    explanation: "The /batch command enables running the same prompt or task across multiple files, directories, or contexts in parallel, greatly speeding up repetitive operations."
+    review_link: ""
+
+  - id: "q4"
+    type: true_false
+    prompt: "The output of 'claude -p' with --output-format json can be piped directly into jq for further processing."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 0
+    explanation: "Since --output-format json produces valid JSON on stdout, it can be piped directly into jq or any other JSON processing tool in a shell pipeline."
+    review_link: ""
+
+  - id: "q5"
+    type: multi_select
+    prompt: "Which of the following are valid use cases for agent teams (multiple Claude agents working together)? (Select all that apply.)"
+    points: 1
+    options:
+      - "One agent writes code while another reviews it"
+      - "Parallel migration of multiple microservices"
+      - "An orchestrator agent delegating subtasks to specialized agents"
+      - "Replacing all human developers on a team permanently"
+    correct_answer: [0, 1, 2]
+    explanation: "Agent teams excel at dividing work: writing/reviewing, parallel migrations, and orchestrated subtask delegation. They augment human developers rather than replace them."
+    review_link: ""
+
+  - id: "q6"
+    type: single_choice
+    prompt: "When building a shell pipeline with Claude in headless mode, which combination lets you pass a prompt and get machine-readable output?"
+    points: 1
+    options:
+      - "claude --interactive --format json"
+      - "claude -p \"your prompt\" --output-format json"
+      - "claude --batch --json-output"
+      - "claude run --prompt \"your prompt\" --json"
+    correct_answer: 1
+    explanation: "The correct syntax is 'claude -p \"your prompt\" --output-format json'. The -p flag enables headless mode and --output-format json produces structured JSON output."
+    review_link: ""
+
+  - id: "q7"
+    type: scenario_best_action
+    prompt: "You need to add license headers to 200 source files in your project. What is the most efficient Claude Code approach?"
+    points: 2
+    options:
+      - "Open an interactive session and ask Claude to edit each file one by one"
+      - "Use /batch to run the license-header insertion prompt across all 200 files in parallel"
+      - "Write a sed script manually instead of using Claude"
+      - "Use headless mode in a for-loop: 'for f in *.js; do claude -p \"add header to $f\"; done'"
+    correct_answer: 1
+    explanation: "/batch is purpose-built for running the same operation across many files in parallel. It is more efficient than a sequential for-loop and more scalable than doing it interactively one at a time."
+    review_link: ""
+
+  - id: "q8"
+    type: single_choice
+    prompt: "What is the broader Claude Code ecosystem primarily composed of?"
+    points: 1
+    options:
+      - "Only the CLI tool and nothing else"
+      - "The CLI, GitHub Action, MCP servers, hooks, sub-agents, and headless/batch modes forming an extensible platform"
+      - "A collection of VS Code extensions"
+      - "A web-based IDE with built-in deployment"
+    correct_answer: 1
+    explanation: "The Claude Code ecosystem includes the interactive CLI, GitHub Action for CI, MCP protocol for external tools, hooks for lifecycle automation, sub-agents for parallel work, and headless/batch modes for scripting, all forming a composable platform."
+    review_link: ""

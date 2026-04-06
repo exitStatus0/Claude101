@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-00-welcome/
 presentation_url: /course/block-00-welcome/presentation/
 hands_on_url: /course/block-00-welcome/hands-on/
+quiz_url: /course/block-00-welcome/quiz/
 permalink: /course/block-00-welcome/hands-on/
 locale: en
 translation_key: block-00-hands-on
@@ -226,3 +227,10 @@ Make sure you have an active Pro subscription at [claude.ai](https://claude.ai).
 
 **"Permission denied" during install**
 If `npm install -g` fails with permission errors, either fix your npm global prefix (`npm config set prefix ~/.npm-global` and add `~/.npm-global/bin` to your PATH) or use a Node version manager like `nvm` which avoids this issue entirely.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-00-welcome/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

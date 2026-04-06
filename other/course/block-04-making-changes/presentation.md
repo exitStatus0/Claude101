@@ -8,6 +8,7 @@ translation_key: block-04-presentation
 overview_url: /other/course/block-04-making-changes/
 presentation_url: /other/course/block-04-making-changes/presentation/
 hands_on_url: /other/course/block-04-making-changes/hands-on/
+quiz_url: /other/course/block-04-making-changes/quiz/
 permalink: /other/course/block-04-making-changes/presentation/
 ---
 **Продолжительность**: ~8 минут

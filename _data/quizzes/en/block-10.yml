@@ -1,0 +1,89 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "What is the name of the official GitHub Action for running Claude Code in CI?"
+    points: 1
+    options:
+      - "anthropic/claude-action@v1"
+      - "claude-code-action@v1"
+      - "actions/claude-code@v1"
+      - "claude-ci@v1"
+    correct_answer: 1
+    explanation: "The official action is anthropic/claude-code-action@v1 (commonly referred to as claude-code-action@v1)."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "Which trigger word in a PR comment activates Claude Code via the GitHub Action by default?"
+    points: 1
+    options:
+      - "@anthropic"
+      - "@ai-review"
+      - "@claude"
+      - "#claude-help"
+    correct_answer: 2
+    explanation: "By default, commenting '@claude' in a PR triggers the Claude Code GitHub Action to respond."
+    review_link: ""
+
+  - id: "q3"
+    type: true_false
+    prompt: "You can use a Claude Pro subscription directly to authenticate the claude-code-action in GitHub Actions."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 1
+    explanation: "GitHub Actions require an API key (ANTHROPIC_API_KEY) for authentication. A Claude Pro subscription authenticates interactively via OAuth and cannot be used in CI. You need an Anthropic API key with sufficient credits."
+    review_link: ""
+
+  - id: "q4"
+    type: multi_select
+    prompt: "Which of the following are valid strategies for controlling costs when running Claude Code in GitHub Actions? (Select all that apply.)"
+    points: 1
+    options:
+      - "Setting a max_tokens limit on the API call"
+      - "Setting a monthly spending cap on your Anthropic API account"
+      - "Restricting the action to only trigger on specific PR labels"
+      - "Using the free tier of Claude which has unlimited CI usage"
+    correct_answer: [0, 1, 2]
+    explanation: "You can control costs by limiting tokens, setting API spending caps, and restricting when the action triggers. There is no free tier with unlimited CI usage."
+    review_link: ""
+
+  - id: "q5"
+    type: single_choice
+    prompt: "In the GitHub Action workflow YAML, which secret must be set for Claude Code to authenticate with the Anthropic API?"
+    points: 1
+    options:
+      - "CLAUDE_TOKEN"
+      - "ANTHROPIC_API_KEY"
+      - "CLAUDE_API_SECRET"
+      - "AI_AUTH_KEY"
+    correct_answer: 1
+    explanation: "The ANTHROPIC_API_KEY secret is required for the Claude Code GitHub Action to make API calls to Anthropic."
+    review_link: ""
+
+  - id: "q6"
+    type: single_choice
+    prompt: "What event type should your GitHub Actions workflow listen for to enable @claude mentions in PR comments?"
+    points: 1
+    options:
+      - "pull_request"
+      - "push"
+      - "issue_comment"
+      - "workflow_dispatch"
+    correct_answer: 2
+    explanation: "PR comments are a type of issue_comment event. The workflow must listen on 'issue_comment' (with a filter for created action) to pick up @claude triggers in PR comments."
+    review_link: ""
+
+  - id: "q7"
+    type: scenario_best_action
+    prompt: "Your open-source project uses claude-code-action, but you are worried about strangers opening PRs and triggering expensive API calls with @claude. What is the best mitigation?"
+    points: 2
+    options:
+      - "Remove the action entirely from the repository"
+      - "Restrict the action so it only runs when the commenter is a repo collaborator or org member"
+      - "Set ANTHROPIC_API_KEY as a public environment variable so others pay for their own usage"
+      - "Limit the model to the cheapest available regardless of quality"
+    correct_answer: 1
+    explanation: "The best approach is to add a permissions check so that only trusted collaborators or org members can trigger the action. This prevents abuse while keeping the feature available to the team. Never expose API keys publicly."
+    review_link: ""

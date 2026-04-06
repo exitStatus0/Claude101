@@ -8,6 +8,7 @@ part_name: "Hands-On"
 overview_url: /course/block-12-gitops/
 presentation_url: /course/block-12-gitops/presentation/
 hands_on_url: /course/block-12-gitops/hands-on/
+quiz_url: /course/block-12-gitops/quiz/
 permalink: /course/block-12-gitops/hands-on/
 locale: en
 translation_key: block-12-hands-on
@@ -621,3 +622,10 @@ Create a `k8s/staging/` and `k8s/production/` directory structure. Create two Ar
 ---
 
 > **What a ride.** You've gone from `claude` to GitOps. From reading code to deploying it live on the internet. From one tool to an entire ecosystem. The next and final block covers advanced patterns and what's next — but if you stopped right here, you'd already have a complete, production-ready workflow. Well done.
+
+---
+
+<div class="cta-block">
+  <p>Ready to check your retention?</p>
+  <a href="{{ '/course/block-12-gitops/quiz/' | relative_url }}" class="hero-cta">Take the Quiz &rarr;</a>
+</div>

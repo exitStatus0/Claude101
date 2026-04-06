@@ -8,6 +8,7 @@ translation_key: block-04-hands-on
 overview_url: /other/course/block-04-making-changes/
 presentation_url: /other/course/block-04-making-changes/presentation/
 hands_on_url: /other/course/block-04-making-changes/hands-on/
+quiz_url: /other/course/block-04-making-changes/quiz/
 permalink: /other/course/block-04-making-changes/hands-on/
 ---
 > **Прямая речь:** "Всё на этой практической странице построено так, чтобы вы могли повторять за мной строка за строкой. Когда вы видите блок с командой или промптом, можете копировать его прямо в терминал или сессию Claude, если я явно не скажу, что это справочный материал. По ходу дела сравнивайте свой результат с моим на экране, чтобы ловить ошибки рано, а не копить их."
@@ -277,3 +278,10 @@ Show me git show --stat for the latest commit.
 ### Что дальше
 
 В Блоке 5 мы научим Claude *запоминать* ваши предпочтения. Например, что вы предпочитаете тёмный режим. Или что ваша команда использует conventional commits. Или что Kubernetes-манифесты всегда должны включать лимиты ресурсов. Здесь Claude перестаёт быть инструментом, который вы используете, и становится коллегой, который знает вашу кодовую базу.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-04-making-changes/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>

@@ -7,6 +7,7 @@ part_name: "Presentation"
 overview_url: /course/block-04-making-changes/
 presentation_url: /course/block-04-making-changes/presentation/
 hands_on_url: /course/block-04-making-changes/hands-on/
+quiz_url: /course/block-04-making-changes/quiz/
 permalink: /course/block-04-making-changes/presentation/
 locale: en
 translation_key: block-04-presentation

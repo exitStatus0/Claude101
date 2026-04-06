@@ -18,6 +18,7 @@ objectives:
 overview_url: /other/course/block-03-planning-adrs/
 presentation_url: /other/course/block-03-planning-adrs/presentation/
 hands_on_url: /other/course/block-03-planning-adrs/hands-on/
+quiz_url: /other/course/block-03-planning-adrs/quiz/
 locale: ru
 translation_key: block-03
 ---
@@ -68,5 +69,10 @@ Plan mode -- это противоядие. Это способ Claude Code ск
   <a href="{{ '/other/course/block-03-planning-adrs/hands-on/' | relative_url }}" class="quick-card">
     <h3>Практика</h3>
     <p>Готовые команды для терминала и промпты для части с демонстрацией экрана.</p>
+  </a>
+
+  <a href="{{ '/other/course/block-03-planning-adrs/quiz/' | relative_url }}" class="quick-card">
+    <h3>Квиз</h3>
+    <p>Проверьте свои знания по этому блоку — 6-8 вопросов.</p>
   </a>
 </div>

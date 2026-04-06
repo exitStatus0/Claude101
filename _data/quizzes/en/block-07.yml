@@ -1,0 +1,77 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "Why does the course use k3s instead of full Kubernetes?"
+    points: 1
+    options:
+      - "k3s is not real Kubernetes"
+      - "k3s is lightweight and fits on a single $24/mo droplet"
+      - "k3s is faster than Kubernetes"
+      - "Full Kubernetes requires a paid license"
+    correct_answer: 1
+    explanation: "k3s is certified Kubernetes that runs in ~512MB RAM. It fits the course's minimal-cost constraint."
+
+  - id: "q2"
+    type: short_answer
+    prompt: "What is the recommended DigitalOcean droplet size for this course?"
+    points: 1
+    accepted_answers: ["s-2vcpu-4gb", "2vcpu-4gb", "4gb"]
+    explanation: "The locked recommendation is s-2vcpu-4gb (2 vCPU, 4GB RAM) at $24/month."
+
+  - id: "q3"
+    type: true_false
+    prompt: "k3s includes Traefik as a built-in ingress controller."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 0
+    explanation: "k3s bundles Traefik, Flannel, CoreDNS, and ServiceLB out of the box."
+
+  - id: "q4"
+    type: single_choice
+    prompt: "After installing k3s, where is the kubeconfig file located on the server?"
+    points: 1
+    options:
+      - "/etc/kubernetes/admin.conf"
+      - "/etc/rancher/k3s/k3s.yaml"
+      - "~/.kube/config"
+      - "/var/lib/k3s/kubeconfig"
+    correct_answer: 1
+    explanation: "k3s stores its kubeconfig at /etc/rancher/k3s/k3s.yaml."
+
+  - id: "q5"
+    type: scenario_best_action
+    prompt: "You deployed ai-coderrank to k3s but pods are stuck in ImagePullBackOff. What should you check first?"
+    points: 2
+    options:
+      - "Restart k3s"
+      - "Check if the container image exists in the registry and the tag is correct"
+      - "Increase the droplet RAM"
+      - "Run kubectl delete --all"
+    correct_answer: 1
+    explanation: "ImagePullBackOff means the image couldn't be pulled. Check the image name, tag, and registry access first."
+
+  - id: "q6"
+    type: single_choice
+    prompt: "What kubectl command applies all manifests managed by Kustomize?"
+    points: 1
+    options:
+      - "kubectl apply -f k8s/"
+      - "kubectl apply -k k8s/"
+      - "kubectl create -k k8s/"
+      - "kubectl deploy k8s/"
+    correct_answer: 1
+    explanation: "The -k flag tells kubectl to process a kustomization.yaml directory."
+
+  - id: "q7"
+    type: single_choice
+    prompt: "In this course, how do you access the deployed app before setting up public exposure?"
+    points: 1
+    options:
+      - "Via the droplet's public IP directly"
+      - "Via kubectl port-forward"
+      - "Via a load balancer"
+      - "Via SSH tunneling only"
+    correct_answer: 1
+    explanation: "Before NodePort is configured in Block 12, you use kubectl port-forward to test the app locally."

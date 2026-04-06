@@ -1,0 +1,273 @@
+questions:
+  # Блоки 0-1: Основы
+  - id: "f1"
+    type: short_answer
+    prompt: "Какой рекомендуемый способ установки Claude Code?"
+    points: 1
+    accepted_answers: ["curl -fsSL https://claude.ai/install.sh | bash", "curl https://claude.ai/install.sh | bash", "brew install claude-code"]
+    explanation: "Рекомендуемый способ — нативный установщик (curl) или Homebrew. npm тоже поддерживается, но не является основным методом."
+
+  - id: "f2"
+    type: single_choice
+    prompt: "Что делает /init?"
+    points: 1
+    options:
+      - "Инициализирует git-репозиторий"
+      - "Генерирует файл CLAUDE.md для проекта"
+      - "Создаёт директорию .claude/ с настройками по умолчанию"
+      - "Запускает npm init"
+    correct_answer: 1
+    explanation: "/init анализирует вашу кодовую базу и генерирует CLAUDE.md с контекстом проекта."
+
+  # Блоки 2-3: Рабочий процесс
+  - id: "f3"
+    type: single_choice
+    prompt: "В чём разница между /clear и /compact?"
+    points: 1
+    options:
+      - "/clear сжимает контекст, /compact сбрасывает его"
+      - "/clear сбрасывает диалог, /compact сжимает его для экономии токенов"
+      - "Они делают одно и то же"
+      - "/clear завершает сессию, /compact приостанавливает её"
+    correct_answer: 1
+    explanation: "/clear начинает с чистого листа. /compact сжимает диалог, сохраняя ключевой контекст."
+
+  - id: "f4"
+    type: true_false
+    prompt: "Режим Plan позволяет Claude редактировать файлы."
+    points: 1
+    options:
+      - "Верно"
+      - "Неверно"
+    correct_answer: 1
+    explanation: "Режим Plan работает только на чтение. Claude анализирует и планирует, но не изменяет файлы."
+
+  # Блоки 4-5: Редактирование и память
+  - id: "f5"
+    type: single_choice
+    prompt: "Какой инструмент Claude использует для точечных текстовых замен в существующих файлах?"
+    points: 1
+    options:
+      - "Write"
+      - "Edit"
+      - "Bash(sed)"
+      - "Replace"
+    correct_answer: 1
+    explanation: "Edit выполняет точечные замены строк. Write создаёт или полностью перезаписывает файлы."
+
+  - id: "f6"
+    type: multi_select
+    prompt: "Что из перечисленного входит в систему памяти Claude Code? (Выберите все подходящие)"
+    points: 2
+    options:
+      - "CLAUDE.md"
+      - ".claude/rules/*.md"
+      - "Автоматическая память"
+      - ".claude/history.log"
+    correct_answer: [0, 1, 2]
+    explanation: "CLAUDE.md, файлы правил и автоматическая память формируют иерархию памяти. Файла history.log не существует."
+
+  # Блоки 6-7: Навыки и инфраструктура
+  - id: "f7"
+    type: short_answer
+    prompt: "Какое поле frontmatter ограничивает набор инструментов, доступных навыку?"
+    points: 1
+    accepted_answers: ["allowed-tools", "allowed_tools"]
+    explanation: "allowed-tools во frontmatter SKILL.md ограничивает доступ навыка к инструментам Claude."
+
+  - id: "f8"
+    type: single_choice
+    prompt: "Что такое k3s?"
+    points: 1
+    options:
+      - "Среда выполнения контейнеров"
+      - "Легковесный сертифицированный дистрибутив Kubernetes"
+      - "Инструмент CI/CD"
+      - "Сервис DigitalOcean"
+    correct_answer: 1
+    explanation: "k3s — это сертифицированный CNCF дистрибутив Kubernetes, упакованный в один бинарный файл."
+
+  # Блок 8: Хуки
+  - id: "f9"
+    type: single_choice
+    prompt: "Как хуки Claude Code получают контекст о текущем вызове инструмента?"
+    points: 1
+    options:
+      - "Через переменные окружения типа $CLAUDE_FILE_PATH"
+      - "Через JSON на stdin"
+      - "Через аргументы командной строки"
+      - "Через временный файл"
+    correct_answer: 1
+    explanation: "Хуки получают JSON на stdin, содержащий tool_name, tool_input и другой контекст."
+
+  - id: "f10"
+    type: single_choice
+    prompt: "Какой код выхода должен вернуть хук для блокировки операции?"
+    points: 1
+    options:
+      - "0"
+      - "1"
+      - "2"
+      - "255"
+    correct_answer: 2
+    explanation: "Код выхода 0 = продолжить, код выхода 2 = заблокировать. Код выхода 1 трактуется как ошибка (продолжается)."
+
+  # Блок 9: MCP
+  - id: "f11"
+    type: short_answer
+    prompt: "Какая команда добавляет MCP-сервер в ваш проект?"
+    points: 1
+    accepted_answers: ["claude mcp add", "claude mcp add --scope project"]
+    explanation: "claude mcp add с --scope project записывает конфигурацию в .mcp.json."
+
+  - id: "f12"
+    type: single_choice
+    prompt: "Где хранится конфигурация MCP на уровне проекта?"
+    points: 1
+    options:
+      - ".claude/mcp.json"
+      - ".mcp.json"
+      - "~/.claude.json"
+      - "mcp.config.js"
+    correct_answer: 1
+    explanation: "Конфигурация MCP на уровне проекта хранится в .mcp.json в корне проекта."
+
+  # Блок 10: GitHub Actions
+  - id: "f13"
+    type: true_false
+    prompt: "GitHub Action Claude использует вашу Pro-подписку для API-вызовов."
+    points: 1
+    options:
+      - "Верно"
+      - "Неверно"
+    correct_answer: 1
+    explanation: "GitHub Actions требуют отдельный API-ключ Anthropic с оплатой по токенам."
+
+  - id: "f14"
+    type: single_choice
+    prompt: "Как инициировать ревью PR Claude через GitHub Actions?"
+    points: 1
+    options:
+      - "Push в ветку"
+      - "Оставить комментарий @claude в PR"
+      - "Смерджить PR"
+      - "Создать релиз"
+    correct_answer: 1
+    explanation: "Workflow срабатывает на комментарии к issue/PR, содержащие @claude."
+
+  # Блок 11: Суб-агенты
+  - id: "f15"
+    type: single_choice
+    prompt: "В чём ключевое отличие суб-агентов от обычной работы Claude?"
+    points: 1
+    options:
+      - "Суб-агенты используют другую модель"
+      - "Суб-агенты получают изолированные контекстные окна и ограничения инструментов"
+      - "Суб-агенты работают на удалённом сервере"
+      - "Суб-агенты стоят дороже"
+    correct_answer: 1
+    explanation: "Суб-агенты имеют собственные системные промпты, контекстные окна и ограничения доступа к инструментам."
+
+  - id: "f16"
+    type: short_answer
+    prompt: "Какой флаг запускает суб-агента в изолированном git worktree?"
+    points: 1
+    accepted_answers: ["isolation: worktree", "worktree", "isolation: \"worktree\""]
+    explanation: "Установка isolation: worktree даёт суб-агенту отдельную копию репозитория."
+
+  # Блок 12: GitOps
+  - id: "f17"
+    type: single_choice
+    prompt: "В GitOps что является единственным источником истины для состояния кластера?"
+    points: 1
+    options:
+      - "API-сервер Kubernetes"
+      - "Дашборд ArgoCD"
+      - "Git-репозиторий"
+      - "CI/CD-пайплайн"
+    correct_answer: 2
+    explanation: "GitOps делает Git источником истины. ArgoCD приводит кластер в соответствие с Git."
+
+  - id: "f18"
+    type: single_choice
+    prompt: "В этом курсе на каком порту приложение доступно публично?"
+    points: 1
+    options:
+      - "80"
+      - "443"
+      - "3000"
+      - "30080"
+    correct_answer: 3
+    explanation: "NodePort 30080 открывает приложение на публичном IP дроплета."
+
+  # Блок 13: Продвинутые возможности
+  - id: "f19"
+    type: single_choice
+    prompt: "Какой флаг запускает Claude неинтерактивно для скриптинга?"
+    points: 1
+    options:
+      - "-c"
+      - "-p"
+      - "-w"
+      - "-n"
+    correct_answer: 1
+    explanation: "claude -p запускает в print-режиме — одноразово, неинтерактивно, идеально для скриптов."
+
+  - id: "f20"
+    type: true_false
+    prompt: "Команды агентов (Agent teams) — это стабильная, готовая к продакшну функция."
+    points: 1
+    options:
+      - "Верно"
+      - "Неверно"
+    correct_answer: 1
+    explanation: "Команды агентов экспериментальны и требуют CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1."
+
+  # Кросс-блочные сценарии
+  - id: "f21"
+    type: scenario_best_action
+    prompt: "Синхронизация ArgoCD показывает состояние здоровья 'Degraded' после push изменения. Что делать в первую очередь?"
+    points: 2
+    options:
+      - "Удалить приложение ArgoCD и создать его заново"
+      - "Проверить логи подов с kubectl logs, чтобы найти причину сбоя"
+      - "Откатить git-коммит и сделать force-push"
+      - "Перезапустить k3s"
+    correct_answer: 1
+    explanation: "Degraded обычно означает, что под падает. Сначала проверьте логи, чтобы понять реальную ошибку."
+
+  - id: "f22"
+    type: scenario_best_action
+    prompt: "Вы хотите, чтобы Claude автоматически форматировал файлы после каждого редактирования И блокировал изменения в .env файлах. Как это настроить?"
+    points: 2
+    options:
+      - "Создать два отдельных навыка"
+      - "Добавить хук PostToolUse для форматирования и хук PreToolUse для защиты .env"
+      - "Указать оба правила в CLAUDE.md"
+      - "Использовать один хук с обоими правилами"
+    correct_answer: 1
+    explanation: "PostToolUse срабатывает после редактирования (для форматирования), PreToolUse срабатывает до (для блокировки). Разные события — разные хуки."
+
+  - id: "f23"
+    type: scenario_best_action
+    prompt: "Ваша команда внедряет Claude Code. Вы хотите единые стандарты ревью K8s для всех членов команды. Какой лучший подход?"
+    points: 2
+    options:
+      - "Попросить каждого настроить свой CLAUDE.md"
+      - "Создать общий навык в .claude/skills/ и закоммитить его в репозиторий"
+      - "Написать wiki-страницу об этом"
+      - "Настроить хук PostToolUse"
+    correct_answer: 1
+    explanation: "Общий навык в .claude/skills/ хранится в системе контроля версий, обеспечивает единообразие и доступен каждому, кто клонирует репозиторий."
+
+  - id: "f24"
+    type: scenario_best_action
+    prompt: "Вам нужно, чтобы Claude проверял GitHub issues и ваш локальный kubeconfig в одной сессии. Что настроить?"
+    points: 2
+    options:
+      - "Две отдельные сессии Claude"
+      - "MCP-серверы GitHub и файловой системы в .mcp.json"
+      - "Отдельный суб-агент для каждого"
+      - "Хук, который получает данные GitHub"
+    correct_answer: 1
+    explanation: "MCP-серверы расширяют возможности Claude. Настройте оба сервера — GitHub и файловой системы, — чтобы Claude мог обращаться к обоим."

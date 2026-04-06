@@ -8,6 +8,7 @@ translation_key: block-12-presentation
 overview_url: /other/course/block-12-gitops/
 presentation_url: /other/course/block-12-gitops/presentation/
 hands_on_url: /other/course/block-12-gitops/hands-on/
+quiz_url: /other/course/block-12-gitops/quiz/
 permalink: /other/course/block-12-gitops/presentation/
 ---
 > **Длительность**: ~10 минут

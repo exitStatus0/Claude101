@@ -8,6 +8,7 @@ translation_key: block-01-hands-on
 overview_url: /other/course/block-01-understanding/
 presentation_url: /other/course/block-01-understanding/presentation/
 hands_on_url: /other/course/block-01-understanding/hands-on/
+quiz_url: /other/course/block-01-understanding/quiz/
 permalink: /other/course/block-01-understanding/hands-on/
 ---
 > **Прямая речь:** "Всё на этой практической странице построено так, чтобы вы могли повторять за мной строка за строкой. Когда вы видите блок с командой или промптом, можете копировать его прямо в терминал или сессию Claude, если я явно не скажу, что это справочный материал. По ходу дела сравнивайте свой результат с моим на экране, чтобы ловить ошибки рано, а не копить их."
@@ -217,3 +218,10 @@ If I wanted to add a new AI model to the comparison dashboard, which files would
 - Попросите его объяснить рабочий процесс GitHub Actions пошагово
 - Попросите его найти потенциальные проблемы безопасности в кодовой базе
 - Попросите его описать настройку тестирования и какие виды тестов существуют
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-01-understanding/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>

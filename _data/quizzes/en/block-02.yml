@@ -1,0 +1,89 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "How does Claude Code execute shell commands on your machine?"
+    points: 1
+    options:
+      - "It SSHes into your machine from a remote server"
+      - "Through the Bash tool, which runs commands in your terminal with your permission"
+      - "It writes scripts to disk and asks you to run them manually"
+      - "Commands are executed in a sandboxed Docker container"
+    correct_answer: 1
+    explanation: "Claude Code uses the Bash tool to execute shell commands directly in your terminal. Before running a command, it shows you what it wants to run and asks for your permission."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "What is the key difference between `/clear` and `/compact`?"
+    points: 1
+    options:
+      - "`/clear` compresses the conversation; `/compact` deletes it"
+      - "`/clear` wipes the entire conversation; `/compact` summarizes it to free context space"
+      - "They do the same thing but `/compact` is faster"
+      - "`/clear` only removes tool outputs; `/compact` removes everything"
+    correct_answer: 1
+    explanation: "`/clear` is the nuclear option — it wipes everything and starts fresh. `/compact` is smarter: Claude summarizes the conversation into a compressed form, keeping key information while freeing context space. Think of `/clear` as closing all browser tabs vs. `/compact` as bookmarking the important ones."
+    review_link: ""
+
+  - id: "q3"
+    type: true_false
+    prompt: "When Claude Code wants to run `npm install`, it executes the command immediately without asking you."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 1
+    explanation: "False. Claude Code's permission model requires your approval before executing shell commands. You will see a prompt like 'Allow? (y/n)' before anything runs. This keeps you in control at all times."
+    review_link: ""
+
+  - id: "q4"
+    type: scenario_best_action
+    prompt: "You are in a long Claude Code session — you've run npm install, started the dev server, fixed two lint errors, and built a Docker image. Claude's responses are getting slower and less accurate. What should you do?"
+    points: 2
+    options:
+      - "Close the terminal and restart Claude Code from scratch"
+      - "Use `/compact` to summarize the conversation and free up context space"
+      - "Use `/clear` to wipe everything and re-explain what you were doing"
+      - "Keep going — Claude will manage its own context"
+    correct_answer: 1
+    explanation: "`/compact` is perfect here. You're deep into a session and want to continue, but the context window is filling up. `/compact` summarizes what happened so far, freeing space while retaining key information. `/clear` would lose all context, and you'd have to re-explain everything."
+    review_link: ""
+
+  - id: "q5"
+    type: single_choice
+    prompt: "During a Claude Code session, you deliberately introduce a syntax error into a file and ask Claude to run the tests. What happens?"
+    points: 1
+    options:
+      - "Claude refuses to run the tests because it detects the error"
+      - "Claude runs the tests, reads the error output, diagnoses the issue, and proposes a fix"
+      - "Claude automatically fixes the error before running the tests"
+      - "The test command fails and Claude ends the session"
+    correct_answer: 1
+    explanation: "Claude runs the tests as requested, sees the failure output, analyzes the error messages, and then diagnoses and proposes a fix. This is the 'break-and-fix' loop that makes Claude powerful for debugging — it reads real error output, not guesses."
+    review_link: ""
+
+  - id: "q6"
+    type: multi_select
+    prompt: "Which of the following can Claude Code do through the Bash tool? (Select all that apply)"
+    points: 2
+    options:
+      - "Run `npm install` to install dependencies"
+      - "Start a dev server with `npm run dev`"
+      - "Build a Docker image with `docker build`"
+      - "Deploy directly to a production Kubernetes cluster without confirmation"
+    correct_answer: [0, 1, 2]
+    explanation: "The Bash tool can run any shell command — npm, docker, kubectl, etc. However, every command requires your permission before execution. Claude cannot deploy to production (or run any command) without you explicitly approving it."
+    review_link: ""
+
+  - id: "q7"
+    type: single_choice
+    prompt: "When is the best time to use `/clear` instead of `/compact`?"
+    points: 1
+    options:
+      - "When your responses are getting slow"
+      - "When you are switching to a completely different task unrelated to the current conversation"
+      - "At the end of every session as a cleanup step"
+      - "After every Docker build"
+    correct_answer: 1
+    explanation: "`/clear` is best when you are switching to a completely different task. Since it wipes all context, you start fresh — which is exactly what you want when the previous conversation is no longer relevant. `/compact` is better when you want to continue the current line of work."
+    review_link: ""

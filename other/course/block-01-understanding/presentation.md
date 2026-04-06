@@ -8,6 +8,7 @@ translation_key: block-01-presentation
 overview_url: /other/course/block-01-understanding/
 presentation_url: /other/course/block-01-understanding/presentation/
 hands_on_url: /other/course/block-01-understanding/hands-on/
+quiz_url: /other/course/block-01-understanding/quiz/
 permalink: /other/course/block-01-understanding/presentation/
 ---
 **Целевая продолжительность**: ~8 минут

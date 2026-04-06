@@ -1,0 +1,89 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "What is the key difference between the Edit tool and the Write tool in Claude Code?"
+    points: 1
+    options:
+      - "Edit is faster; Write is more accurate"
+      - "Edit performs targeted string replacements in existing files; Write creates or completely rewrites a file"
+      - "Edit only works on code files; Write works on any file type"
+      - "There is no difference — they are aliases for the same operation"
+    correct_answer: 1
+    explanation: "The Edit tool does surgical replacements — it finds an exact string in a file and replaces it, leaving everything else untouched. The Write tool creates new files or completely overwrites existing ones. Use Edit for targeted changes, Write for new files."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "When implementing the dark theme, Claude adds CSS variables under `[data-theme='dark']`. Which tool does it use for this?"
+    points: 1
+    options:
+      - "The Write tool — it rewrites the entire CSS file"
+      - "The Edit tool — it finds the existing CSS section and inserts the new block precisely"
+      - "The Bash tool — it runs a sed command"
+      - "The Grep tool — it replaces matches in-place"
+    correct_answer: 1
+    explanation: "The Edit tool is perfect for this. It locates the exact position in the CSS file and adds the dark theme block. No regex guessing, no accidental changes to other parts of the file — surgical precision."
+    review_link: ""
+
+  - id: "q3"
+    type: scenario_best_action
+    prompt: "You've asked Claude to implement the dark theme. The dev server is running and you see the result in the browser. The sidebar background is too light — you want it darker. What's the most effective approach?"
+    points: 2
+    options:
+      - "Find the CSS file, manually edit the hex code, and refresh the browser"
+      - "Tell Claude in plain English: 'make the sidebar darker' — and let it find and edit the relevant CSS value"
+      - "Use `/clear` and start the entire theme implementation over"
+      - "Write a detailed technical spec for the exact hex value you want"
+    correct_answer: 1
+    explanation: "This is iterative refinement in action. You describe what you want in plain English, and Claude finds the right file, identifies the right value, and makes the edit. This is far faster than hunting through CSS files yourself and is one of Claude Code's strongest workflows."
+    review_link: ""
+
+  - id: "q4"
+    type: true_false
+    prompt: "Claude Code can stage files, write commit messages, and create git commits — all without you leaving the terminal session."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 0
+    explanation: "True. Claude Code has full git integration through the Bash tool. It can run `git add`, write a meaningful commit message based on the changes, and execute `git commit` — all within the same session where you made the changes."
+    review_link: ""
+
+  - id: "q5"
+    type: single_choice
+    prompt: "After Claude implements the dark theme, what should you do before committing?"
+    points: 1
+    options:
+      - "Commit immediately — speed is everything"
+      - "Run the test suite through Claude to catch any regressions"
+      - "Delete the CLAUDE.md file so it doesn't interfere"
+      - "Manually review every line of code Claude wrote"
+    correct_answer: 1
+    explanation: "Running tests before committing is critical. Claude Code can run your test suite and linter to verify the theme changes didn't break anything. This is part of the healthy workflow: implement, test, then commit."
+    review_link: ""
+
+  - id: "q6"
+    type: multi_select
+    prompt: "Which components of the ai-coderrank theme system are touched during the dark theme implementation? (Select all that apply)"
+    points: 2
+    options:
+      - "tailwind.config.ts — defines the color palette and dark mode strategy"
+      - "Global CSS variables — declares --background, --foreground, --accent, etc."
+      - "ThemeProvider — React context that manages light/dark state"
+      - "package.json — adds a new dark theme dependency"
+    correct_answer: [0, 1, 2]
+    explanation: "The dark theme implementation touches the Tailwind config, CSS variables, and the ThemeProvider. No new npm packages are needed — the existing architecture already supports theming through CSS variables and a context provider."
+    review_link: ""
+
+  - id: "q7"
+    type: single_choice
+    prompt: "Why is the Edit tool described as 'surgical' compared to manually editing files?"
+    points: 1
+    options:
+      - "It uses advanced AI to predict what you want to change"
+      - "It specifies the exact string to find and the exact replacement — no regex, no accidental changes to other files"
+      - "It locks the file so no other process can modify it simultaneously"
+      - "It automatically creates a backup before every edit"
+    correct_answer: 1
+    explanation: "The Edit tool works by exact string matching — it finds a specific string in a file and replaces it with another. This means no regex mismatches, no accidentally modifying the wrong line, and changes are limited to exactly what was specified."
+    review_link: ""

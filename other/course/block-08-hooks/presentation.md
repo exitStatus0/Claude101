@@ -8,6 +8,7 @@ translation_key: block-08-presentation
 overview_url: /other/course/block-08-hooks/
 presentation_url: /other/course/block-08-hooks/presentation/
 hands_on_url: /other/course/block-08-hooks/hands-on/
+quiz_url: /other/course/block-08-hooks/quiz/
 permalink: /other/course/block-08-hooks/presentation/
 ---
 > **Продолжительность**: ~10 минут

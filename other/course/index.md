@@ -142,6 +142,15 @@ permalink: /other/course/
       </div>
     </a>
   </li>
+  <li class="toc-item">
+    <a href="{{ '/other/course/final-quiz/' | relative_url }}" style="border-left: 3px solid var(--accent);">
+      <span class="toc-number" style="color: var(--accent);">&#9733;</span>
+      <div>
+        <span class="toc-title">Финальный квиз</span>
+        <span class="toc-desc">Итоговая проверка по всем 14 блокам. 24 вопроса, разные типы заданий.</span>
+      </div>
+    </a>
+  </li>
 </ul>
 
 </div>

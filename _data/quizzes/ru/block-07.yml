@@ -1,0 +1,77 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "Почему в курсе используется k3s вместо полноценного Kubernetes?"
+    points: 1
+    options:
+      - "k3s — это не настоящий Kubernetes"
+      - "k3s легковесный и помещается на одном дроплете за $24/мес"
+      - "k3s быстрее Kubernetes"
+      - "Полноценный Kubernetes требует платной лицензии"
+    correct_answer: 1
+    explanation: "k3s — это сертифицированный Kubernetes, работающий примерно на 512 МБ RAM. Он соответствует ограничению курса на минимальные затраты."
+
+  - id: "q2"
+    type: short_answer
+    prompt: "Какой рекомендуемый размер дроплета DigitalOcean для этого курса?"
+    points: 1
+    accepted_answers: ["s-2vcpu-4gb", "2vcpu-4gb", "4gb"]
+    explanation: "Фиксированная рекомендация — s-2vcpu-4gb (2 vCPU, 4 ГБ RAM) за $24/месяц."
+
+  - id: "q3"
+    type: true_false
+    prompt: "k3s включает Traefik как встроенный ingress-контроллер."
+    points: 1
+    options:
+      - "Верно"
+      - "Неверно"
+    correct_answer: 0
+    explanation: "k3s включает Traefik, Flannel, CoreDNS и ServiceLB из коробки."
+
+  - id: "q4"
+    type: single_choice
+    prompt: "После установки k3s где на сервере находится файл kubeconfig?"
+    points: 1
+    options:
+      - "/etc/kubernetes/admin.conf"
+      - "/etc/rancher/k3s/k3s.yaml"
+      - "~/.kube/config"
+      - "/var/lib/k3s/kubeconfig"
+    correct_answer: 1
+    explanation: "k3s хранит свой kubeconfig в /etc/rancher/k3s/k3s.yaml."
+
+  - id: "q5"
+    type: scenario_best_action
+    prompt: "Вы развернули ai-coderrank на k3s, но поды застряли в ImagePullBackOff. Что проверить в первую очередь?"
+    points: 2
+    options:
+      - "Перезапустить k3s"
+      - "Проверить, существует ли образ контейнера в реестре и правилен ли тег"
+      - "Увеличить RAM дроплета"
+      - "Запустить kubectl delete --all"
+    correct_answer: 1
+    explanation: "ImagePullBackOff означает, что образ не удалось скачать. Сначала проверьте имя образа, тег и доступ к реестру."
+
+  - id: "q6"
+    type: single_choice
+    prompt: "Какая команда kubectl применяет все манифесты, управляемые Kustomize?"
+    points: 1
+    options:
+      - "kubectl apply -f k8s/"
+      - "kubectl apply -k k8s/"
+      - "kubectl create -k k8s/"
+      - "kubectl deploy k8s/"
+    correct_answer: 1
+    explanation: "Флаг -k указывает kubectl обработать директорию с kustomization.yaml."
+
+  - id: "q7"
+    type: single_choice
+    prompt: "В этом курсе как получить доступ к развёрнутому приложению до настройки публичного доступа?"
+    points: 1
+    options:
+      - "Через публичный IP дроплета напрямую"
+      - "Через kubectl port-forward"
+      - "Через балансировщик нагрузки"
+      - "Только через SSH-туннелирование"
+    correct_answer: 1
+    explanation: "До настройки NodePort в Блоке 12 вы используете kubectl port-forward для тестирования приложения локально."

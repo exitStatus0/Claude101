@@ -21,6 +21,7 @@ objectives:
 overview_url: /other/course/block-10-github-actions/
 presentation_url: /other/course/block-10-github-actions/presentation/
 hands_on_url: /other/course/block-10-github-actions/hands-on/
+quiz_url: /other/course/block-10-github-actions/quiz/
 locale: ru
 translation_key: block-10
 ---
@@ -76,5 +77,10 @@ translation_key: block-10
   <a href="{{ '/other/course/block-10-github-actions/hands-on/' | relative_url }}" class="quick-card">
     <h3>Практика</h3>
     <p>Готовые команды для терминала и промпты для части с демонстрацией экрана.</p>
+  </a>
+
+  <a href="{{ '/other/course/block-10-github-actions/quiz/' | relative_url }}" class="quick-card">
+    <h3>Квиз</h3>
+    <p>Проверьте свои знания по этому блоку — 6-8 вопросов.</p>
   </a>
 </div>

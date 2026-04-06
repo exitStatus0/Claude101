@@ -8,6 +8,7 @@ translation_key: block-11-presentation
 overview_url: /other/course/block-11-subagents/
 presentation_url: /other/course/block-11-subagents/presentation/
 hands_on_url: /other/course/block-11-subagents/hands-on/
+quiz_url: /other/course/block-11-subagents/quiz/
 permalink: /other/course/block-11-subagents/presentation/
 ---
 > **Продолжительность**: ~10 минут

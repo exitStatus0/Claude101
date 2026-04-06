@@ -8,6 +8,7 @@ translation_key: block-06-hands-on
 overview_url: /other/course/block-06-skills/
 presentation_url: /other/course/block-06-skills/presentation/
 hands_on_url: /other/course/block-06-skills/hands-on/
+quiz_url: /other/course/block-06-skills/quiz/
 permalink: /other/course/block-06-skills/hands-on/
 ---
 > **Прямая речь:** "Всё на этой странице практики построено так, чтобы вы могли повторять за мной строка за строкой. Когда видите блок с командой или промптом — можете скопировать его прямо в терминал или сессию Claude, если я явно не скажу, что это просто справочный материал. По ходу дела сверяйте свой результат с моим на экране, чтобы ловить ошибки сразу, а не копить их."
@@ -402,3 +403,10 @@ description: Fixes common K8s manifest issues automatically
 ---
 
 > **Далее**: В Блоке 7 мы выводим Claude Code за пределы кодовой базы — в реальную инфраструктуру: сборки Docker, кластеры Kubernetes и SSH на живые серверы. Claude не просто пишет код — он управляет системами.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-06-skills/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>

@@ -1,0 +1,99 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "What does MCP stand for in the context of Claude Code?"
+    points: 1
+    options:
+      - "Multi-Channel Protocol"
+      - "Model Context Protocol"
+      - "Managed Cloud Platform"
+      - "Message Communication Pipeline"
+    correct_answer: 1
+    explanation: "MCP stands for Model Context Protocol. It is an open standard for connecting AI models to external data sources and tools."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "Which file in a project repository defines MCP servers that are shared with all collaborators?"
+    points: 1
+    options:
+      - "~/.claude.json"
+      - ".claude/settings.json"
+      - ".mcp.json"
+      - "mcp-config.yml"
+    correct_answer: 2
+    explanation: ".mcp.json at the project root defines MCP server configurations that are committed to the repo and shared with collaborators."
+    review_link: ""
+
+  - id: "q3"
+    type: short_answer
+    prompt: "What is the CLI command to add an MCP server to your project in Claude Code?"
+    points: 1
+    accepted_answers:
+      - "claude mcp add"
+      - "/mcp add"
+    explanation: "The 'claude mcp add' command (or the slash command '/mcp add' inside a session) registers a new MCP server for your project."
+    review_link: ""
+
+  - id: "q4"
+    type: true_false
+    prompt: "The ~/.claude.json file stores user-level MCP server configurations that apply across all your projects."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 0
+    explanation: "~/.claude.json is the user-level configuration file. MCP servers defined here are available in every project you open with Claude Code, unlike .mcp.json which is project-scoped."
+    review_link: ""
+
+  - id: "q5"
+    type: single_choice
+    prompt: "When configuring the GitHub MCP server, which transport type does it typically use?"
+    points: 1
+    options:
+      - "http"
+      - "stdio"
+      - "websocket"
+      - "grpc"
+    correct_answer: 1
+    explanation: "The GitHub MCP server (and most local MCP servers) uses the stdio transport, communicating over standard input/output with the MCP process."
+    review_link: ""
+
+  - id: "q6"
+    type: multi_select
+    prompt: "Which of the following are true about MCP permissions in Claude Code? (Select all that apply.)"
+    points: 1
+    options:
+      - "MCP tools require user approval on first use by default"
+      - "You can allowlist specific MCP tools in settings.json"
+      - "MCP servers always have unrestricted access to your file system"
+      - "Project-scoped .mcp.json servers need to be trusted before their tools can run"
+    correct_answer: [0, 1, 3]
+    explanation: "MCP tools follow the same permission model as built-in tools: they require approval on first use, can be allowlisted, and project-scoped servers from .mcp.json must be trusted. MCP servers do NOT automatically get unrestricted file system access."
+    review_link: ""
+
+  - id: "q7"
+    type: scenario_best_action
+    prompt: "Your team wants every developer to have access to your company's internal knowledge-base MCP server when working in the monorepo. What is the best configuration approach?"
+    points: 2
+    options:
+      - "Have each developer add it to their ~/.claude.json manually"
+      - "Add the MCP server configuration to .mcp.json at the repo root and commit it"
+      - "Create a hook that starts the MCP server on session start"
+      - "Document the setup steps in the README and hope everyone follows them"
+    correct_answer: 1
+    explanation: "Adding the MCP server to .mcp.json at the repo root ensures every collaborator who clones the repo gets the configuration automatically. This is the purpose of the project-level .mcp.json file."
+    review_link: ""
+
+  - id: "q8"
+    type: single_choice
+    prompt: "What happens when Claude Code encounters an MCP server defined in .mcp.json for the first time?"
+    points: 1
+    options:
+      - "It connects automatically without any prompt"
+      - "It asks the user to trust the MCP server before connecting"
+      - "It refuses to connect unless the server is also in ~/.claude.json"
+      - "It starts the server in a sandboxed container"
+    correct_answer: 1
+    explanation: "For security, Claude Code prompts the user to trust project-scoped MCP servers from .mcp.json before connecting to them, since they could have been added by anyone with commit access."
+    review_link: ""

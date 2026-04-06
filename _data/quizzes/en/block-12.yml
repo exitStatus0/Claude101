@@ -1,0 +1,100 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "What is GitOps?"
+    points: 1
+    options:
+      - "A Git hosting service similar to GitHub"
+      - "An operational model where Git is the single source of truth for declarative infrastructure and applications"
+      - "A Git GUI client for DevOps teams"
+      - "A branching strategy for monorepos"
+    correct_answer: 1
+    explanation: "GitOps is an operational model that uses Git repositories as the single source of truth. Changes to infrastructure and applications are made via Git commits, and an automated agent reconciles the live state to match."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "In ArgoCD, what is the 'sync loop'?"
+    points: 1
+    options:
+      - "A CI/CD pipeline that runs on every push"
+      - "A continuous reconciliation process that compares the desired state in Git with the live cluster state and corrects drift"
+      - "A cron job that backs up the Git repository"
+      - "A webhook that notifies Slack when deployments complete"
+    correct_answer: 1
+    explanation: "ArgoCD's sync loop continuously compares the declared state in the Git repo with the actual state in the Kubernetes cluster. When drift is detected, it syncs the live state back to match Git."
+    review_link: ""
+
+  - id: "q3"
+    type: short_answer
+    prompt: "In the course lab environment, ArgoCD's web UI is exposed on which NodePort?"
+    points: 1
+    accepted_answers:
+      - "30080"
+      - "NodePort 30080"
+      - "port 30080"
+    explanation: "The course lab exposes ArgoCD's web UI on NodePort 30080, making it accessible via the node's IP address on that port."
+    review_link: ""
+
+  - id: "q4"
+    type: true_false
+    prompt: "ArgoCD self-healing means that if someone manually changes a resource in the cluster, ArgoCD will automatically revert it to match the Git-declared state."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 0
+    explanation: "With self-healing enabled, ArgoCD detects manual changes (drift) in the cluster and automatically reverts them to match the desired state declared in Git. This enforces Git as the single source of truth."
+    review_link: ""
+
+  - id: "q5"
+    type: single_choice
+    prompt: "How can Claude Code's /loop command be useful in a GitOps workflow?"
+    points: 1
+    options:
+      - "It creates infinite Git branches"
+      - "It repeatedly polls and monitors resources, such as checking ArgoCD sync status at intervals"
+      - "It loops through all files in the repo and lints them"
+      - "It restarts the Kubernetes cluster in a loop until it is healthy"
+    correct_answer: 1
+    explanation: "The /loop command runs a prompt or task on a recurring interval, which is useful for monitoring ArgoCD sync status, watching pod health, or polling deployment progress."
+    review_link: ""
+
+  - id: "q6"
+    type: single_choice
+    prompt: "What does the /schedule command enable in Claude Code?"
+    points: 1
+    options:
+      - "Scheduling meetings with your team"
+      - "Creating cron-based remote agents that execute tasks on a recurring schedule"
+      - "Setting a timer for the current coding session"
+      - "Scheduling Git commits for a future date"
+    correct_answer: 1
+    explanation: "The /schedule command creates scheduled remote agents (triggers) that execute on a cron schedule, enabling automated recurring tasks like daily code reviews or periodic maintenance."
+    review_link: ""
+
+  - id: "q7"
+    type: scenario_best_action
+    prompt: "You pushed a Kubernetes manifest change to Git, but ArgoCD shows the application as 'OutOfSync' and the sync is failing. What should you do first?"
+    points: 2
+    options:
+      - "Delete the ArgoCD application and recreate it from scratch"
+      - "Check the ArgoCD sync error details and the diff between the desired and live state to understand what is failing"
+      - "Revert the Git commit immediately without investigating"
+      - "Restart the ArgoCD server pods"
+    correct_answer: 1
+    explanation: "The first step is always to investigate. ArgoCD provides detailed sync error messages and a diff view showing exactly what differs between Git (desired) and the cluster (live). This information guides the fix."
+    review_link: ""
+
+  - id: "q8"
+    type: multi_select
+    prompt: "Which of the following are benefits of the GitOps model? (Select all that apply.)"
+    points: 1
+    options:
+      - "Full audit trail of every change via Git history"
+      - "Easy rollback by reverting a Git commit"
+      - "Eliminates the need for any monitoring or alerting"
+      - "Self-healing of configuration drift"
+    correct_answer: [0, 1, 3]
+    explanation: "GitOps provides an audit trail, easy rollback, and self-healing. However, it does NOT eliminate the need for monitoring and alerting, which remain essential."
+    review_link: ""

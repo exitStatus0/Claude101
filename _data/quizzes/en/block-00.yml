@@ -1,0 +1,89 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "What is the recommended way to install Claude Code for a fresh setup?"
+    points: 1
+    options:
+      - "The native installer (curl -fsSL https://claude.ai/install.sh | bash)"
+      - "pip install claude-code"
+      - "Download from the App Store"
+      - "It comes pre-installed with Node.js"
+    correct_answer: 0
+    explanation: "The recommended install path is the native installer. Homebrew and WinGet are also supported. npm install is an alternative but not the primary method."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "What happens the first time you run the `claude` command after installation?"
+    points: 1
+    options:
+      - "It downloads the AI model to your machine"
+      - "It opens a browser window for authentication with your Anthropic account"
+      - "It scans your entire filesystem for code projects"
+      - "It creates a CLAUDE.md file automatically"
+    correct_answer: 1
+    explanation: "On first run, Claude Code opens a browser-based authentication flow so you can connect your Anthropic account. The model runs server-side — nothing is downloaded locally."
+    review_link: ""
+
+  - id: "q3"
+    type: true_false
+    prompt: "Claude Code is an IDE extension that only works inside VS Code."
+    points: 1
+    options:
+      - "True"
+      - "False"
+    correct_answer: 1
+    explanation: "False. Claude Code is a standalone terminal-based agent. It works in any terminal — macOS Terminal, iTerm2, Linux terminals, or even inside a VS Code integrated terminal. It is not an IDE extension."
+    review_link: ""
+
+  - id: "q4"
+    type: single_choice
+    prompt: "Which Anthropic subscription tier includes access to Claude Code?"
+    points: 1
+    options:
+      - "Free tier"
+      - "Pro ($20/month)"
+      - "Enterprise only"
+      - "Pay-per-token API billing only"
+    correct_answer: 1
+    explanation: "Claude Code is included with the Anthropic Pro subscription at $20/month. No separate API billing or enterprise contract is needed for the course."
+    review_link: ""
+
+  - id: "q5"
+    type: single_choice
+    prompt: "What does the `/help` command display inside a Claude Code session?"
+    points: 1
+    options:
+      - "The full Anthropic API documentation"
+      - "A list of available slash commands, keyboard shortcuts, and usage tips"
+      - "Your billing and token usage statistics"
+      - "A tutorial walkthrough of the current project"
+    correct_answer: 1
+    explanation: "`/help` shows the available slash commands, keyboard shortcuts, and quick tips for using Claude Code effectively. It is your in-session reference card."
+    review_link: ""
+
+  - id: "q6"
+    type: scenario_best_action
+    prompt: "You just installed Claude Code and run `claude` for the first time in a new project directory. Claude authenticates successfully and drops you into an interactive session. What is the best first thing to do?"
+    points: 2
+    options:
+      - "Immediately ask Claude to refactor the entire codebase"
+      - "Type /help to see available commands, then ask Claude to describe what this project does"
+      - "Close the session and write a CLAUDE.md file manually first"
+      - "Run /clear to make sure the context is empty"
+    correct_answer: 1
+    explanation: "Starting with `/help` orients you on what's available, and then asking Claude to describe the project lets it explore the codebase and give you a grounded summary. Jumping to refactoring without understanding the code is risky; `/clear` on a fresh session does nothing useful."
+    review_link: ""
+
+  - id: "q7"
+    type: single_choice
+    prompt: "What is the course project used throughout Claude Code 101?"
+    points: 1
+    options:
+      - "A to-do list app built with Express.js"
+      - "ai-coderrank — a Next.js dashboard comparing AI coding models"
+      - "A Kubernetes operator written in Go"
+      - "A static blog built with Jekyll"
+    correct_answer: 1
+    explanation: "The course project is ai-coderrank, a Next.js 14 dashboard that compares AI coding models by performance and pricing. It includes React, TypeScript, Docker, K8s manifests, and CI/CD — a realistic full-stack project."
+    review_link: ""

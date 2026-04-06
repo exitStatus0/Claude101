@@ -8,6 +8,7 @@ translation_key: block-12-hands-on
 overview_url: /other/course/block-12-gitops/
 presentation_url: /other/course/block-12-gitops/presentation/
 hands_on_url: /other/course/block-12-gitops/hands-on/
+quiz_url: /other/course/block-12-gitops/quiz/
 permalink: /other/course/block-12-gitops/hands-on/
 ---
 > **Прямая речь:** "Всё на этой странице практики построено так, чтобы вы могли повторять за мной строка за строкой. Когда видите блок с командой или промптом — можете скопировать его прямо в терминал или сессию Claude, если я явно не скажу, что это просто справочный материал. По ходу дела сверяйте свой результат с моим на экране, чтобы ловить ошибки сразу, а не копить их."
@@ -619,3 +620,10 @@ kubectl -n argocd patch application ai-coderrank \
 ---
 
 > **Вот это путешествие.** Вы прошли путь от `claude` до GitOps. От чтения кода до его деплоя в интернет. От одного инструмента до целой экосистемы. Следующий и заключительный блок покрывает продвинутые паттерны и дальнейшие шаги — но если бы вы остановились прямо здесь, у вас уже был бы полноценный, готовый к продакшну рабочий процесс. Отлично сделано.
+
+---
+
+<div class="cta-block">
+  <p>Готовы проверить себя?</p>
+  <a href="{{ '/other/course/block-12-gitops/quiz/' | relative_url }}" class="hero-cta">Пройти квиз &rarr;</a>
+</div>
