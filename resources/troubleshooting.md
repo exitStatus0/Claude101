@@ -1,256 +1,421 @@
 ---
-layout: default
+layout: resource
 title: "Troubleshooting"
+purpose: "Find your failure mode and fix it — fast."
+verified: "2026-04-06"
+permalink: /resources/troubleshooting/
 ---
 
-<section class="section">
-<div class="container container--narrow">
+## Quick Triage
 
-# Troubleshooting
+Pick your problem area:
 
-Common issues you might hit during the course, and how to fix them.
+<div class="card-grid">
+  <a href="#claude-code-issues" class="quick-card">Claude Code Issues</a>
+  <a href="#mcp-issues" class="quick-card">MCP Issues</a>
+  <a href="#hook-issues" class="quick-card">Hook Issues</a>
+  <a href="#infra-issues" class="quick-card">k3s / Infra Issues</a>
+  <a href="#public-access-issues" class="quick-card">Public Access Issues</a>
+  <a href="#argocd-issues" class="quick-card">ArgoCD Issues</a>
+  <a href="#github-actions-issues" class="quick-card">GitHub Actions Issues</a>
+</div>
 
-## Claude Code
+---
 
-### "Claude is not responding" / Session hangs
+## Start Here
+
+<div class="callout-daily">
+
+Before diving into specific issues, try these five universal checks:
+
+1. **Update Claude** — stale versions cause most weird bugs.
+   ```bash
+   claude update
+   ```
+2. **Restart your session** — exit the terminal and run `claude` again. A fresh session clears transient state.
+3. **Check verbose mode** — press `Ctrl+O` to see what Claude is doing under the hood.
+4. **Verify config locations** — project settings live in `.claude/settings.json`; MCP config lives in `.mcp.json` (project) or `~/.claude.json` (user).
+5. **Ask Claude with the pasted error** — often the fastest path:
+   ```
+   "I'm getting this error: <paste>"
+   ```
+
+</div>
+
+---
+
+## Claude Code Issues {#claude-code-issues}
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Session hangs / no response</h3>
+<p><strong>Check:</strong> Is the spinner moving? Press <code>Ctrl+C</code> to interrupt.</p>
+<p><strong>Likely cause:</strong> A long-running tool call timed out, or a network blip stalled the connection.</p>
+<p><strong>Fix:</strong></p>
 
 ```bash
-# Kill and restart
-Ctrl+C  # Interrupt current turn
-/clear  # Start fresh if needed
+Ctrl+C        # interrupt current turn
+/clear        # reset session state
 ```
 
-If Claude Code itself is unresponsive, close the terminal and start a new session.
+If still stuck, close the terminal entirely and run `claude` in a new window.
 
-### "Permission denied" when Claude tries to run a command
+<p><strong>Success signal:</strong> Claude responds to your next prompt within a few seconds.</p>
+</div>
 
-This is by design. Claude asks permission before running commands. You can:
-- **Allow once**: press Enter or type `y`
-- **Allow for session**: type `a` (allows this tool for the rest of the session)
-- **Change permission mode**: `Shift+Tab` to cycle modes, or start with `--permission-mode acceptEdits`
-
-### CLAUDE.md not loading
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Permission denied on every command</h3>
+<p><strong>Check:</strong> Which permission mode are you running in?</p>
+<p><strong>Likely cause:</strong> Default mode requires approval for every tool call.</p>
+<p><strong>Fix:</strong> Press <code>Shift+Tab</code> to cycle permission modes, or launch with a more permissive mode:</p>
 
 ```bash
-# Check what's loaded
-/memory
-
-# Common issues:
-# - File is in wrong location (should be ./CLAUDE.md or ./.claude/CLAUDE.md)
-# - File is excluded in _config.yml or settings
-# - Syntax error in @path imports
+claude --permission-mode acceptEdits
 ```
 
-### Auto memory not working
+You can also press `a` during a prompt to allow a tool for the rest of the session.
 
-Auto memory requires Claude Code v2.1.59+. Check your version:
-```bash
-claude --version
-claude update  # Update if needed
+<p><strong>Success signal:</strong> Commands run without repeated confirmation prompts.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>CLAUDE.md not loading</h3>
+<p><strong>Check:</strong> Run <code>/memory</code> inside a session to see what files are loaded.</p>
+<p><strong>Likely cause:</strong> The file is in the wrong directory or has a broken <code>@path</code> import.</p>
+<p><strong>Fix:</strong> Ensure the file is at <code>./CLAUDE.md</code> or <code>./.claude/CLAUDE.md</code> relative to where you launch Claude. Fix any <code>@path</code> references so they resolve correctly.</p>
+<p><strong>Success signal:</strong> <code>/memory</code> shows your CLAUDE.md content.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Skills not showing up</h3>
+<p><strong>Check:</strong> Verify the skill file exists at the expected path.</p>
+<p><strong>Likely cause:</strong> The SKILL.md file is misplaced or the directory structure is wrong.</p>
+<p><strong>Fix:</strong> Skills must live at one of these paths:</p>
+
+```
+Project: .claude/skills/<skill-name>/SKILL.md
+User:    ~/.claude/skills/<skill-name>/SKILL.md
 ```
 
-Also verify it's enabled:
+After fixing, start a new session — skills load at startup.
+
+<p><strong>Success signal:</strong> The skill appears when Claude lists available capabilities.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Auto memory not working</h3>
+<p><strong>Check:</strong> Confirm your version and settings.</p>
+<p><strong>Likely cause:</strong> Outdated Claude Code version or the feature is disabled in settings.</p>
+<p><strong>Fix:</strong></p>
+
 ```bash
-# In ~/.claude/settings.json
-{
-  "autoMemoryEnabled": true
-}
+claude --version   # needs v2.1.59+
+claude update
 ```
 
-### Context getting too long / Claude losing track
+Then verify `~/.claude/settings.json` contains:
 
-```bash
-/compact  # Compress conversation, keep key context
+```json
+{ "autoMemoryEnabled": true }
 ```
 
-Use `/compact` proactively — don't wait until Claude starts forgetting things.
+<p><strong>Success signal:</strong> Claude proactively saves facts between sessions.</p>
+</div>
 
-### Skills not showing up
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Context getting too long</h3>
+<p><strong>Check:</strong> Is Claude forgetting earlier instructions or repeating itself?</p>
+<p><strong>Likely cause:</strong> The conversation has exceeded the effective context window.</p>
+<p><strong>Fix:</strong> Compact the conversation proactively — don't wait until Claude starts forgetting.</p>
 
 ```bash
-# Skills must be in the right location:
-# Project: .claude/skills/skill-name/SKILL.md
-# User:    ~/.claude/skills/skill-name/SKILL.md
-
-# Check with:
-ls .claude/skills/*/SKILL.md
-
-# Reload if needed — start a new session
+/compact
 ```
 
-### Hooks not firing
+<p><strong>Success signal:</strong> Claude responds coherently with awareness of earlier context.</p>
+</div>
+
+---
+
+## MCP Issues {#mcp-issues}
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>MCP server not connecting</h3>
+<p><strong>Check:</strong> Is the config in the right file? Project-level: <code>.mcp.json</code>. User-level: <code>~/.claude.json</code>.</p>
+<p><strong>Likely cause:</strong> Missing environment variables, wrong server command path, or the server binary isn't installed.</p>
+<p><strong>Fix:</strong> Verify the server command exists, set required env vars (e.g. <code>GITHUB_TOKEN</code>), then restart your Claude session — MCP config is only read at startup.</p>
+<p><strong>Success signal:</strong> Claude shows MCP tools in its capabilities on session start.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>MCP tools not appearing</h3>
+<p><strong>Check:</strong> Press <code>Ctrl+O</code> to enable verbose mode and look for MCP handshake messages.</p>
+<p><strong>Likely cause:</strong> The server started but the tool registration failed — usually a schema mismatch or server crash during init.</p>
+<p><strong>Fix:</strong> Run the MCP server command manually in your terminal to see its error output. Fix any issues, then restart the Claude session.</p>
+<p><strong>Success signal:</strong> Tools from that MCP server appear and are callable.</p>
+</div>
+
+---
+
+## Hook Issues {#hook-issues}
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Hooks not firing</h3>
+<p><strong>Check:</strong> Enable verbose mode with <code>Ctrl+O</code> to see hook execution.</p>
+<p><strong>Likely cause:</strong> Event name casing is wrong, the matcher doesn't match, or the script isn't executable.</p>
+<p><strong>Fix:</strong></p>
 
 ```bash
-# Enable verbose mode to see hook execution:
-Ctrl+O
-
-# Check settings.json syntax:
+# Validate your settings JSON
 claude -p "validate the JSON in .claude/settings.json"
 
-# Common issues:
-# - Incorrect event name (PreToolUse, not preToolUse)
-# - Matcher not matching (check tool names exactly)
-# - Hook script not executable (chmod +x)
-# - Exit code wrong (0 = allow, 2 = block)
+# Make sure the hook script is executable
+chmod +x .claude/hooks/your-hook.sh
 ```
 
-### MCP server not connecting
+<div class="callout-important">
+Event names are PascalCase: <code>PreToolUse</code>, not <code>preToolUse</code>. Exit codes matter: 0 = allow, 2 = block.
+</div>
+
+<p><strong>Success signal:</strong> Verbose mode shows the hook executing on the expected event.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Hook blocking unexpectedly</h3>
+<p><strong>Check:</strong> Which tool call is being blocked? Verbose mode (<code>Ctrl+O</code>) shows the hook name and exit code.</p>
+<p><strong>Likely cause:</strong> The matcher is too broad or the hook script returns exit code 2 on a path you didn't intend to block.</p>
+<p><strong>Fix:</strong> Narrow the matcher pattern in <code>.claude/settings.json</code> so it targets only the intended tool. Test by running the hook script manually with sample input.</p>
+<p><strong>Success signal:</strong> The tool call proceeds without being blocked.</p>
+</div>
+
+---
+
+## Infrastructure Issues {#infra-issues}
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Can't SSH into droplet</h3>
+<p><strong>Check:</strong> Run SSH with verbose output to see where it fails.</p>
+<p><strong>Likely cause:</strong> Wrong IP, SSH key not added during droplet creation, or firewall blocking port 22.</p>
+<p><strong>Fix:</strong></p>
 
 ```bash
-# Check config location: .mcp.json (project) or ~/.claude.json (user)
-# Restart session after changing mcp.json
-# Verify the server binary/command exists
-
-# Common issues:
-# - Missing environment variables (GITHUB_TOKEN, etc.)
-# - Wrong server command path
-# - Server not installed globally
-```
-
-## DigitalOcean & k3s
-
-### Can't SSH into droplet
-
-```bash
-# Check your SSH key
 ssh -v root@<droplet-ip>
-
-# Common fixes:
-# - Wrong IP address (check DO console)
-# - SSH key not added during droplet creation
-# - Firewall blocking port 22
 ```
 
-### k3s not starting
+Verify the IP in the DigitalOcean console. If the key is missing, add it via the DO dashboard and rebuild.
+
+<p><strong>Success signal:</strong> You get a root shell on the droplet.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>k3s not starting</h3>
+<p><strong>Check:</strong> Look at the service status and logs.</p>
+<p><strong>Likely cause:</strong> Insufficient RAM (need at least 2 GB), port 6443 already in use, or firewall rules blocking required ports.</p>
+<p><strong>Fix:</strong></p>
 
 ```bash
-# Check status
 sudo systemctl status k3s
-
-# Check logs
 sudo journalctl -u k3s -f
-
-# Common issues:
-# - Not enough RAM (need at least 2GB)
-# - Port 6443 already in use
-# - Firewall blocking required ports
 ```
 
-### kubectl connection refused
+<p><strong>Success signal:</strong> <code>systemctl status k3s</code> shows <code>active (running)</code>.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>kubectl connection refused</h3>
+<p><strong>Check:</strong> Are you using the correct kubeconfig?</p>
+<p><strong>Likely cause:</strong> k3s uses its own kubeconfig path, not the default <code>~/.kube/config</code>.</p>
+<p><strong>Fix:</strong></p>
 
 ```bash
-# On the droplet, k3s uses its own kubeconfig:
+# On the droplet
 sudo kubectl --kubeconfig /etc/rancher/k3s/k3s.yaml get nodes
-
-# For local access, fix the server address:
-# In your local kubeconfig, change 127.0.0.1 to your droplet's public IP
 ```
 
-### Pods stuck in ImagePullBackOff
+For local access, copy the kubeconfig and replace `127.0.0.1` with your droplet's public IP.
+
+<p><strong>Success signal:</strong> <code>kubectl get nodes</code> returns your node in <code>Ready</code> state.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Pods stuck in ImagePullBackOff</h3>
+<p><strong>Check:</strong> Describe the pod to see the pull error.</p>
+<p><strong>Likely cause:</strong> Image doesn't exist, tag is wrong, or Docker Hub rate-limiting is hitting you.</p>
+<p><strong>Fix:</strong></p>
 
 ```bash
 kubectl describe pod <pod-name> -n ai-coderrank
-
-# Common causes:
-# - Image doesn't exist in registry
-# - Private registry without credentials
-# - Image tag typo
-# - Docker Hub rate limiting (use ghcr.io instead)
 ```
 
-### Pods stuck in CrashLoopBackOff
+Verify the image name and tag. For rate-limit issues, switch to `ghcr.io`.
+
+<p><strong>Success signal:</strong> Pod transitions to <code>Running</code>.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Pods stuck in CrashLoopBackOff</h3>
+<p><strong>Check:</strong> Read the logs from the previous crashed container.</p>
+<p><strong>Likely cause:</strong> App crashes on startup — missing env var, missing ConfigMap/Secret, or port mismatch.</p>
+<p><strong>Fix:</strong></p>
 
 ```bash
 kubectl logs <pod-name> -n ai-coderrank --previous
-
-# Common causes:
-# - App crashing on startup (check env vars, config)
-# - Missing ConfigMap or Secret
-# - Port mismatch between container and service
 ```
 
-### App not accessible on public IP
+<p><strong>Success signal:</strong> Pod stays in <code>Running</code> state after you fix the config.</p>
+</div>
+
+---
+
+## Public Access Issues {#public-access-issues}
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>App not accessible on public IP (NodePort 30080)</h3>
+<p><strong>Check:</strong> Confirm the service type and that the port is reachable.</p>
+<p><strong>Likely cause:</strong> Service isn't NodePort, the port isn't 30080, or the DigitalOcean firewall blocks it.</p>
+<p><strong>Fix:</strong></p>
 
 ```bash
-# Check service type (should be NodePort or through Ingress):
+# Verify the service is NodePort on 30080
 kubectl get svc -n ai-coderrank
 
-# Check if the port is open on the droplet:
-curl http://localhost:<nodeport>
-
-# Check DigitalOcean firewall:
-# DO Console > Networking > Firewalls > ensure NodePort range is allowed
+# Test locally on the droplet first
+curl http://localhost:30080
 ```
 
-## ArgoCD
+If local curl works but external doesn't, open port 30080 in the DigitalOcean firewall: **DO Console > Networking > Firewalls**.
 
-### ArgoCD UI not accessible
+<div class="callout-important">
+This course uses NodePort 30080 for public access, not Ingress. Make sure your Service spec sets <code>type: NodePort</code> and <code>nodePort: 30080</code>.
+</div>
+
+<p><strong>Success signal:</strong> <code>curl http://&lt;droplet-ip&gt;:30080</code> returns your app's response.</p>
+</div>
+
+---
+
+## ArgoCD Issues {#argocd-issues}
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>ArgoCD UI not accessible</h3>
+<p><strong>Check:</strong> Is the port-forward running?</p>
+<p><strong>Likely cause:</strong> No port-forward active, or the ArgoCD server pod isn't running.</p>
+<p><strong>Fix:</strong></p>
 
 ```bash
-# Port-forward:
 kubectl port-forward svc/argocd-server -n argocd 8080:443
-
-# Get admin password:
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
-### ArgoCD not syncing
+Get the admin password:
 
 ```bash
-# Check application status:
+kubectl -n argocd get secret argocd-initial-admin-secret \
+  -o jsonpath="{.data.password}" | base64 -d
+```
+
+<p><strong>Success signal:</strong> Browser loads the ArgoCD dashboard at <code>https://localhost:8080</code>.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>ArgoCD not syncing</h3>
+<p><strong>Check:</strong> Look at the application status.</p>
+<p><strong>Likely cause:</strong> Repo URL typo, wrong branch name, or the path doesn't match your directory structure.</p>
+<p><strong>Fix:</strong></p>
+
+```bash
 kubectl get app -n argocd
-
-# Force sync:
-kubectl patch app ai-coderrank -n argocd --type merge -p '{"operation":{"sync":{}}}'
-
-# Common issues:
-# - Repo URL typo in application.yaml
-# - Private repo needs credentials
-# - Branch name mismatch
-# - Path doesn't match actual directory structure
 ```
 
-### ArgoCD showing "Degraded" health
+Force a sync if the app exists but is stuck:
 
 ```bash
-# Check what's unhealthy:
-kubectl get app ai-coderrank -n argocd -o yaml | grep -A 20 health
+kubectl patch app ai-coderrank -n argocd \
+  --type merge -p '{"operation":{"sync":{}}}'
+```
 
-# Usually means a pod is failing — check pod logs
+<p><strong>Success signal:</strong> App status shows <code>Synced</code> and <code>Healthy</code>.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>ArgoCD showing Degraded health</h3>
+<p><strong>Check:</strong> Identify which resource is unhealthy.</p>
+<p><strong>Likely cause:</strong> A pod managed by ArgoCD is failing — this is usually a CrashLoopBackOff underneath.</p>
+<p><strong>Fix:</strong></p>
+
+```bash
+kubectl get app ai-coderrank -n argocd -o yaml | grep -A 20 health
 kubectl logs -n ai-coderrank -l app=ai-coderrank --tail=50
 ```
 
-## GitHub Actions
+Fix the underlying pod issue (see [Infrastructure Issues](#infra-issues)) and ArgoCD will detect the recovery automatically.
 
-### Claude GitHub Action not triggering
-
-```bash
-# Check:
-# 1. Workflow file is in .github/workflows/
-# 2. The trigger matches (issue_comment, pull_request_review_comment)
-# 3. The if condition matches (contains 'claude' or '@claude')
-# 4. ANTHROPIC_API_KEY secret is set in repo settings
-# 5. GitHub App permissions are correct
-```
-
-### Claude Action running but producing no output
-
-```bash
-# Check the Actions log in GitHub UI
-# Common issues:
-# - API key invalid or expired
-# - Rate limited (check Anthropic dashboard)
-# - max_turns set too low
-# - CLAUDE.md has restrictive instructions
-```
-
-## General Tips
-
-1. **When in doubt, ask Claude**: `"I'm getting this error: <paste error>. What's wrong?"`
-2. **Check the official docs**: [docs.anthropic.com/en/docs/claude-code/overview](https://docs.anthropic.com/en/docs/claude-code/overview)
-3. **Start fresh**: `/clear` fixes most session-level issues
-4. **Update**: `claude update` ensures you have the latest fixes
-5. **Verbose mode**: `Ctrl+O` shows what's happening under the hood
-
+<p><strong>Success signal:</strong> App health returns to <code>Healthy</code>.</p>
 </div>
-</section>
+
+---
+
+## GitHub Actions Issues {#github-actions-issues}
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Claude Action not triggering</h3>
+<p><strong>Check:</strong> Is the workflow file present and the trigger correct?</p>
+<p><strong>Likely cause:</strong> Workflow file not in <code>.github/workflows/</code>, trigger event doesn't match, <code>if</code> condition filters it out, or <code>ANTHROPIC_API_KEY</code> secret is missing.</p>
+<p><strong>Fix:</strong> Verify all five of these:
+
+1. Workflow file lives in `.github/workflows/`
+2. Trigger event matches (`issue_comment`, `pull_request_review_comment`)
+3. The `if` condition matches your comment pattern
+4. `ANTHROPIC_API_KEY` is set in repo Settings > Secrets
+5. GitHub App permissions are configured
+
+<p><strong>Success signal:</strong> The Actions tab shows a new run after you post a matching comment.</p>
+</div>
+
+<div class="symptom-block">
+<span class="symptom-label">Symptom</span>
+<h3>Action runs but no output</h3>
+<p><strong>Check:</strong> Open the run log in the GitHub Actions tab.</p>
+<p><strong>Likely cause:</strong> API key is invalid/expired, you're rate-limited, <code>max_turns</code> is set too low, or CLAUDE.md has overly restrictive instructions.</p>
+<p><strong>Fix:</strong> Check your Anthropic dashboard for rate limits and API key status. Increase <code>max_turns</code> if the action exits too early.</p>
+<p><strong>Success signal:</strong> The action run log shows Claude's response and it posts output to the PR/issue.</p>
+</div>
+
+---
+
+## What To Paste Into Claude
+
+When you're stuck, give Claude structured context. Copy this template:
+
+```
+I'm working on the Claude Code 101 course. I hit this issue:
+
+**Block**: [which block]
+**Step**: [which step]
+**Error**: [paste error]
+**What I tried**: [what you already tried]
+
+Help me diagnose and fix this.
+```
+
+The more specific you are about the block, step, and exact error text, the faster Claude can help.
+
+If you're repeatedly blocked, <a href="{{ '/mentoring/' | relative_url }}">mentoring</a> may be faster than self-debugging.

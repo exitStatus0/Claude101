@@ -1,193 +1,159 @@
 ---
-layout: default
+layout: resource
 title: "Claude Code Cheatsheet"
+purpose: "Find the right command, file, or shortcut — fast."
+verified: "2026-04-06"
+permalink: /resources/cheatsheet/
 ---
 
-<section class="section">
-<div class="container container--narrow">
-
-# Claude Code Cheatsheet
-
-A quick reference for everything covered in the course.
-
-## Installation & Auth
+## Start Fast
 
 ```bash
-# Install
 npm install -g @anthropic-ai/claude-code
-
-# Update
-claude update
-
-# Authenticate (happens automatically on first run)
-claude
-
-# Check version
-claude --version
 ```
 
-## Starting Sessions
+Run `claude` once to authenticate, then you are ready to go.
 
 ```bash
-claude                        # Interactive session
-claude "explain this repo"    # Start with a prompt
-claude -p "run tests"         # Print mode (non-interactive, one-shot)
-claude -c                     # Continue last conversation
-claude -r "session-name"      # Resume named session
-claude --resume               # Pick session to resume
-claude -n "dark-theme"        # Name this session
+claude                   # interactive session
+claude "explain this repo"  # start with a prompt
+claude -c                # continue last conversation
+claude --resume          # pick a session to resume
 ```
+
+Type `/help` inside any session to see all available commands.
+
+## Daily Commands
+
+| Command | Description |
+|---------|-------------|
+| `claude` | Start an interactive session |
+| `claude -p "prompt"` | One-shot print mode (non-interactive) |
+| `claude -c` | Continue the last conversation |
+| `/clear` | Reset the conversation |
+| `/compact` | Compress context to free up tokens |
+| `/cost` | Check token usage and spend |
+| `/permissions` | Manage tool access for the session |
+
+## Slash Commands
+
+<span class="badge badge-daily">Daily</span>
+
+| Command | Description |
+|---------|-------------|
+| `/help` | Show all commands |
+| `/clear` | Start fresh |
+| `/compact` | Compress context |
+| `/cost` | Check usage |
+| `/memory` | View/edit loaded instructions |
+| `/permissions` | Manage tool access |
+| `/rename "name"` | Rename this session |
+
+<span class="badge badge-advanced">Advanced</span>
+
+| Command | Description |
+|---------|-------------|
+| `/plan` | Enter plan mode (read-only) |
+| `/init` | Generate CLAUDE.md for this project |
+| `/simplify` | Review and improve recent code |
+| `/agents` | List configured sub-agents |
+| `/add-dir` | Add directory access |
+| `/config` | Configure settings |
+
+<span class="badge badge-advanced">Automation</span>
+
+| Command | Description |
+|---------|-------------|
+| `/loop 5m "prompt"` | Repeat a prompt on an interval |
+| `/schedule` | Create cloud scheduled tasks |
+| `/batch "instruction"` | Parallel changes across files |
+
+<span class="badge badge-experimental">Experimental</span>
+
+Agent teams -- coordinate multiple sub-agents on a single task. Enable with `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
+
+## Models & Flags
+
+**Common flags**
+
+| Flag | Description |
+|------|-------------|
+| `--model opus\|sonnet\|haiku` | Choose a model |
+| `--effort min\|low\|medium\|high\|max` | Reasoning depth (Opus only) |
+| `-p` | Print mode (non-interactive) |
+| `-c` | Continue last conversation |
+| `-w <branch>` | Work in a git worktree |
+| `-n "name"` | Name the session |
+
+**Advanced flags**
+
+| Flag | Description |
+|------|-------------|
+| `--output-format json` | JSON output for scripts |
+| `--max-turns N` | Limit agentic iterations |
+| `--max-budget-usd N` | Cap spend in USD |
+| `--permission-mode` | `default`, `plan`, `acceptEdits`, `bypassPermissions` |
+| `--add-dir ../path` | Add extra directory to context |
+| `--mcp-config file.json` | Load custom MCP config |
+
+## Files & Locations
+
+| File | Scope | Purpose |
+|------|-------|---------|
+| `CLAUDE.md` | Project (shared) | Project-level instructions |
+| `.claude/CLAUDE.md` | Project (shared) | Alternative project location |
+| `CLAUDE.local.md` | Project (gitignored) | Personal overrides |
+| `~/.claude/CLAUDE.md` | User | Instructions for all projects |
+| `.claude/rules/*.md` | Project (shared) | Path-specific rules |
+| `.claude/settings.json` | Project (shared) | Project settings and hooks |
+| `.claude/settings.local.json` | Project (gitignored) | Local settings |
+| `~/.claude/settings.json` | User | User-wide settings |
+| `.mcp.json` | Project (shared) | MCP server config |
+| `.claude/skills/*/SKILL.md` | Project (shared) | Custom skills |
+| `~/.claude/skills/*/SKILL.md` | User | Personal skills |
+| `.claude/agents/*.md` | Project (shared) | Custom sub-agents |
+| `~/.claude/agents/*.md` | User | Personal sub-agents |
 
 ## MCP Setup
 
 ```bash
-# Add an MCP server (recommended over hand-editing .mcp.json)
 claude mcp add <name> --scope project -- <command> [args...]
-
-# Example: add GitHub MCP
-claude mcp add github --scope project -- npx -y @modelcontextprotocol/server-github
-
-# List configured MCP servers
 claude mcp list
-
-# Remove an MCP server
 claude mcp remove <name>
 ```
 
-## Key Flags
+<div class="callout-daily">
+Project scope stores config in <code>.mcp.json</code>. User scope stores config in <code>~/.claude.json</code>.
+</div>
 
-```bash
-claude --model opus           # Use Claude Opus (most capable)
-claude --model haiku          # Use Claude Haiku (fast/cheap)
-claude --effort max           # Maximum reasoning (Opus only)
-claude --permission-mode plan # Plan mode (read-only)
-claude -w my-feature          # Work in a git worktree
-claude --add-dir ../other     # Add extra directory
-claude --mcp-config mcp.json  # Load custom MCP config file
-claude --output-format json   # JSON output (for scripts)
-```
+## Hooks Basics
 
-## Slash Commands (In-Session)
+Hooks live in `.claude/settings.json` under the `hooks` key.
 
-| Command | What it does |
-|---------|-------------|
-| `/help` | Show all commands |
-| `/init` | Generate CLAUDE.md for this project |
-| `/memory` | View/edit loaded memory and instructions |
-| `/permissions` | Manage tool permissions |
-| `/compact` | Compress conversation to save context |
-| `/clear` | Start fresh (new conversation) |
-| `/plan` | Enter plan mode |
-| `/agents` | List configured sub-agents |
-| `/simplify` | Review and improve recent code |
-| `/batch "instruction"` | Parallel changes across files |
-| `/loop 5m "prompt"` | Repeat prompt on interval |
-| `/schedule` | Create cloud scheduled tasks |
-| `/install-github-app` | Set up GitHub integration |
-| `/debug` | Enable debug logging |
-| `/rename "name"` | Rename this session |
-| `/resume` | Resume another session |
-| `/config` | Configure settings |
-| `/add-dir` | Add directory access |
+**Hook types:** command, prompt, agent, http
 
-## Keyboard Shortcuts
-
-| Key | Action |
-|-----|--------|
-| `Shift+Tab` | Cycle permission modes |
-| `Ctrl+C` | Interrupt Claude's current turn |
-| `Ctrl+O` | Toggle verbose mode (see hooks, tools) |
-| `Ctrl+T` | Toggle task list (agent teams) |
-| `Shift+Down` | Cycle teammates (agent teams) |
-| `/` | Open slash command autocomplete |
-
-## Project Configuration Files
-
-```
-~/.claude/CLAUDE.md          # User-level instructions (all projects)
-./CLAUDE.md                  # Project-level instructions (shared)
-./.claude/CLAUDE.md          # Alternative project location
-./CLAUDE.local.md            # Local-only instructions (gitignored)
-./.claude/rules/*.md         # Path-specific rules
-./.claude/settings.json      # Project settings (shared)
-./.claude/settings.local.json # Local settings (gitignored)
-./.mcp.json                  # MCP server config (project-scoped)
-./.claude/skills/*/SKILL.md  # Custom skills
-./.claude/agents/*.md        # Custom sub-agents
-~/.claude/settings.json      # User settings
-~/.claude/skills/*/SKILL.md  # Personal skills
-~/.claude/agents/*.md        # Personal sub-agents
-```
-
-## Memory Hierarchy (Highest to Lowest Priority)
-
-1. Managed Policy (org-wide, cannot override)
-2. Project CLAUDE.md + `.claude/rules/`
-3. User CLAUDE.md (`~/.claude/CLAUDE.md`)
-4. CLAUDE.local.md (personal, gitignored)
-5. Auto memory (Claude's self-written notes)
-
-## Skill Frontmatter
-
-```yaml
----
-name: review-k8s
-description: Review K8s manifests for best practices
-allowed-tools:
-  - Read
-  - Grep
-  - Glob
-model: sonnet
----
-```
-
-## Hook Events
+**Key events**
 
 | Event | When it fires |
-|-------|--------------|
-| `SessionStart` | Session begins |
-| `SessionEnd` | Session ends |
-| `UserPromptSubmit` | User sends a message |
+|-------|---------------|
 | `PreToolUse` | Before any tool runs |
 | `PostToolUse` | After a tool succeeds |
-| `PostToolUseFailure` | After a tool fails |
+| `SessionStart` | Session begins |
 | `Stop` | Claude finishes responding |
-| `FileChanged` | A watched file changes |
-| `SubagentStart` | Sub-agent spawns |
-| `SubagentStop` | Sub-agent finishes |
 
-## Hook Exit Codes
+**Exit codes:** `0` = proceed, `2` = block the action.
 
-| Code | Meaning |
-|------|---------|
-| `0` | Proceed (allow) |
-| `1` | Error (treated as proceed) |
-| `2` | Block (prevent the action) |
-
-## Sub-agent Frontmatter
-
-```yaml
----
-name: security-reviewer
-description: Reviews code for security vulnerabilities
-model: sonnet
-tools:
-  - Read
-  - Grep
-  - Glob
----
-```
+<div class="callout-advanced">
+Hooks receive JSON on stdin. Use <code>jq</code> to extract fields in shell hooks.
+</div>
 
 ## GitHub Actions
 
 ```yaml
 # .github/workflows/claude.yml
 on:
-  issue_comment:
-    types: [created]
-  pull_request_review_comment:
-    types: [created]
-
+  issue_comment: { types: [created] }
+  pull_request_review_comment: { types: [created] }
 jobs:
   claude:
     if: contains(github.event.comment.body, '@claude')
@@ -198,47 +164,35 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 ```
 
-## Key Flags — Continued
+## Advanced
 
-| Flag | What it does |
-|------|-------------|
-| `--effort min\|low\|medium\|high\|max` | Control reasoning depth (only works with Opus). Higher effort = more thinking tokens, slower but more thorough. |
-| `--permission-mode` | Set permission mode: `default`, `plan`, `acceptEdits`, `bypassPermissions` |
-
-## Headless Mode (For Scripts)
+**Headless mode** -- pipe Claude into scripts:
 
 ```bash
-# One-shot command
-claude -p "run tests and report failures"
-
-# JSON output for parsing
-claude -p "list all TODO comments" --output-format json
-
-# Limit iterations
-claude -p "fix the linter errors" --max-turns 5
-
-# With budget cap
-claude -p "refactor auth module" --max-budget-usd 1.00
+claude -p "list TODO comments" --output-format json
 ```
 
-## Agent Teams
+**Agent teams** -- experimental multi-agent coordination:
 
 ```bash
-# Enable (experimental)
 export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
-
-# Start Claude — it will coordinate teammates automatically
-claude "Review this project from security, performance, and code quality angles"
+claude "Review security, performance, and quality"
 ```
 
-## Cost Tips
+**Budget controls:**
 
-- Use `--model haiku` for simple tasks (cheapest)
-- Use `--max-turns` to limit iterations in scripts
-- Use `--max-budget-usd` to cap spending
-- Use `/compact` to save context tokens
-- Use sub-agents with `model: haiku` for fast lookups
-- Check spending with `/cost` in session
+| Flag | Description |
+|------|-------------|
+| `--max-budget-usd N` | Hard spend cap |
+| `--max-turns N` | Limit agentic loops |
 
-</div>
-</section>
+## Keyboard Shortcuts
+
+| Key | Action |
+|-----|--------|
+| `Shift+Tab` | Cycle permission modes |
+| `Ctrl+C` | Interrupt current turn |
+| `Ctrl+O` | Toggle verbose mode |
+| `Ctrl+T` | Toggle task list (agent teams) |
+| `Shift+Down` | Cycle teammates |
+| `/` | Open slash command autocomplete |

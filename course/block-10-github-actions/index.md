@@ -48,7 +48,7 @@ By the end of this block, every PR to your ai-coderrank repo will get an automat
 
 ## Cost Notice
 
-> **This block requires an Anthropic API key** with pay-per-token billing. This is a separate cost from your Pro subscription. Expect to spend **$1-5** on API tokens for the exercises. See the [Cost Guide](/resources/cost-guide/) for details.
+> **This block requires an Anthropic API key** with pay-per-token billing. This is a separate cost from your Pro subscription. Expect to spend **$1-5** on API tokens for the exercises. See the <a href="{{ '/resources/cost-guide/' | relative_url }}">Cost Guide</a> for details.
 >
 > **This block is optional.** You can skip it and continue with Blocks 11-13 without any issues.
 

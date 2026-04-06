@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include header.html %}
+  <main class="site-main">
+    <article class="resource-page">
+      <div class="resource-hero">
+        <div class="container container--narrow">
+          <h1>{{ page.title }}</h1>
+          {% if page.purpose %}
+          <p class="resource-purpose">{{ page.purpose }}</p>
+          {% endif %}
+          {% if page.verified %}
+          <span class="verified-badge">Last verified: {{ page.verified }}</span>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if page.summary_cards %}
+      <div class="container">
+        <div class="summary-strip">
+          {% for card in page.summary_cards %}
+          <div class="summary-card">
+            <span class="summary-card-label">{{ card.label }}</span>
+            <span class="summary-card-value">{{ card.value }}</span>
+            {% if card.note %}<span class="summary-card-note">{{ card.note }}</span>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="resource-body container">
+        <nav class="resource-toc" aria-label="Table of contents">
+          <h4>On this page</h4>
+          <div id="toc-links"></div>
+        </nav>
+        <div class="resource-content">
+          {{ content }}
+        </div>
+      </div>
+    </article>
+  </main>
+  {% include footer.html %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  <script>
+    // Auto-generate TOC from h2 headings
+    (function() {
+      var headings = document.querySelectorAll('.resource-content h2');
+      var toc = document.getElementById('toc-links');
+      if (!toc || headings.length === 0) return;
+      headings.forEach(function(h) {
+        if (!h.id) h.id = h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        a.className = 'toc-link';
+        toc.appendChild(a);
+      });
+    })();
+  </script>
+</body>
+</html>

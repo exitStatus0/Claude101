@@ -46,7 +46,7 @@ By the end of this block, you'll have a real Kubernetes cluster running your rea
 
 ## Cost Notice
 
-> **This block requires a DigitalOcean droplet** (s-2vcpu-4gb, $24/month). New DigitalOcean accounts get **$200 in free credit** for 60 days, which is more than enough for the entire course. See the [Cost Guide](/resources/cost-guide/) for details.
+> **This block requires a DigitalOcean droplet** (s-2vcpu-4gb, $24/month). New DigitalOcean accounts get **$200 in free credit** for 60 days, which is more than enough for the entire course. See the <a href="{{ '/resources/cost-guide/' | relative_url }}">Cost Guide</a> for details.
 >
 > No API key is needed -- everything runs through your Pro subscription.
 

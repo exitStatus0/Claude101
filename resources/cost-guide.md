@@ -1,107 +1,105 @@
 ---
-layout: default
+layout: resource
 title: "Cost Guide"
+purpose: "Make cost decisions obvious in one screen."
+verified: "2026-04-06"
+permalink: /resources/cost-guide/
+summary_cards:
+  - label: "Minimum"
+    value: "$20"
+    note: "Claude Pro only"
+  - label: "Recommended"
+    value: "~$44/mo"
+    note: "Pro + DO droplet"
+  - label: "With Block 10"
+    value: "~$45-50"
+    note: "Adds API key"
 ---
 
-<section class="section">
-<div class="container container--narrow">
-
-# Cost Guide
-
-One of the goals of this course is to prove that AI-assisted DevOps doesn't require a big budget. Here's exactly what you'll spend.
-
-## Claude Code: $20/month (recommended for this course)
-
-The **Pro subscription** at $20/month is the recommended way to follow this course. It gives you access to Claude Code in the terminal, VS Code, JetBrains, Desktop app, and web.
-
-> **Important**: Pro usage is metered and shared across Claude chat and Claude Code — it is not unlimited. For this course, Pro limits are sufficient. If you find yourself hitting rate limits frequently, the Max plan ($100/mo) offers significantly higher usage. See [anthropic.com/pricing](https://anthropic.com/pricing) for current details.
->
-> **Team plans**: Claude Code availability on Team plans depends on your seat type. Standard Team seats do not include Claude Code. Check with your admin or see [Anthropic's Team plan docs](https://support.anthropic.com/en/articles/9267289-how-is-my-team-plan-bill-calculated) for details.
-
-What you get with Pro:
-- Claude Code access (terminal, IDE extensions, desktop app, web)
-- Claude Sonnet as the default model in Claude Code
-- Claude Haiku available for lighter tasks (`--model haiku`)
-- All features: plans, skills, hooks, MCP, sub-agents, scheduled tasks
-- Usage is metered — check `/cost` in session to monitor
-
-> **What about Opus?** Opus is available on Max plans. Pro users get Sonnet and Haiku in Claude Code. Sonnet is more than capable for everything in this course.
-
-> **Terminal vs. API**: Your Pro subscription covers interactive Claude Code usage. It does **not** cover API usage. Block 10 (GitHub Actions) requires a separate Anthropic API key with pay-per-token billing — see the GitHub Actions section below.
-
-### Saving tokens
-
-- **Use `/compact` often** — compresses your conversation, saving context tokens
-- **Use Haiku for sub-agents** — `model: haiku` in agent frontmatter for simple lookups
-- **Use `/clear` between unrelated tasks** — don't carry unnecessary context
-- **Use `--model haiku`** for simple one-shot commands: `claude --model haiku -p "what's in this file?"`
-- **Check `/cost`** periodically to see your session usage
-
-## DigitalOcean: ~$24/month
-
-We use a single **s-2vcpu-4gb** droplet (2 vCPU, 4 GB RAM). This is the locked recommendation for the course -- do not go smaller.
-
-| Resource | Spec | Cost |
-|----------|------|------|
-| Droplet | **s-2vcpu-4gb** (2 vCPU, 4GB RAM) | $24/mo |
-| Domain (optional) | via DigitalOcean or external | $10-15/yr |
-| Load Balancer | Not needed (NodePort exposes the app directly) | $0 |
-
-### New account credit
-
-DigitalOcean offers **$200 in free credit** for new accounts (valid for 60 days). This is more than enough to complete the entire course for free.
-
-### After the course
-
-**Tear down your droplet** when you're done to stop charges immediately. Your k3s cluster, ArgoCD, and app are all disposable — the real value is in the knowledge and the code in your git repo.
-
-```bash
-# Delete the droplet via doctl
-doctl compute droplet delete <droplet-id> --force
-
-# Or just use the DO console: Droplets > your-droplet > Destroy
-```
-
-### Could you go cheaper?
-
-Yes, but we don't recommend it for this course:
-
-| Droplet | RAM | Cost | Works? |
-|---------|-----|------|--------|
-| s-1vcpu-1gb | 1GB | $6/mo | Too small for k3s + ArgoCD + app |
-| s-1vcpu-2gb | 2GB | $12/mo | Tight but possible without ArgoCD |
-| **s-2vcpu-4gb** | **4GB** | **$24/mo** | **Recommended. Comfortable for everything.** |
-| s-2vcpu-8gb | 8GB | $48/mo | Overkill for this course |
-
-## GitHub Actions (Block 10) -- Extra Cost
-
-> **This block requires a separate Anthropic API key** with pay-per-token billing. This is separate from your Pro subscription.
-
-The CI/CD block uses the Claude GitHub Action, which calls the Anthropic API directly. API pricing as of April 2026:
-
-| Model | Input | Output |
-|-------|-------|--------|
-| Claude Haiku (cheapest) | $0.80/MTok | $4/MTok |
-| Claude Sonnet (default) | $3/MTok | $15/MTok |
-| Claude Opus (most capable) | $15/MTok | $75/MTok |
-
-*API pricing shown is approximate as of April 2026 and may change. Always check [anthropic.com/pricing](https://anthropic.com/pricing) for current rates before relying on these numbers.*
-
-For the course exercises (a few PR reviews and one issue implementation), expect to spend **$1-5 total** on API tokens. Use `max_turns: 3` in your workflow to limit costs.
-
-**Block 10 is optional.** You can skip it entirely if you want to avoid this cost -- the rest of the course works without it.
-
-## Total Cost Summary
+## At A Glance
 
 | Item | Cost | Required? |
 |------|------|-----------|
-| Claude Pro subscription | $20/mo | Yes (all blocks) |
-| DigitalOcean droplet (s-2vcpu-4gb) | $24/mo (free with new account credit) | Yes (Blocks 7, 12) |
-| Domain name | ~$10/yr | Optional |
-| Anthropic API key (Block 10) | ~$1-5 total | **Extra cost** -- only for Block 10 |
-| **Total for the course** | **~$25-45** | |
+| Claude Pro | $20/mo | Yes |
+| DO droplet (s-2vcpu-4gb) | $24/mo | Blocks 7, 12 |
+| Anthropic API key | ~$1-5 total | Block 10 only |
+| Domain | ~$10/yr | Optional |
 
-If you use DigitalOcean's new account credit, you can complete Blocks 0-9 and 11-12 for just the $20 Claude Pro subscription. Block 10 adds $1-5 in API costs. Block 13 uses only your Pro subscription (no extra cost).
+DigitalOcean gives new accounts **$200 in free credit** (60 days) -- enough to cover the entire course.
+
+## Required Costs
+
+### Claude Pro ($20/mo)
+
+- **Included**: Claude Code in terminal, IDE, desktop, and web
+- **Models**: Sonnet (default) + Haiku
+- **Usage**: metered, shared with Claude chat -- not unlimited
+- **Opus**: available on Max plan ($100/mo), not Pro
+- Details at [anthropic.com/pricing](https://anthropic.com/pricing)
+
+### DigitalOcean Droplet ($24/mo)
+
+- **s-2vcpu-4gb** -- locked recommendation, do not go smaller
+- New accounts get **$200 free credit** (valid 60 days)
+- **Tear down after the course** to stop charges -- your code lives in git, the droplet is disposable
+
+## Optional Costs
+
+- <span class="badge-optional">Optional</span> **Block 10 API key** (~$1-5 total) -- pay-per-token for the Claude GitHub Action. Skip Block 10 entirely if you want to avoid this cost.
+- <span class="badge-optional">Optional</span> **Domain** (~$10/yr) -- not needed for the course.
+
+## Which Plan Do I Need?
+
+| Plan | Price | What you get in Claude Code |
+|------|-------|-----------------------------|
+| **Pro** | $20/mo | Sonnet + Haiku -- sufficient for the whole course |
+| **Max** | $100/mo | Opus access, higher limits -- for heavy usage |
+| **Team** | varies | Depends on seat type -- see caveat below |
+
+<div class="callout-important">
+
+**Team plans**: Standard Team seats do **not** include Claude Code. Check with your admin or see [Anthropic's Team plan docs](https://support.anthropic.com/en/articles/9267289-how-is-my-team-plan-bill-calculated) before purchasing.
 
 </div>
-</section>
+
+## API Pricing
+
+<div class="callout-optional">
+
+Approximate rates as of April 2026 -- **these are volatile and may change**.
+
+| Model | Input | Output |
+|-------|-------|--------|
+| Claude Sonnet | $3/MTok | $15/MTok |
+| Claude Opus | $15/MTok | $75/MTok |
+| Claude Haiku | $0.80/MTok | $4/MTok |
+
+Always check [anthropic.com/pricing](https://anthropic.com/pricing) for current rates.
+
+</div>
+
+## How To Spend Less
+
+- `/compact` often -- compresses conversation, saves tokens
+- `--model haiku` for simple tasks
+- `/clear` between unrelated tasks
+- `--max-turns` in scripts to cap iterations
+- `/cost` in session to check spend
+
+## Budget Paths
+
+### $20 path
+
+Pro only. Skip DO blocks (7, 12). Focus on learning Claude Code features, hooks, MCP, and agents locally.
+
+### $25-45 path
+
+Full course. Pro + DO droplet. With free credit the real cost is closer to **~$20** for the first two months.
+
+### Team / company path
+
+Max or Team plan, company covers infra. Use your org's cloud account for the droplet.
+
+---
+
+Need a tailored path? <a href="{{ '/mentoring/' | relative_url }}">Get mentoring</a>.
