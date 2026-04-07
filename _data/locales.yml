@@ -7,3 +7,8 @@ ru:
   label: Other
   prefix: "/other"
   html_lang: ru
+
+uk:
+  label: Ukrainian
+  prefix: "/ua"
+  html_lang: uk

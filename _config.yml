@@ -28,6 +28,17 @@ defaults:
       path: "other"
     values:
       locale: ru
+  # Ukrainian course blocks
+  - scope:
+      path: "ua/course/block-*"
+    values:
+      layout: block
+      locale: uk
+  # Ukrainian pages
+  - scope:
+      path: "ua"
+    values:
+      locale: uk
   # English default
   - scope:
       path: ""

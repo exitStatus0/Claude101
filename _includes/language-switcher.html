@@ -1,27 +1,35 @@
 {% assign current_locale = page.locale | default: "en" %}
 {% assign locale_data = site.data.locales %}
+{% assign current_label = locale_data[current_locale].label %}
+{% assign current_prefix = locale_data[current_locale].prefix %}
+{% assign locale_suffix = page.url %}
+{% if current_prefix != "" %}
+  {% assign locale_suffix = page.url | remove_first: current_prefix %}
+{% endif %}
+{% if locale_suffix == "" %}
+  {% assign locale_suffix = "/" %}
+{% endif %}
 <div class="lang-switcher">
-  {% for loc in locale_data %}
-    {% assign loc_code = loc[0] %}
-    {% assign loc_info = loc[1] %}
-    {% if loc_code == current_locale %}
-      <span class="lang-option is-active">{{ loc_info.label }}</span>
-    {% else %}
-      {% assign target_page = nil %}
-      {% if page.translation_key %}
-        {% for p in site.pages %}
-          {% if p.translation_key == page.translation_key and p.locale == loc_code %}
-            {% assign target_page = p %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-      {% if target_page %}
-        <a href="{{ target_page.url | relative_url }}" class="lang-option">{{ loc_info.label }}</a>
-      {% elsif loc_code == "en" %}
-        <a href="{{ '/' | relative_url }}" class="lang-option">{{ loc_info.label }}</a>
+  <button class="lang-trigger" aria-expanded="false" aria-haspopup="true">
+    {{ current_label }} <span class="lang-arrow">&#9662;</span>
+  </button>
+  <div class="lang-dropdown" role="menu">
+    {% for loc in locale_data %}
+      {% assign loc_code = loc[0] %}
+      {% assign loc_info = loc[1] %}
+      {% if loc_code == current_locale %}
+        <span class="lang-item is-active" role="menuitem">{{ loc_info.label }}</span>
       {% else %}
-        <a href="{{ '/other/' | relative_url }}" class="lang-option">{{ loc_info.label }}</a>
+        {% if locale_suffix == "/" %}
+          {% assign target_url = loc_info.prefix | append: "/" %}
+        {% else %}
+          {% assign target_url = loc_info.prefix | append: locale_suffix %}
+        {% endif %}
+        {% if target_url == "" %}
+          {% assign target_url = "/" %}
+        {% endif %}
+        <a href="{{ target_url | relative_url }}" class="lang-item" role="menuitem">{{ loc_info.label }}</a>
       {% endif %}
-    {% endif %}
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>

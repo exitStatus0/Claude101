@@ -1,18 +1,33 @@
 {% assign current_locale = page.locale | default: "en" %}
+{% assign current_prefix = site.data.locales[current_locale].prefix %}
+{% assign locale_suffix = page.url %}
+{% if current_prefix != "" %}
+  {% assign locale_suffix = page.url | remove_first: current_prefix %}
+{% endif %}
+{% if locale_suffix == "" %}
+  {% assign locale_suffix = "/" %}
+{% endif %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
 <meta name="description" content="{{ page.description | default: site.description }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 {% if page.translation_key %}
-  {% for p in site.pages %}
-    {% if p.translation_key == page.translation_key %}
-      {% assign p_locale = p.locale | default: "en" %}
-      {% assign p_lang = site.data.locales[p_locale].html_lang %}
-      <link rel="alternate" hreflang="{{ p_lang }}" href="{{ p.url | absolute_url }}">
+  {% for loc in site.data.locales %}
+    {% assign loc_info = loc[1] %}
+    {% if locale_suffix == "/" %}
+      {% assign target_url = loc_info.prefix | append: "/" %}
+    {% else %}
+      {% assign target_url = loc_info.prefix | append: locale_suffix %}
+    {% endif %}
+    {% if target_url == "" %}
+      {% assign target_url = "/" %}
+    {% endif %}
+    <link rel="alternate" hreflang="{{ loc_info.html_lang }}" href="{{ target_url | absolute_url }}">
+    {% if loc[0] == "en" %}
+      <link rel="alternate" hreflang="x-default" href="{{ target_url | absolute_url }}">
     {% endif %}
   {% endfor %}
-  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ site.baseurl }}{{ page.url | replace: '/other/', '/' }}">
 {% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

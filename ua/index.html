@@ -1,0 +1,346 @@
+---
+layout: default
+title: "Claude Code 101 — Від нуля до деплою з ШІ"
+locale: uk
+translation_key: homepage
+permalink: /ua/
+---
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1>Вивчіть Claude Code.<br>Задеплойте реальну інфраструктуру.</h1>
+    <p class="hero-subtitle">
+      Практичний курс для DevOps, SRE, QA та розробників.
+      Від першої команди <code>claude</code> до живого застосунку на Kubernetes &mdash;
+      з ШІ як вашим напарником на кожному кроці.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-number">14</span>
+        <span class="hero-stat-label">Блоків</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-number">1</span>
+        <span class="hero-stat-label">Реальний застосунок</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-number">1</span>
+        <span class="hero-stat-label">Живий деплой</span>
+      </div>
+    </div>
+    <div style="display: flex; gap: var(--space-lg); justify-content: center; flex-wrap: wrap;">
+      <a href="{{ '/ua/course/' | relative_url }}" class="hero-cta">Почати курс &rarr;</a>
+      <a href="{{ '/ua/mentoring/' | relative_url }}" class="cta-secondary">Менторинг</a>
+    </div>
+  </div>
+</section>
+
+<!-- What You'll Build -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Що ви створите</h2>
+      <p>Не демо-іграшка. Реальний Next.js dashboard-застосунок, контейнеризований, задеплоєний на k3s на DigitalOcean через GitOps, доступний з будь-якої точки інтернету.</p>
+    </div>
+    <div class="prereq-grid">
+      <div class="prereq-box" style="text-align: center;">
+        <h3>До</h3>
+        <p>ai-coderrank: лідерборд ШІ-моделей для кодингу.</p>
+        <p>Працює локально. Світла тема. Без інфраструктури.</p>
+        <code style="font-size: 0.85rem;">npm run dev &rarr; localhost:3000</code>
+      </div>
+      <div class="prereq-box" style="text-align: center;">
+        <h3>Після</h3>
+        <p>Темна тема. Docker-образ. CI/CD пайплайн. k3s кластер. ArgoCD GitOps. Публічна IP-адреса.</p>
+        <code style="font-size: 0.85rem;">http://&lt;droplet-ip&gt;:30080 &rarr; живий сайт в інтернеті</code>
+      </div>
+    </div>
+    <div class="fun-fact" style="margin-top: var(--space-xl);">
+      <p>Claude Code використовувався для створення частин самого Claude Code. У цьому курсі ви використаєте Claude Code, щоб задеплоїти застосунок, який ранжує ШІ-моделі для кодингу &mdash; включно з Claude. Це ШІ на всіх рівнях.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Who This Is For -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Для кого цей курс</h2>
+      <p>Якщо ви працюєте в ІТ і ще не пробували Claude Code, це ваш старт.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <span class="audience-icon">&gt;_</span>
+        <h3>DevOps-інженери</h3>
+        <p>Автоматизуйте інфраструктурні задачі, пишіть IaC, дебажте пайплайни та керуйте деплоями через розмову.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">&#9888;</span>
+        <h3>SRE</h3>
+        <p>Аналізуйте логи, створюйте ранбуки, розвивайте навички моніторингу та налаштовуйте автоматичні перевірки з Claude.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">&#10003;</span>
+        <h3>QA-інженери</h3>
+        <p>Генеруйте тести, перевіряйте код на граничні випадки, автоматизуйте тестові процеси та створюйте quality gates з хуками.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">{ }</span>
+        <h3>Розробники</h3>
+        <p>Швидше випускайте фічі, отримуйте миттєвий код-рев'ю, керуйте git-процесами та розбирайтесь у незнайомих кодових базах.</p>
+      </div>
+      <div class="audience-card">
+        <span class="audience-icon">&#9889;</span>
+        <h3>ШІ-ентузіасти</h3>
+        <p>Ви щодня працюєте в терміналі, але ще не пробували ШІ-інструменти. Це ваш практичний старт &mdash; реальні задачі, а не демо.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What Claude Code Can Do (April 2026) -->
+<section class="section section--dark">
+  <div class="container">
+    <div class="section-header">
+      <h2>Чому Claude Code у 2026</h2>
+      <p>Claude Code &mdash; це не просто автодоповнення. Це повноцінний ШІ-агент, який читає вашу кодову базу, виконує команди, редагує файли, керує git та оркеструє мультиагентні процеси. Ось чим ви оволодієте:</p>
+    </div>
+    <div class="blocks-grid">
+      <div class="block-card" style="background: rgba(250, 249, 245, 0.05); border-color: rgba(250, 249, 245, 0.1);">
+        <h3 style="color: var(--text-inverse);">Плани та ADR</h3>
+        <p style="color: rgba(250, 249, 245, 0.65);">Claude думає перед тим, як діяти. Увімкніть plan mode, генеруйте Architecture Decision Records та створюйте Mermaid-діаграми &mdash; все з розмови.</p>
+      </div>
+      <div class="block-card" style="background: rgba(250, 249, 245, 0.05); border-color: rgba(250, 249, 245, 0.1);">
+        <h3 style="color: var(--text-inverse);">Власні навички</h3>
+        <p style="color: rgba(250, 249, 245, 0.65);">Упакуйте командні процеси в повторно використовувані slash-команди: <code>/review-k8s</code>, <code>/check-docker</code>, <code>/deploy</code>. Ваш плейбук, на базі Claude.</p>
+      </div>
+      <div class="block-card" style="background: rgba(250, 249, 245, 0.05); border-color: rgba(250, 249, 245, 0.1);">
+        <h3 style="color: var(--text-inverse);">Хуки та автоматизація</h3>
+        <p style="color: rgba(250, 249, 245, 0.65);">Автоформатування при збереженні, блокування небезпечних команд, сповіщення при завершенні. Хуки запускають shell-команди на кожному етапі життєвого циклу.</p>
+      </div>
+      <div class="block-card" style="background: rgba(250, 249, 245, 0.05); border-color: rgba(250, 249, 245, 0.1);">
+        <h3 style="color: var(--text-inverse);">MCP-сервери</h3>
+        <p style="color: rgba(250, 249, 245, 0.65);">Підключіть Claude до GitHub, Slack, Linear, баз даних та 50+ зовнішніх інструментів через Model Context Protocol.</p>
+      </div>
+      <div class="block-card" style="background: rgba(250, 249, 245, 0.05); border-color: rgba(250, 249, 245, 0.1);">
+        <h3 style="color: var(--text-inverse);">Суб-агенти та команди</h3>
+        <p style="color: rgba(250, 249, 245, 0.65);">Створюйте спеціалізованих ШІ-працівників для перевірки безпеки, валідації K8s або паралельних досліджень. Координуйте мультиагентні команди для складних задач.</p>
+      </div>
+      <div class="block-card" style="background: rgba(250, 249, 245, 0.05); border-color: rgba(250, 249, 245, 0.1);">
+        <h3 style="color: var(--text-inverse);">CI/CD та GitHub Actions</h3>
+        <p style="color: rgba(250, 249, 245, 0.65);">Позначте <code>@claude</code> в PR для автоматичного рев'ю. Створіть issue та дозвольте Claude реалізувати його. Плануйте регулярні хмарні задачі.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Course Blocks -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Курс</h2>
+      <p>14 блоків. Кожен наступний спирається на попередній. Наприкінці ви задеплоїте реальний застосунок та опануєте Claude Code.</p>
+    </div>
+    <div class="blocks-grid">
+
+      <a href="{{ '/ua/course/block-00-welcome/' | relative_url }}" class="block-card">
+        <span class="block-card-number">00</span>
+        <h3>Вітання та налаштування</h3>
+        <p>Встановіть Claude Code, автентифікуйтесь, зробіть форк проєкту та проведіть першу розмову з ШІ.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">install</span>
+          <span class="feature-badge">/help</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-01-understanding/' | relative_url }}" class="block-card">
+        <span class="block-card-number">01</span>
+        <h3>Розуміння вашої кодової бази</h3>
+        <p>Дозвольте Claude проаналізувати проєкт, згенерувати CLAUDE.md та дослідити архітектуру.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">/init</span>
+          <span class="feature-badge">CLAUDE.md</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-02-running-testing/' | relative_url }}" class="block-card">
+        <span class="block-card-number">02</span>
+        <h3>Запуск та тестування</h3>
+        <p>Налаштуйте локально, запустіть тести, зберіть Docker &mdash; і подивіться, як Claude обробляє помилки.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">Bash tool</span>
+          <span class="feature-badge">permissions</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-03-planning-adrs/' | relative_url }}" class="block-card">
+        <span class="block-card-number">03</span>
+        <h3>Планування з ADR та діаграмами</h3>
+        <p>Думайте перед тим, як кодити. Створіть ADR, Mermaid-діаграми та план реалізації.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">plan mode</span>
+          <span class="feature-badge">ADR</span>
+          <span class="feature-badge">Mermaid</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-04-making-changes/' | relative_url }}" class="block-card">
+        <span class="block-card-number">04</span>
+        <h3>Внесення змін &mdash; темна тема</h3>
+        <p>Реалізуйте темну тему, перегляньте попередньо та закомітьте &mdash; Claude керує git-процесом.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">Edit/Write</span>
+          <span class="feature-badge">git</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-05-memory/' | relative_url }}" class="block-card">
+        <span class="block-card-number">05</span>
+        <h3>Пам'ять та інтелект проєкту</h3>
+        <p>Навчіть Claude ваших вподобань, правил команди та конвенцій проєкту &mdash; між сесіями.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">.claude/rules</span>
+          <span class="feature-badge">/memory</span>
+          <span class="feature-badge">auto memory</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-06-skills/' | relative_url }}" class="block-card">
+        <span class="block-card-number">06</span>
+        <h3>Власні навички</h3>
+        <p>Створіть повторно використовувані slash-команди для рев'ю K8s, аудиту Docker та командних процесів.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">/skills</span>
+          <span class="feature-badge">$ARGUMENTS</span>
+          <span class="feature-badge">/simplify</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-07-infrastructure/' | relative_url }}" class="block-card">
+        <span class="block-card-number">07</span>
+        <h3>Інфраструктура &mdash; k3s на DO</h3>
+        <p>Створіть дроплет на DigitalOcean, встановіть k3s та задеплойте застосунок у Kubernetes.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">k3s</span>
+          <span class="feature-badge">DigitalOcean</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-08-hooks/' | relative_url }}" class="block-card">
+        <span class="block-card-number">08</span>
+        <h3>Хуки &mdash; автоматизація процесів</h3>
+        <p>Автоформатування, сповіщення, блокування небезпечних команд &mdash; хуки спрацьовують на кожному етапі життєвого циклу.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">hooks</span>
+          <span class="feature-badge">settings.json</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-09-mcp/' | relative_url }}" class="block-card">
+        <span class="block-card-number">09</span>
+        <h3>MCP-сервери</h3>
+        <p>Підключіть Claude до GitHub, файлових систем та зовнішніх API через Model Context Protocol.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">MCP</span>
+          <span class="feature-badge">mcp.json</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-10-github-actions/' | relative_url }}" class="block-card">
+        <span class="block-card-number">10</span>
+        <h3>GitHub Actions та CI/CD</h3>
+        <p>Автоматизуйте рев'ю PR, реалізацію issue та якість коду з Claude у CI.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">@claude</span>
+          <span class="feature-badge">GitHub Actions</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-11-subagents/' | relative_url }}" class="block-card">
+        <span class="block-card-number">11</span>
+        <h3>Суб-агенти</h3>
+        <p>Створіть спеціалізованих ШІ-працівників для перевірки безпеки, валідації K8s та паралельних задач.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">/agents</span>
+          <span class="feature-badge">worktree</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-12-gitops/' | relative_url }}" class="block-card">
+        <span class="block-card-number">12</span>
+        <h3>GitOps-фінал &mdash; ArgoCD</h3>
+        <p>Грандіозний фінал. Пушимо в git, ArgoCD синхронізує, темна тема з'являється в інтернеті.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">ArgoCD</span>
+          <span class="feature-badge">/schedule</span>
+          <span class="milestone-badge">MILESTONE</span>
+        </div>
+      </a>
+
+      <a href="{{ '/ua/course/block-13-advanced/' | relative_url }}" class="block-card">
+        <span class="block-card-number">13</span>
+        <h3>Просунуті патерни</h3>
+        <p>Команди агентів, плагіни, headless-режим, Desktop-застосунок &mdash; та що далі.</p>
+        <div class="feature-badges">
+          <span class="feature-badge">teams</span>
+          <span class="feature-badge">/batch</span>
+          <span class="feature-badge">plugins</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- Prerequisites & Cost -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>Що потрібно</h2>
+      <p>Мінімум вимог, мінімум витрат. У цьому й суть.</p>
+    </div>
+    <div class="prereq-grid">
+      <div class="prereq-box">
+        <h3>Передумови</h3>
+        <ul>
+          <li>Ви знаєте <strong>git</strong> і вмієте відкрити <strong>термінал</strong></li>
+          <li>Базове знайомство з концепціями <strong>Docker</strong></li>
+          <li>Обліковий запис <strong>GitHub</strong></li>
+          <li>Обліковий запис <strong>DigitalOcean</strong> (нові акаунти отримують $200 безкоштовного кредиту)</li>
+          <li>Цікавість та приблизно <strong>10 годин</strong> зосередженого часу</li>
+        </ul>
+        <p style="margin-top: var(--space-md); font-style: italic; font-size: 0.9rem;">Досвід з Kubernetes не потрібен &mdash; ми навчимо в процесі.</p>
+      </div>
+      <div class="prereq-box">
+        <h3>Витрати</h3>
+        <div class="cost-item">
+          <span>Підписка Claude Pro</span>
+          <span class="cost-amount">$20/міс</span>
+        </div>
+        <div class="cost-item">
+          <span>Дроплет DigitalOcean (s-2vcpu-4gb)</span>
+          <span class="cost-amount">~$24/міс</span>
+        </div>
+        <div class="cost-item">
+          <span>Доменне ім'я (опціонально)</span>
+          <span class="cost-amount">~$10/рік</span>
+        </div>
+        <div class="cost-item cost-total" style="border-bottom: 2px solid var(--border); border-top: 2px solid var(--border); padding: var(--space-md) 0;">
+          <span><strong>Загалом за курс</strong></span>
+          <span class="cost-amount" style="color: var(--accent); font-size: 1.1rem;">~$25-45</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">
+          Видаліть дроплет після курсу, щоб зупинити нарахування. Нові акаунти DigitalOcean отримують $200 безкоштовного кредиту &mdash; достатньо, щоб пройти курс безкоштовно.
+        </p>
+      </div>
+    </div>
+    <div class="cta-block" style="margin-top: var(--space-xl);">
+      <p>Потрібна допомога з адаптацією до вашого реального стеку?</p>
+      <a href="{{ '/ua/mentoring/' | relative_url }}" class="cta-secondary">Менторинг &rarr;</a>
+    </div>
+    <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: var(--space-xl);">
+      Факти, ціни та можливості Claude Code перевірені <strong>2026-04-06</strong>. Дивіться <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" rel="noopener">офіційну документацію</a> для актуальної інформації.
+    </p>
+  </div>
+</section>

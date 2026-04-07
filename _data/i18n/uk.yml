@@ -1,0 +1,69 @@
+nav:
+  course: "Курс"
+  resources: "Ресурси"
+  mentoring: "Менторинг"
+  github: GitHub
+
+footer:
+  course: "Курс"
+  resources: "Ресурси"
+  links: "Посилання"
+  all_blocks: "Всі блоки"
+  last_verified: "Перевірено 2026-04-06"
+  tagline: "Від нуля до деплою — з ШІ як другим пілотом."
+  cheatsheet: "Шпаргалка"
+  cost_guide: "Гід по вартості"
+  troubleshooting: "Вирішення проблем"
+  claude_docs: "Документація Claude Code"
+  app_repo: "Застосунок ai-coderrank"
+  course_source: "Вихідний код курсу"
+
+block:
+  block: "Блок"
+  previous: "Назад"
+  next: "Далі"
+  all_blocks: "Всі блоки"
+  overview: "Огляд"
+  presentation: "Презентація"
+  hands_on: "Практика"
+  objectives: "Що ви опануєте"
+  choose_format: "Оберіть формат"
+  presentation_desc: "Нотатки спікера, структура слайдів та ключові тези для голосової частини блоку."
+  hands_on_desc: "Покрокові команди та промпти для практичної частини з демонстрацією екрана."
+
+resource:
+  on_this_page: "На цій сторінці"
+  last_verified: "Перевірено"
+
+aria:
+  main_nav: "Основна навігація"
+  toggle_menu: "Перемкнути меню"
+  block_sections: "Розділи блоку"
+  course_nav: "Навігація по курсу"
+  toc: "Зміст"
+
+quiz:
+  quiz: "Квіз"
+  quiz_desc: "Перевірте свої знання з цього блоку."
+  take_quiz: "Готові перевірити себе? Пройдіть квіз."
+  questions_label: "питань"
+  points_label: "балів"
+  question_prefix: "П"
+  pts: "б."
+  submit: "Надіслати відповіді"
+  reset: "Почати знову"
+  correct: "Правильно!"
+  incorrect: "Неправильно."
+  review: "Повторити тему"
+  correct_count: "правильно"
+  type_answer: "Введіть вашу відповідь..."
+  no_questions: "Питання для квізу готуються."
+  level_expert: "Експерт"
+  level_solid: "Впевнений"
+  level_developing: "У процесі"
+  level_review: "Потрібно повторити"
+
+switcher:
+  english: English
+  other: Other
+  ukrainian: Ukrainian

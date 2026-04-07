@@ -1,0 +1,89 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "Як називається офіційний GitHub Action для запуску Claude Code у CI?"
+    points: 1
+    options:
+      - "anthropic/claude-action@v1"
+      - "claude-code-action@v1"
+      - "actions/claude-code@v1"
+      - "claude-ci@v1"
+    correct_answer: 1
+    explanation: "Офіційний Action — це anthropic/claude-code-action@v1 (зазвичай згадується як claude-code-action@v1)."
+    review_link: ""
+
+  - id: "q2"
+    type: single_choice
+    prompt: "Яке тригерне слово в коментарі PR активує Claude Code через GitHub Action за замовчуванням?"
+    points: 1
+    options:
+      - "@anthropic"
+      - "@ai-review"
+      - "@claude"
+      - "#claude-help"
+    correct_answer: 2
+    explanation: "За замовчуванням коментар '@claude' у PR запускає GitHub Action Claude Code для відповіді."
+    review_link: ""
+
+  - id: "q3"
+    type: true_false
+    prompt: "Ви можете використовувати підписку Claude Pro безпосередньо для автентифікації claude-code-action у GitHub Actions."
+    points: 1
+    options:
+      - "Правильно"
+      - "Неправильно"
+    correct_answer: 1
+    explanation: "GitHub Actions вимагає API-ключ (ANTHROPIC_API_KEY) для автентифікації. Підписка Claude Pro автентифікується інтерактивно через OAuth і не може використовуватися в CI. Вам потрібен API-ключ Anthropic з достатнім балансом."
+    review_link: ""
+
+  - id: "q4"
+    type: multi_select
+    prompt: "Які з наступних є коректними стратегіями контролю витрат при запуску Claude Code у GitHub Actions? (Оберіть усі правильні.)"
+    points: 1
+    options:
+      - "Встановлення ліміту max_tokens на API-виклик"
+      - "Встановлення місячного ліміту витрат на вашому обліковому записі Anthropic API"
+      - "Обмеження тригера Action лише на PR з певними мітками"
+      - "Використання безкоштовного рівня Claude з необмеженим використанням CI"
+    correct_answer: [0, 1, 2]
+    explanation: "Ви можете контролювати витрати, обмежуючи токени, встановлюючи ліміти витрат на API та обмежуючи умови запуску Action. Безкоштовного рівня з необмеженим використанням CI не існує."
+    review_link: ""
+
+  - id: "q5"
+    type: single_choice
+    prompt: "У YAML-файлі робочого процесу GitHub Action, який секрет має бути встановлений для автентифікації Claude Code з Anthropic API?"
+    points: 1
+    options:
+      - "CLAUDE_TOKEN"
+      - "ANTHROPIC_API_KEY"
+      - "CLAUDE_API_SECRET"
+      - "AI_AUTH_KEY"
+    correct_answer: 1
+    explanation: "Секрет ANTHROPIC_API_KEY необхідний для того, щоб GitHub Action Claude Code міг здійснювати API-виклики до Anthropic."
+    review_link: ""
+
+  - id: "q6"
+    type: single_choice
+    prompt: "На який тип події має прослуховувати ваш робочий процес GitHub Actions, щоб увімкнути згадки @claude у коментарях PR?"
+    points: 1
+    options:
+      - "pull_request"
+      - "push"
+      - "issue_comment"
+      - "workflow_dispatch"
+    correct_answer: 2
+    explanation: "Коментарі до PR є типом події issue_comment. Робочий процес має прослуховувати 'issue_comment' (з фільтром на дію created), щоб відловлювати тригери @claude у коментарях PR."
+    review_link: ""
+
+  - id: "q7"
+    type: scenario_best_action
+    prompt: "Ваш проєкт з відкритим кодом використовує claude-code-action, але ви турбуєтесь, що сторонні можуть відкривати PR і запускати дорогі API-виклики з @claude. Яке найкраще рішення?"
+    points: 2
+    options:
+      - "Повністю видалити Action з репозиторію"
+      - "Обмежити Action так, щоб він запускався лише коли коментатор є учасником репозиторію або членом організації"
+      - "Встановити ANTHROPIC_API_KEY як публічну змінну середовища, щоб інші платили за своє використання"
+      - "Обмежити модель до найдешевшої доступної, незалежно від якості"
+    correct_answer: 1
+    explanation: "Найкращий підхід — додати перевірку дозволів, щоб лише довірені учасники або члени організації могли запускати Action. Це запобігає зловживанню, зберігаючи функцію доступною для команди. Ніколи не розкривайте API-ключі публічно."
+    review_link: ""

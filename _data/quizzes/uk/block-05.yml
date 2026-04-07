@@ -1,0 +1,77 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "Де знаходиться CLAUDE.md рівня користувача?"
+    points: 1
+    options:
+      - "~/.claude/CLAUDE.md"
+      - "./CLAUDE.md"
+      - "~/.config/claude/CLAUDE.md"
+      - "/etc/claude/CLAUDE.md"
+    correct_answer: 0
+    explanation: "Інструкції рівня користувача знаходяться у ~/.claude/CLAUDE.md і застосовуються до всіх проєктів."
+
+  - id: "q2"
+    type: true_false
+    prompt: "CLAUDE.local.md призначений для коміту в git."
+    points: 1
+    options:
+      - "Правильно"
+      - "Неправильно"
+    correct_answer: 1
+    explanation: "CLAUDE.local.md за конвенцією додається до gitignore. Він зберігає персональні/локальні перевизначення."
+
+  - id: "q3"
+    type: multi_select
+    prompt: "Які з цих розташувань є коректними для інструкцій проєкту? (Оберіть усі правильні)"
+    points: 2
+    options:
+      - "./CLAUDE.md"
+      - "./.claude/CLAUDE.md"
+      - "./.claude/rules/*.md"
+      - "./claude-instructions.txt"
+    correct_answer: [0, 1, 2]
+    explanation: "Claude зчитує CLAUDE.md, .claude/CLAUDE.md та .claude/rules/*.md. Конвенції claude-instructions.txt не існує."
+
+  - id: "q4"
+    type: short_answer
+    prompt: "Яка slash-команда показує всю завантажену пам'ять та інструкції?"
+    points: 1
+    accepted_answers: ["/memory", "memory"]
+    explanation: "/memory відображає все, що Claude завантажив: файли CLAUDE.md, правила та автоматичну пам'ять."
+
+  - id: "q5"
+    type: single_choice
+    prompt: "Чим файли .claude/rules/ відрізняються від CLAUDE.md?"
+    points: 1
+    options:
+      - "Вони завантажуються умовно на основі шаблонів шляхів файлів"
+      - "Вони мають вищий пріоритет, ніж CLAUDE.md"
+      - "Вони зашифровані"
+      - "Вони працюють лише у VS Code"
+    correct_answer: 0
+    explanation: "Файли правил використовують frontmatter зі шляхами для завантаження лише при роботі з відповідними файлами."
+
+  - id: "q6"
+    type: scenario_best_action
+    prompt: "Ваша команда має конвенції K8s, які застосовуються лише при редагуванні маніфестів. Де їх розмістити?"
+    points: 2
+    options:
+      - "У проєктному CLAUDE.md"
+      - "У .claude/rules/k8s.md з фільтром шляху для k8s/**"
+      - "У ~/.claude/CLAUDE.md"
+      - "У CLAUDE.local.md"
+    correct_answer: 1
+    explanation: "Правила для конкретних шляхів у .claude/rules/ з фільтром шляху завантажуються лише коли це доречно, зберігаючи інші контексти чистими."
+
+  - id: "q7"
+    type: single_choice
+    prompt: "В ієрархії пам'яті, що має найвищий пріоритет?"
+    points: 1
+    options:
+      - "Користувацький CLAUDE.md"
+      - "Проєктний CLAUDE.md"
+      - "Managed Policy"
+      - "Автоматична пам'ять"
+    correct_answer: 2
+    explanation: "Managed Policy (рівень організації) має найвищий пріоритет і не може бути перевизначена."

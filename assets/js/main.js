@@ -15,6 +15,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Language switcher dropdown
+  var langSwitcher = document.querySelector('.lang-switcher');
+  var langTrigger = document.querySelector('.lang-trigger');
+  if (langSwitcher && langTrigger) {
+    langTrigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = langSwitcher.classList.toggle('is-open');
+      langTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    document.addEventListener('click', function () {
+      langSwitcher.classList.remove('is-open');
+      langTrigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+
   // Active nav state
   var currentPath = window.location.pathname;
   document.querySelectorAll('.site-nav a').forEach(function (link) {

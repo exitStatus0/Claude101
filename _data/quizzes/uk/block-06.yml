@@ -1,0 +1,77 @@
+questions:
+  - id: "q1"
+    type: single_choice
+    prompt: "Де повинен бути розміщений файл навички, щоб вона працювала як навичка рівня проєкту?"
+    points: 1
+    options:
+      - ".claude/skills/skill-name/SKILL.md"
+      - ".claude/SKILL.md"
+      - "skills/skill-name.md"
+      - ".claude/commands/skill-name.md"
+    correct_answer: 0
+    explanation: "Навички повинні бути у .claude/skills/<name>/SKILL.md для проєктної області."
+
+  - id: "q2"
+    type: short_answer
+    prompt: "Яка змінна у файлі навички захоплює аргументи, надані користувачем?"
+    points: 1
+    accepted_answers: ["$ARGUMENTS", "ARGUMENTS", "$arguments"]
+    explanation: "$ARGUMENTS передає все, що користувач вводить після slash-команди, в інструкції навички."
+
+  - id: "q3"
+    type: true_false
+    prompt: "Навичка з allowed-tools: [Read, Grep, Glob] також може виконувати команди Bash."
+    points: 1
+    options:
+      - "Правильно"
+      - "Неправильно"
+    correct_answer: 1
+    explanation: "allowed-tools обмежує інструменти, які навичка може використовувати. Якщо Bash не зазначений, вона не може виконувати shell-команди."
+
+  - id: "q4"
+    type: single_choice
+    prompt: "Що робить вбудована навичка /simplify?"
+    points: 1
+    options:
+      - "Спрощує файл CLAUDE.md"
+      - "Перевіряє та покращує нещодавній код щодо якості"
+      - "Зменшує розмір контексту розмови"
+      - "Конвертує складний YAML у простий JSON"
+    correct_answer: 1
+    explanation: "/simplify перевіряє нещодавно змінений код на повторне використання, якість та ефективність."
+
+  - id: "q5"
+    type: scenario_best_action
+    prompt: "Ви хочете створити навичку, яка перевіряє Dockerfile, але НЕ повинна мати змогу змінювати файли. Яке поле frontmatter ви використаєте?"
+    points: 2
+    options:
+      - "readonly: true"
+      - "allowed-tools: [Read, Grep, Glob]"
+      - "permissions: read-only"
+      - "mode: plan"
+    correct_answer: 1
+    explanation: "allowed-tools обмежує навичку лише переліченими інструментами. Виключення Write/Edit/Bash робить її доступною лише для читання."
+
+  - id: "q6"
+    type: multi_select
+    prompt: "Які з перерахованих є коректними полями frontmatter навички? (Оберіть усі правильні)"
+    points: 2
+    options:
+      - "name"
+      - "description"
+      - "allowed-tools"
+      - "priority"
+    correct_answer: [0, 1, 2]
+    explanation: "name, description та allowed-tools є коректними полями frontmatter. Поля priority не існує."
+
+  - id: "q7"
+    type: single_choice
+    prompt: "Де зберігаються персональні навички (не спільні з командою)?"
+    points: 1
+    options:
+      - "~/.claude/skills/*/SKILL.md"
+      - "./personal-skills/"
+      - "./.claude/skills.local/"
+      - "~/skills/"
+    correct_answer: 0
+    explanation: "Навички рівня користувача у ~/.claude/skills/ застосовуються до всіх ваших проєктів, але не поширюються через систему контролю версій."
