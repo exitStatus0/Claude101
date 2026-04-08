@@ -115,7 +115,7 @@ Now exit the session:
 Head to the course project repository on GitHub:
 
 ```text
-https://github.com/expecto-mentorum/ai-coderrank
+https://github.com/ExpectoMentoris/ai-coderrank
 ```
 
 **Fork the repo** using the GitHub UI (click the "Fork" button in the top right).

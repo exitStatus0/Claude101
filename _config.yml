@@ -1,6 +1,6 @@
 title: "Claude Code 101"
 description: "A hands-on course teaching DevOps, SRE, QA, and developers to use Claude Code in daily workflows"
-url: "https://expecto-mentorum.github.io"
+url: "https://ExpectoMentoris.github.io"
 baseurl: "/Claude101"
 
 markdown: kramdown

@@ -64,7 +64,7 @@ Last full review: 2026-04-06
 | 48 | `Shift+Tab` cycles permission modes in-session | cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |
 | 49 | `Ctrl+O` toggles verbose mode | cheatsheet | code.claude.com/docs/en/interactive-mode | 2026-04-06 | correct |
 | 50 | GitHub MCP server package is `@modelcontextprotocol/server-github` | block-09 index.md | github.com/modelcontextprotocol/servers, npmjs.com/package/@modelcontextprotocol/server-github | 2026-04-06 | correct |
-| 51 | ai-coderrank project is a Next.js application | block-00 index.md | github.com/expecto-mentorum/ai-coderrank | course choice | correct |
+| 51 | ai-coderrank project is a Next.js application | block-00 index.md | github.com/ExpectoMentoris/ai-coderrank | course choice | correct |
 | 52 | Ubuntu 22.04 (ubuntu-22-04-x64) as droplet image | block-07 index.md | digitalocean.com/docs | course choice | correct |
 | 53 | ArgoCD admin password from `argocd-initial-admin-secret` | block-12 index.md | argoproj.github.io/argo-cd | 2026-04-06 | correct |
 | 54 | `.claude/settings.json` for project settings (permissions, hooks) | block-08 index.md, cheatsheet | docs.anthropic.com/en/docs/claude-code | 2026-04-06 | correct |

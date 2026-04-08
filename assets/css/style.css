@@ -292,6 +292,40 @@ pre code {
   text-align: center;
 }
 
+.hero-brand-banner {
+  position: relative;
+  max-width: 1140px;
+  margin: 0 auto var(--space-2xl);
+}
+
+.hero-brand-banner::before {
+  content: "";
+  position: absolute;
+  inset: 9% 10% auto;
+  height: 68%;
+  background:
+    radial-gradient(circle at 18% 50%, rgba(49, 100, 182, 0.24), transparent 42%),
+    radial-gradient(circle at 74% 34%, rgba(255, 193, 77, 0.18), transparent 38%);
+  filter: blur(34px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.expecto-brand-banner {
+  display: block;
+  margin: 0;
+}
+
+.expecto-brand-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 26px;
+  box-shadow: 0 26px 64px rgba(2, 8, 20, 0.26);
+  border: 1px solid rgba(244, 196, 100, 0.14);
+  background: #030814;
+}
+
 .hero h1 {
   font-size: 3.5rem;
   max-width: 800px;
@@ -1534,6 +1568,15 @@ pre code {
 
   h1 { font-size: 2rem; }
   .hero h1 { font-size: 2.4rem; }
+
+  .hero-brand-banner {
+    max-width: 470px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .expecto-brand-banner img {
+    border-radius: 22px;
+  }
 
   .mobile-menu-toggle {
     display: flex;
